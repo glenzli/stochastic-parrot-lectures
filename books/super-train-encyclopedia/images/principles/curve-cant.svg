@@ -1,76 +1,51 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">弯道为什么要把外侧钢轨抬高</title>
-  <desc id="desc">从列车正面看，弯道外侧钢轨比内侧高，列车随轨道稍微向弯心倾斜。轨道支撑力的一部分指向弯心，帮助列车转弯；列车速度和外轨抬高量需要互相匹配。</desc>
+  <title id="title">弯道外侧钢轨抬高，列车向弯心倾斜</title>
+  <desc id="desc">从列车正面看，右边外侧钢轨比左边内侧钢轨高，列车随轨道向左侧弯心倾斜；只有一支长绿色箭头指出弯心方向。</desc>
   <defs>
-    <marker id="greenArrow" viewBox="0 0 24 24" refX="22" refY="12" markerWidth="26" markerHeight="26" markerUnits="userSpaceOnUse" orient="auto">
-      <path d="M2 2 22 12 2 22Z" fill="#3e9a78"/>
-    </marker>
-    <marker id="redArrow" viewBox="0 0 24 24" refX="22" refY="12" markerWidth="26" markerHeight="26" markerUnits="userSpaceOnUse" orient="auto">
-      <path d="M2 2 22 12 2 22Z" fill="#d95d4f"/>
+    <marker id="greenArrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 14 8 2 14Z" fill="#3e9a78"/>
     </marker>
   </defs>
   <rect width="1200" height="675" rx="34" fill="#fff9ed"/>
 
-  <!-- 弯心在左边，右边的外轨抬高。 -->
-  <path d="M65 107H285" fill="none" stroke="#3e9a78" stroke-width="8" stroke-linecap="round" marker-end="url(#greenArrow)"/>
-  <text x="170" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="32" font-weight="850" fill="#25364a">弯心在这边</text>
+  <path d="M538 92H116" fill="none" stroke="#3e9a78" stroke-width="7" stroke-linecap="round" marker-end="url(#greenArrow)"/>
+  <text x="327" y="64" text-anchor="middle" font-family="system-ui, sans-serif" font-size="33" font-weight="800" fill="#25364a">弯心在这边</text>
 
-  <!-- 倾斜的路基、枕木和钢轨。 -->
-  <path d="M78 563 746 439 787 535 116 647Z" fill="#eadfcb" stroke="#9a7558" stroke-width="7" stroke-linejoin="round"/>
-  <g transform="rotate(-10 430 500)" stroke-linecap="round">
-    <g stroke="#9a7558" stroke-width="20">
-      <path d="M170 475V570M305 475V570M440 475V570M575 475V570M710 475V570"/>
+  <path d="M116 526 1038 365 1082 499 151 636Z" fill="#eadfcb" stroke="#9a7558" stroke-width="7" stroke-linejoin="round"/>
+  <g transform="rotate(-10 600 482)" stroke-linecap="round">
+    <g stroke="#9a7558" stroke-width="18">
+      <path d="M225 455V558M385 455V558M545 455V558M705 455V558M865 455V558"/>
     </g>
-    <path d="M130 494H750M130 552H750" stroke="#667687" stroke-width="23"/>
-    <path d="M130 487H750M130 545H750" stroke="#d8e0e7" stroke-width="6"/>
+    <path d="M165 474H980M165 548H980" stroke="#667687" stroke-width="22"/>
+    <path d="M165 468H980M165 542H980" stroke="#d8e0e7" stroke-width="6"/>
   </g>
 
-  <!-- 列车正面随轨道倾斜。 -->
-  <g transform="rotate(-10 430 365)">
-    <path d="M242 436V260Q242 174 328 154H532Q618 174 618 260V436Z" fill="#ef8a7d" stroke="#25364a" stroke-width="11" stroke-linejoin="round"/>
-    <path d="M291 267V222Q291 193 327 186H533Q569 193 569 222V267Z" fill="#dff2fb" stroke="#25364a" stroke-width="8"/>
-    <path d="M430 186V267" stroke="#25364a" stroke-width="7"/>
-    <rect x="278" y="331" width="304" height="74" rx="27" fill="#25364a"/>
-    <g fill="#52687c" stroke="#25364a" stroke-width="8"><circle cx="328" cy="449" r="53"/><circle cx="532" cy="449" r="53"/></g>
-    <g fill="#ffd166" stroke="#25364a" stroke-width="6"><circle cx="328" cy="449" r="18"/><circle cx="532" cy="449" r="18"/></g>
+  <g transform="rotate(-10 591 355)">
+    <path d="M365 463V253Q365 154 464 134H718Q817 154 817 253V463Z" fill="#ef8a7d" stroke="#25364a" stroke-width="11" stroke-linejoin="round"/>
+    <path d="M424 270V214Q424 178 470 170H712Q758 178 758 214V270Z" fill="#dff2fb" stroke="#25364a" stroke-width="8"/>
+    <path d="M591 170V270" stroke="#25364a" stroke-width="7"/>
+    <rect x="409" y="349" width="364" height="76" rx="27" fill="#25364a"/>
+    <g fill="#52687c" stroke="#25364a" stroke-width="8">
+      <circle cx="470" cy="477" r="57"/>
+      <circle cx="712" cy="477" r="57"/>
+    </g>
+    <g fill="#ffd166" stroke="#25364a" stroke-width="6">
+      <circle cx="470" cy="477" r="19"/>
+      <circle cx="712" cy="477" r="19"/>
+    </g>
   </g>
 
-  <!-- 支撑力分解：竖直部分托住车，横向部分指向弯心。 -->
-  <circle cx="432" cy="347" r="11" fill="#25364a"/>
-  <path d="M432 347 279 118" fill="none" stroke="#3e9a78" stroke-width="9" stroke-linecap="round" marker-end="url(#greenArrow)"/>
-  <path d="M432 347V119" fill="none" stroke="#8abf9f" stroke-width="6" stroke-dasharray="14 12"/>
-  <path d="M432 119H290" fill="none" stroke="#8abf9f" stroke-width="6" stroke-dasharray="14 12" marker-end="url(#greenArrow)"/>
-  <text x="511" y="132" font-family="system-ui, sans-serif" font-size="27" font-weight="750" fill="#25364a">托住列车</text>
-  <text x="383" y="95" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" font-weight="750" fill="#3e9a78">一部分力指向弯心</text>
-  <path d="M432 347V508" fill="none" stroke="#d95d4f" stroke-width="7" stroke-linecap="round" marker-end="url(#redArrow)"/>
-  <text x="453" y="432" font-family="system-ui, sans-serif" font-size="25" font-weight="700" fill="#d95d4f">重力</text>
-
-  <text x="724" y="411" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" font-weight="800" fill="#25364a">外轨较高</text>
-  <path d="M719 423C711 445 697 465 674 481" fill="none" stroke="#9a7558" stroke-width="6" stroke-linecap="round" marker-end="url(#redArrow)"/>
-  <text x="163" y="528" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" font-weight="800" fill="#25364a">内轨较低</text>
-
-  <!-- 右侧用一对图标说明速度和超高要匹配。 -->
-  <g transform="translate(800 83)">
-    <rect width="345" height="505" rx="38" fill="#fff" stroke="#25364a" stroke-width="7"/>
-    <text x="172" y="58" text-anchor="middle" font-family="system-ui, sans-serif" font-size="31" font-weight="850" fill="#25364a">要配成一对</text>
-
-    <!-- 速度表。 -->
-    <path d="M61 210A112 112 0 0 1 285 210" fill="#dff2fb" stroke="#3b82c4" stroke-width="9"/>
-    <path d="M77 190l18 8M101 145l16 14M145 120l7 20M199 120l-7 20M243 145l-16 14M267 190l-18 8" stroke="#25364a" stroke-width="6" stroke-linecap="round"/>
-    <path d="M172 210 232 155" stroke="#d95d4f" stroke-width="8" stroke-linecap="round" marker-end="url(#redArrow)"/>
-    <circle cx="172" cy="210" r="15" fill="#ffd166" stroke="#25364a" stroke-width="6"/>
-    <text x="172" y="258" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" font-weight="800" fill="#25364a">跑多快</text>
-
-    <text x="172" y="315" text-anchor="middle" font-family="system-ui, sans-serif" font-size="38" font-weight="900" fill="#3e9a78">↕</text>
-
-    <!-- 两根有高差的轨道。 -->
-    <path d="M71 400 272 354 289 418 84 458Z" fill="#eadfcb" stroke="#9a7558" stroke-width="6"/>
-    <path d="M90 399 275 357M99 446 287 407" stroke="#667687" stroke-width="16" stroke-linecap="round"/>
-    <path d="M90 394 275 352M99 441 287 402" stroke="#d8e0e7" stroke-width="5" stroke-linecap="round"/>
-    <text x="172" y="491" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" font-weight="800" fill="#25364a">外轨抬多高</text>
+  <g font-family="system-ui, sans-serif" font-size="30" font-weight="800" fill="#25364a">
+    <text x="171" y="585">内轨较低</text>
+    <text x="947" y="342">外轨较高</text>
   </g>
-  <g transform="translate(811 605)">
-    <rect width="322" height="50" rx="25" fill="#dcefe3" stroke="#3e9a78" stroke-width="4"/>
-    <text x="161" y="34" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" font-weight="800" fill="#25364a">配合合适，坐起来更稳</text>
+  <path d="M978 351C959 386 930 411 896 428" fill="none" stroke="#9a7558" stroke-width="6" stroke-linecap="round" marker-end="url(#greenArrow)"/>
+
+  <g transform="translate(883 80)">
+    <rect width="252" height="146" rx="30" fill="#fff" stroke="#25364a" stroke-width="6"/>
+    <path d="M37 102 215 67" stroke="#667687" stroke-width="18" stroke-linecap="round"/>
+    <circle cx="63" cy="88" r="20" fill="#ffd166" stroke="#25364a" stroke-width="6"/>
+    <circle cx="190" cy="63" r="20" fill="#ffd166" stroke="#25364a" stroke-width="6"/>
+    <text x="126" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" font-weight="750" fill="#25364a">两根钢轨有高低差</text>
   </g>
 </svg>

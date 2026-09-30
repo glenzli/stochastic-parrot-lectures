@@ -1,29 +1,48 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">跨座式单轨骑在轨道梁上</title>
-  <desc id="desc">正面剖面图中，车体从两边包住一根宽梁。两只大承重轮落在梁顶，左右各一只较小的导向轮贴近梁侧，轮子没有穿进梁里。</desc>
-  <rect width="1200" height="675" rx="34" fill="#fff9ed"/>
+  <title id="title">跨座式单轨的大轮压在梁顶，小轮贴着梁侧</title>
+  <desc id="desc">正面剖面图里，乘客窗和车厢地板都在轮子上方。一个大的承重橡胶轮压在混凝土梁顶，两只较小的导向轮从左右贴住梁侧，帮助列车保持方向。</desc>
+  <defs>
+    <marker id="calloutArrow" viewBox="0 0 18 18" refX="16" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 16 9 2 16Z" fill="#587186"/>
+    </marker>
+  </defs>
 
-  <!-- U 形车体围住中央轨道梁。 -->
-  <path fill="#4f9bd8" fill-rule="evenodd" stroke="#25364a" stroke-width="11" stroke-linejoin="round" d="M200 505V230Q200 28 402 28H798Q1000 28 1000 230V505H790V350Q790 250 690 250H510Q410 250 410 350V505ZM305 230Q305 102 433 102H767Q895 102 895 230V270H305Z"/>
-  <path d="M455 103V270M600 103V250M745 103V270" stroke="#25364a" stroke-width="7"/>
-  <path d="M305 230Q305 102 433 102H767Q895 102 895 230V270H305Z" fill="#dff2fb" stroke="#25364a" stroke-width="8"/>
-  <path d="M455 103V270M600 103V250M745 103V270" stroke="#25364a" stroke-width="7"/>
+  <rect width="1200" height="675" rx="34" fill="#fffaf1"/>
 
-  <!-- 梁与桥墩。 -->
-  <path d="M510 310H690V675H510Z" fill="#b9c4cd" stroke="#25364a" stroke-width="10"/>
-  <path d="M492 310H708" stroke="#eef3f7" stroke-width="18" stroke-linecap="round"/>
-  <path d="M600 598V675" stroke="#9a7558" stroke-width="88"/>
+  <!-- 乘客车厢完整地位于地板之上。 -->
+  <path d="M210 309V205Q210 72 343 72H857Q990 72 990 205V309Z" fill="#719ea6" stroke="#26394b" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M287 253V184Q287 126 345 126H855Q913 126 913 184V253Z" fill="#dcebf0" stroke="#26394b" stroke-width="7"/>
+  <path d="M443 127V253M600 127V253M757 127V253" stroke="#536b79" stroke-width="5"/>
+  <rect x="192" y="300" width="816" height="51" rx="15" fill="#557784" stroke="#26394b" stroke-width="9"/>
 
-  <!-- 承重轮的最低点正好落在梁顶；导向轮外缘正好接近梁侧。 -->
-  <g fill="#465d73" stroke="#25364a" stroke-width="9">
-    <circle cx="555" cy="250" r="60"/><circle cx="645" cy="250" r="60"/>
-    <circle cx="465" cy="405" r="45"/><circle cx="735" cy="405" r="45"/>
+  <!-- 车体下裙从两侧包住梁，中央轮组与乘客窗分开。 -->
+  <path d="M213 346H475V588H282Q213 588 213 519Z" fill="#719ea6" stroke="#26394b" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M725 346H987V519Q987 588 918 588H725Z" fill="#719ea6" stroke="#26394b" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M505 342H695V414H505Z" fill="#445965" stroke="#26394b" stroke-width="8"/>
+
+  <!-- 承重轮在地板下、梁顶上；导向轮只贴梁侧。 -->
+  <circle cx="600" cy="395" r="58" fill="#414e59" stroke="#26394b" stroke-width="9"/>
+  <circle cx="600" cy="395" r="22" fill="#cfdae0" stroke="#26394b" stroke-width="6"/>
+  <path d="M505 453H695V675H505Z" fill="#bac4c9" stroke="#26394b" stroke-width="10"/>
+  <path d="M503 453H697" stroke="#ecf0f1" stroke-width="17" stroke-linecap="round"/>
+  <g fill="#414e59" stroke="#26394b" stroke-width="8">
+    <circle cx="463" cy="522" r="42"/>
+    <circle cx="737" cy="522" r="42"/>
   </g>
-  <g fill="#ffd166" stroke="#25364a" stroke-width="7">
-    <circle cx="555" cy="250" r="19"/><circle cx="645" cy="250" r="19"/>
-    <circle cx="465" cy="405" r="16"/><circle cx="735" cy="405" r="16"/>
+  <g fill="#cfdae0" stroke="#26394b" stroke-width="5">
+    <circle cx="463" cy="522" r="15"/>
+    <circle cx="737" cy="522" r="15"/>
   </g>
-  <g font-family="sans-serif" font-size="34" font-weight="700" text-anchor="middle" fill="#25364a">
-    <text x="600" y="190">承重轮</text><text x="600" y="548">导向轮</text>
+
+  <!-- 三个短标签；细长引线把名称直接指向结构。 -->
+  <g font-family="system-ui, sans-serif" font-size="29" font-weight="770" fill="#26394b">
+    <text x="955" y="281" text-anchor="end">车厢地板</text>
+    <text x="342" y="410" text-anchor="middle">承重轮</text>
+    <text x="918" y="542" text-anchor="middle">导向轮</text>
+  </g>
+  <g fill="none" stroke="#587186" stroke-width="5" stroke-linecap="round" marker-end="url(#calloutArrow)">
+    <path d="M974 288 823 322"/>
+    <path d="M402 401 531 397"/>
+    <path d="M846 535 786 526"/>
   </g>
 </svg>

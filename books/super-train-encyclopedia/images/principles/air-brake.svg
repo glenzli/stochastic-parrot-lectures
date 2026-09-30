@@ -1,81 +1,67 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">自动空气制动怎样让整列车刹车</title>
-  <desc id="desc">司机的制动阀降低贯穿列车的制动管压力。每节车的控制阀收到这个压力变化后，让本车储风缸推动制动缸。管路意外断开也会漏气降压，使列车趋向自动制动。</desc>
+  <title id="title">一根空气管告诉每节车一起刹车</title>
+  <desc id="desc">三节车下方有一根连续的蓝色制动管。司机刹车后，命令沿蓝管向后传播；每节车都用自己的空气罐推动本车轮旁的刹车块。</desc>
   <defs>
-    <marker id="blueArrow" viewBox="0 0 24 24" refX="22" refY="12" markerWidth="25" markerHeight="25" markerUnits="userSpaceOnUse" orient="auto">
-      <path d="M2 2 22 12 2 22Z" fill="#3b82c4"/>
+    <marker id="pipeArrow" viewBox="0 0 18 18" refX="16" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 16 9 2 16Z" fill="#448cad"/>
     </marker>
-    <marker id="orangeArrow" viewBox="0 0 24 24" refX="22" refY="12" markerWidth="25" markerHeight="25" markerUnits="userSpaceOnUse" orient="auto">
-      <path d="M2 2 22 12 2 22Z" fill="#d97848"/>
+    <marker id="brakeArrow" viewBox="0 0 18 18" refX="16" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 16 9 2 16Z" fill="#c8754d"/>
     </marker>
   </defs>
+
   <rect width="1200" height="675" rx="34" fill="#fff9ed"/>
 
-  <!-- 三节车厢。 -->
+  <!-- 三节清楚分开的车，每节各有两个轮子。 -->
   <g stroke="#25364a" stroke-width="8">
-    <path d="M78 305V190Q78 143 128 143H285L321 305Z" fill="#ef8a7d"/>
-    <rect x="337" y="143" width="325" height="162" rx="26" fill="#55a9c9"/>
-    <rect x="678" y="143" width="325" height="162" rx="26" fill="#86b88a"/>
-    <path d="M1019 143H1083Q1128 143 1142 191L1167 305H1019Z" fill="#e3ab65"/>
+    <path d="M59 300V150H281Q326 150 350 194L374 300Z" fill="#d98779"/>
+    <rect x="413" y="150" width="337" height="150" rx="27" fill="#75aebe"/>
+    <rect x="789" y="150" width="337" height="150" rx="27" fill="#85ad8b"/>
   </g>
-  <g fill="#dff2fb" stroke="#25364a" stroke-width="6">
-    <rect x="111" y="177" width="119" height="69" rx="15"/>
-    <rect x="377" y="177" width="105" height="69" rx="15"/><rect x="517" y="177" width="105" height="69" rx="15"/>
-    <rect x="718" y="177" width="105" height="69" rx="15"/><rect x="858" y="177" width="105" height="69" rx="15"/>
-    <path d="M1051 177H1090Q1111 177 1118 203L1128 246H1051Z"/>
+  <g fill="#d9edf4" stroke="#25364a" stroke-width="6">
+    <rect x="92" y="181" width="112" height="70" rx="14"/>
+    <path d="M225 181H279Q306 181 319 210L336 251H225Z"/>
+    <rect x="449" y="181" width="118" height="70" rx="14"/><rect x="595" y="181" width="118" height="70" rx="14"/>
+    <rect x="825" y="181" width="118" height="70" rx="14"/><rect x="971" y="181" width="118" height="70" rx="14"/>
   </g>
   <g fill="#52687c" stroke="#25364a" stroke-width="7">
-    <circle cx="187" cy="325" r="42"/><circle cx="411" cy="325" r="42"/><circle cx="586" cy="325" r="42"/>
-    <circle cx="752" cy="325" r="42"/><circle cx="927" cy="325" r="42"/><circle cx="1090" cy="325" r="42"/>
+    <circle cx="126" cy="326" r="47"/><circle cx="306" cy="326" r="47"/>
+    <circle cx="486" cy="326" r="47"/><circle cx="677" cy="326" r="47"/>
+    <circle cx="862" cy="326" r="47"/><circle cx="1053" cy="326" r="47"/>
   </g>
 
-  <!-- 驾驶室里的制动阀把制动管向大气放气。 -->
-  <circle cx="190" cy="276" r="23" fill="#ffd166" stroke="#25364a" stroke-width="6"/>
-  <path d="M190 253V221M190 221l26-14" stroke="#25364a" stroke-width="7" stroke-linecap="round"/>
-  <path d="M190 299V388" stroke="#3b82c4" stroke-width="9"/>
-  <path d="M148 390V453" fill="none" stroke="#3b82c4" stroke-width="7" stroke-linecap="round" marker-end="url(#blueArrow)"/>
-  <path d="M122 412c-23 8-24 34 0 40M101 421c-19 10-17 28 1 35" fill="none" stroke="#9dc9df" stroke-width="6" stroke-linecap="round"/>
-  <text x="155" y="79" text-anchor="middle" font-family="system-ui, sans-serif" font-size="31" font-weight="800" fill="#25364a">① 司机制动</text>
-  <text x="155" y="113" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" fill="#52687c">让管里压力降低</text>
-  <path d="M160 122C169 154 177 176 185 203" fill="none" stroke="#3b82c4" stroke-width="7" stroke-linecap="round" marker-end="url(#blueArrow)"/>
+  <!-- 一根蓝管真正贯穿三节车。 -->
+  <path d="M61 423H1138" fill="none" stroke="#448cad" stroke-width="13" stroke-linecap="round"/>
+  <path d="M166 423H1086" fill="none" stroke="#d8edf3" stroke-width="4" stroke-dasharray="19 17" marker-end="url(#pipeArrow)"/>
+  <path d="M214 397V449M590 397V449M966 397V449" stroke="#25364a" stroke-width="4" stroke-dasharray="5 7" opacity=".55"/>
 
-  <!-- 蓝色制动管贯穿列车；虚线箭头表示压力变化依次传播。 -->
-  <path d="M75 389H1028M1080 389H1145" fill="none" stroke="#3b82c4" stroke-width="14" stroke-linecap="round"/>
-  <path d="M230 389H965" fill="none" stroke="#dff2fb" stroke-width="5" stroke-dasharray="20 18" marker-end="url(#blueArrow)"/>
-  <text x="720" y="103" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" font-weight="700" fill="#25364a">“压力降低”的信号沿制动管传播</text>
-
-  <!-- 每节车都用自己的储风缸推动制动缸。 -->
-  <g font-family="system-ui, sans-serif" text-anchor="middle">
-    <g transform="translate(425)">
-      <circle cx="0" cy="389" r="25" fill="#fff" stroke="#25364a" stroke-width="6"/>
-      <text x="0" y="398" font-size="25" font-weight="800" fill="#25364a">阀</text>
-      <rect x="-112" y="456" width="115" height="48" rx="24" fill="#9dc9df" stroke="#25364a" stroke-width="6"/>
-      <rect x="40" y="456" width="91" height="48" rx="13" fill="#f2b27f" stroke="#25364a" stroke-width="6"/>
-      <path d="M-1 480H38" stroke="#d97848" stroke-width="7" marker-end="url(#orangeArrow)"/>
-      <path d="M131 480 166 505" stroke="#25364a" stroke-width="8" stroke-linecap="round"/>
-    </g>
-    <g transform="translate(766)">
-      <circle cx="0" cy="389" r="25" fill="#fff" stroke="#25364a" stroke-width="6"/>
-      <text x="0" y="398" font-size="25" font-weight="800" fill="#25364a">阀</text>
-      <rect x="-112" y="456" width="115" height="48" rx="24" fill="#9dc9df" stroke="#25364a" stroke-width="6"/>
-      <rect x="40" y="456" width="91" height="48" rx="13" fill="#f2b27f" stroke="#25364a" stroke-width="6"/>
-      <path d="M-1 480H38" stroke="#d97848" stroke-width="7" marker-end="url(#orangeArrow)"/>
-      <path d="M131 480 166 505" stroke="#25364a" stroke-width="8" stroke-linecap="round"/>
-    </g>
+  <!-- 每节车只有一个本车空气罐；橙色刹车块贴在本车车轮旁。 -->
+  <g stroke="#25364a" stroke-width="7" stroke-linejoin="round">
+    <rect x="112" y="480" width="164" height="61" rx="30" fill="#a5cbd7"/>
+    <rect x="488" y="480" width="164" height="61" rx="30" fill="#a5cbd7"/>
+    <rect x="864" y="480" width="164" height="61" rx="30" fill="#a5cbd7"/>
+    <path d="M342 291Q370 326 342 361L324 347Q342 326 324 305Z" fill="#d48a5b"/>
+    <path d="M713 291Q741 326 713 361L695 347Q713 326 695 305Z" fill="#d48a5b"/>
+    <path d="M1089 291Q1117 326 1089 361L1071 347Q1089 326 1071 305Z" fill="#d48a5b"/>
   </g>
-  <g font-family="system-ui, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#25364a">
-    <text x="368" y="540">本车储风</text><text x="510" y="540">制动缸</text>
-    <text x="709" y="540">本车储风</text><text x="851" y="540">制动缸</text>
+  <g fill="none" stroke="#c8754d" stroke-width="6" stroke-linecap="round" marker-end="url(#brakeArrow)">
+    <path d="M276 511C326 497 354 437 348 370"/>
+    <path d="M652 511C702 497 730 437 719 370"/>
+    <path d="M1028 511C1078 497 1106 437 1095 370"/>
   </g>
-  <g transform="translate(305 572)">
-    <rect width="590" height="62" rx="31" fill="#fff" stroke="#d97848" stroke-width="5"/>
-    <text x="295" y="42" text-anchor="middle" font-family="system-ui, sans-serif" font-size="29" font-weight="800" fill="#25364a">② 每节车厢都把自己的刹车推上去</text>
+  <g stroke="#448cad" stroke-width="6" fill="none">
+    <path d="M194 423V480"/><path d="M570 423V480"/><path d="M946 423V480"/>
   </g>
 
-  <!-- 断管也会使压力下降，因此自动空气制动具有趋向安全的特性。 -->
-  <path d="M1030 372l20 17-20 17M1078 372l-20 17 20 17" fill="none" stroke="#d95d4f" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M1054 418V472" fill="none" stroke="#3b82c4" stroke-width="7" stroke-linecap="round" marker-end="url(#blueArrow)"/>
-  <path d="M1090 429c28 2 34 26 13 39M1112 443c22 8 20 29 2 36" fill="none" stroke="#9dc9df" stroke-width="6" stroke-linecap="round"/>
-  <text x="1058" y="535" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="800" fill="#25364a">③ 断管漏气</text>
-  <text x="1058" y="568" text-anchor="middle" font-family="system-ui, sans-serif" font-size="23" fill="#52687c">也会自动刹车</text>
+  <!-- 驾驶室只留一个清楚的制动手柄。 -->
+  <circle cx="277" cy="274" r="18" fill="#e9c66f" stroke="#25364a" stroke-width="6"/>
+  <path d="M277 257V224L301 210" stroke="#25364a" stroke-width="7" stroke-linecap="round"/>
+  <path d="M278 292V405" stroke="#448cad" stroke-width="6" stroke-linecap="round" marker-end="url(#pipeArrow)"/>
+
+  <g font-family="system-ui, sans-serif" font-size="31" font-weight="800" text-anchor="middle" fill="#25364a">
+    <text x="217" y="100">司机刹车</text>
+    <text x="600" y="400">命令沿蓝管跑</text>
+    <text x="600" y="619">每节车用自己的空气刹车</text>
+  </g>
+  <path d="M600 595V558" stroke="#637588" stroke-width="4" stroke-linecap="round"/>
 </svg>

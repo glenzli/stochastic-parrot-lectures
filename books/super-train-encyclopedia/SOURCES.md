@@ -6,10 +6,10 @@
 - 资料优先级：运营方、制造商、政府与铁路研究机构、铁路博物馆和文化遗产机构。
 - 同一车型可能有不同批次、编组和改造；速度、运行区间、票制与运营状态也会改变。出行前请再查运营方当天公告。
 - 章节中的句子是面向 4 岁孩子的转述，不是对来源原文的逐字翻译。
-- 本页只说明**事实依据**。照片的作者、许可和原文件页另见 [图片来源与许可](IMAGE_CREDITS.md)；书中图片不能因为正文采用 CC0 就自动变成 CC0。
+- 本页只说明**事实依据**。车型照片见[图片来源与许可](IMAGE_CREDITS.md)，原理实拍见[原理实拍图来源与许可](PRINCIPLE_PHOTO_CREDITS.md)，AI 生成剖面图见[生成原理图记录](GENERATED_PRINCIPLE_IMAGES.md)；书中图片不能因为正文采用 CC0 就自动变成 CC0，也不能把生成图当成事实来源。
 - 车型正文已经按照用途和运行方式重新分章；本页仍按稳定的卡号段保存来源，方便在卡片移动后继续核查。
 
-## 第零、第一章：怎样读，以及火车怎样跑
+## 第一章部件拆分图与分散在各章的运行原理
 
 - [JR 东日本大宫铁道博物馆：馆藏、科学展区与体验](https://www.railway-museum.jp/e/) — 车辆构造、铁路工作与安全系统的入门核查。
 - [铁道综合技术研究所（RTRI）：Railway Dynamics Division](https://www.rtri.or.jp/eng/rd/division/rd50/) — 车轮、轨道、转向架、车辆运动与安全研究。
@@ -17,6 +17,8 @@
 - [Network Rail：Track circuits explained](https://www.networkrail.co.uk/stories/track-circuits-explained/) — 轨道电路如何帮助判断区段是否有车。
 - [Linimo：列车与磁悬浮方式简介](https://www.linimo.jp/language/en/about/) — 低速常导磁悬浮的悬浮、导向和推进。
 - [JR 东海：Superconducting Maglev 说明书](https://global.jr-central.co.jp/en/company/_pdf/superconducting_maglev.pdf) — 超导磁悬浮、线性电机与导向方式。
+- [JR 东海：SCMAGLEV 如何运行](https://scmaglev.jr-central-global.com/about/) — L0 系车载超导磁体、导向墙侧线圈，以及推进、悬浮和导向三种作用的官方动态图解。
+- [JR 东海：SCMAGLEV 常见问题](https://scmaglev.jr-central-global.com/faq/) — 低速时使用橡胶轮、速度升高后收轮并悬浮，以及约 10 厘米悬浮间隙的核查。
 - [UIC：High-Speed Rail History](https://uic.org/passenger/highspeed/article/high-speed-rail-history) — 电气铁路和高速铁路发展的国际时间线。
 - [Network Rail：Track](https://www.networkrail.co.uk/our-work/looking-after-the-railway/track/) — 钢轨、轨枕、道砟和下部结构如何支承轨道并维持几何位置。
 - [美国联邦铁路管理局（FRA）：PTC Braking Algorithm，Appendix F](https://railroads.dot.gov/sites/fra.dot.gov/files/fra_net/3328/Appendix%20F_%20TO%20242%20PTC%20Braking%20Algorithm_final.pdf) — 制动管、控制阀、储风缸、制动缸及空气制动指令传播的术语依据。
@@ -162,10 +164,10 @@
 - [广岛市：Skyrail 相关会议记录](https://www.city.hiroshima.lg.jp/_res/projects/default_project/_page_/001/017/801/dai74kaigijiroku.pdf) — Skyrail 停运与替代交通背景。
 - [Stoos：World-record Funicular](https://www.stoos.ch/en/stories/weltrekord) — 120 Stoos 桶形车厢缆索铁路。
 
-## 观察游戏与词典：安全和术语
+## 各章安全观察与词典：安全和术语
 
 - [札幌市交通局：地铁安全指南](https://www.city.sapporo.jp/st/anzenguide.html) — 站台、车门、紧急情况和儿童乘车安全。
-- [Network Rail：Signals explained](https://www.networkrail.co.uk/stories/signals-explained/) — 游戏中不让孩子自行解释信号放行的依据。
+- [Network Rail：Signals explained](https://www.networkrail.co.uk/stories/signals-explained/) — 安全观察中不让孩子自行解释信号放行的依据。
 - [JR 东日本大宫铁道博物馆](https://www.railway-museum.jp/e/) — 适合从开放展区观察转向架、连结器、车轮和铁路工作。
 - [铁道综合技术研究所（RTRI）](https://www.rtri.or.jp/eng/) — 轨道、车辆、电力、信号等术语的研究机构入口。
 - [日本民营铁道协会：Abt 式齿轨词条](https://www.mintetsu.or.jp/knowledge/term/16292.html) — 齿轨铁路术语。

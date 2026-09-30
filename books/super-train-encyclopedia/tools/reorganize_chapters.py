@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Rebuild the train-card chapters around child-facing themes.
+"""Rebuild train-card chapters around child-facing themes and discoveries.
 
-Card numbers and card bodies stay unchanged.  The script only changes each
-card's home chapter, chapter navigation, and the chapter field in image
-metadata.  It is intentionally strict so that a missing or duplicated card
-stops the migration instead of silently dropping content.
+Card numbers and child-facing card bodies stay unchanged. Integrated principle
+reveals are inserted from ``integrated_learning.py`` after the relevant card.
+The script is intentionally strict so that a missing card or learning block
+stops the rebuild instead of silently dropping content.
 """
 
 from __future__ import annotations
@@ -13,6 +13,11 @@ import json
 import re
 from dataclasses import dataclass
 from pathlib import Path
+
+from integrated_learning import (
+    LEARNING_BLOCKS_AFTER_CARD,
+    validate_learning_blocks,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,6 +37,36 @@ OLD_CARD_FILES = (
 )
 
 CARD_START_RE = re.compile(r"^## (?P<number>\d{3})｜", re.MULTILINE)
+RAW_ADULT_NOTE_RE = re.compile(r"^> 给大人：(?P<body>[^\n]+)$", re.MULTILINE)
+ADULT_NOTE_SUMMARY = "<summary>🔎 给大人看细节</summary>"
+
+
+def fold_card_adult_note(block: str, number: int) -> str:
+    """Fold one card's adult note exactly once."""
+    raw_notes = list(RAW_ADULT_NOTE_RE.finditer(block))
+    folded_notes = block.count(ADULT_NOTE_SUMMARY)
+
+    if len(raw_notes) == 1 and folded_notes == 0:
+        adult_body = raw_notes[0].group("body")
+        folded = (
+            "<details>\n"
+            f"{ADULT_NOTE_SUMMARY}\n\n"
+            f"{adult_body}\n\n"
+            "</details>"
+        )
+        return RAW_ADULT_NOTE_RE.sub(folded, block, count=1)
+
+    if len(raw_notes) == 0 and folded_notes == 1:
+        if block.count("<details>") != 1 or block.count("</details>") != 1:
+            raise RuntimeError(
+                f"card {number:03d} has a malformed folded adult note"
+            )
+        return block
+
+    raise RuntimeError(
+        f"card {number:03d} must have exactly one raw or folded adult note; "
+        f"raw={len(raw_notes)}, folded={folded_notes}"
+    )
 
 
 @dataclass(frozen=True)
@@ -219,6 +254,7 @@ def extract_cards() -> dict[int, str]:
             end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
             block = text[match.start() : end]
             block = re.split(r"\n---[ \t]*(?:\n|\Z)", block, maxsplit=1)[0].rstrip()
+            block = fold_card_adult_note(block, number)
             previous = cards.get(number)
             if previous is not None and previous != block:
                 raise RuntimeError(f"card {number:03d} has conflicting copies")
@@ -256,20 +292,15 @@ def validate_mapping() -> dict[int, int]:
 def navigation(index: int) -> str:
     chapter = CHAPTERS[index]
     if index == 0:
-        previous = "[← 火车怎样跑](01_how_trains_move.md)"
+        previous = "[← 把火车拆开看看](01_how_trains_move.md)"
     else:
         before = CHAPTERS[index - 1]
         previous = f"[← {before.short_title}]({before.filename})"
 
+    links = [previous, "[🏠 全书首页](README.md)"]
     if index + 1 < len(CHAPTERS):
         after = CHAPTERS[index + 1]
-        following = f"[{after.short_title} →]({after.filename})"
-    else:
-        following = "[观察游戏 →](13_spotter_games.md)"
-
-    links = [previous, "[🏠 全书首页](README.md)", following]
-    if index + 1 < len(CHAPTERS):
-        links.append("[🎲 观察游戏](13_spotter_games.md)")
+        links.append(f"[{after.short_title} →]({after.filename})")
     return " · ".join(links)
 
 
@@ -277,45 +308,47 @@ def render_chapter(index: int, cards: dict[int, str]) -> str:
     chapter = CHAPTERS[index]
     nav = navigation(index)
     route = "\n".join(
-        f"- 🚉 第{station_index}站：{station.title}（{len(station.cards)} 辆车）"
+        f"- [🚉 第{station_index}站：{station.title}]"
+        f"(#train-{station.cards[0]:03d})（{len(station.cards)} 辆车）"
         for station_index, station in enumerate(chapter.stations, start=1)
+    )
+    route_picker = (
+        "<details>\n"
+        "<summary>🚉 选一个小站</summary>\n\n"
+        "今天挑一个小站就好，不用一次看完。\n\n"
+        f"{route}\n\n"
+        "</details>"
     )
     station_sections = []
     for station_index, station in enumerate(chapter.stations, start=1):
-        station_body = "\n\n---\n\n".join(cards[number] for number in station.cards)
-        station_sections.append(
+        card_sections = []
+        for number in station.cards:
+            anchored_card = f'<a id="train-{number:03d}"></a>\n\n{cards[number]}'
+            learning = LEARNING_BLOCKS_AFTER_CARD.get(number)
+            if learning:
+                anchored_card += (
+                    "\n\n---\n\n"
+                    f"<!-- integrated-learning:after-{number:03d}:start -->\n"
+                    f"{learning.rstrip()}\n"
+                    f"<!-- integrated-learning:after-{number:03d}:end -->"
+                )
+            card_sections.append(anchored_card)
+        station_body = "\n\n---\n\n".join(card_sections)
+        station_section = (
             f"> 🚉 **第{station_index}站｜{station.title}**\n\n{station_body}"
         )
+        station_sections.append(station_section)
     body = "\n\n---\n\n".join(station_sections)
     return (
         f"# {chapter.title}\n\n"
         f"{nav}\n\n"
         f"{chapter.intro}\n\n"
-        "**本章路线图：** 今天挑一个小站就好，不用一次看完。\n\n"
-        f"{route}\n\n"
+        "看到 **🔍 打开看看**，可以停下来拆开一个小秘密，也可以先跳过继续看车。\n\n"
+        f"{route_picker}\n\n"
         f"{body}\n\n"
         "---\n\n"
         f"{nav}\n"
     )
-
-
-def rebuild_spotter_games() -> None:
-    old_path = ROOT / "10_spotter_games.md"
-    new_path = ROOT / "13_spotter_games.md"
-    source = old_path if old_path.exists() else new_path
-    text = source.read_text(encoding="utf-8")
-    text = text.replace("# 第十章：", "# 第十三章：", 1)
-    old_nav = (
-        "[← 特别的轨道](09_unusual_railways.md) · [🏠 全书首页](README.md) · "
-        "[更多日常列车 →](11_more_trains.md)"
-    )
-    new_nav = "[← 爬山的火车](12_mountain_railways.md) · [🏠 全书首页](README.md)"
-    text = text.replace(old_nav, new_nav)
-    text = text.replace(
-        "**在哪里玩：** [第九章](09_unusual_railways.md)的照片。",
-        "**在哪里玩：** [第十一章](11_unusual_guideways.md)的照片。",
-    )
-    new_path.write_text(text, encoding="utf-8")
 
 
 def update_metadata(card_to_chapter: dict[int, int]) -> None:
@@ -352,8 +385,12 @@ def update_metadata(card_to_chapter: dict[int, int]) -> None:
 
 def remove_old_files() -> None:
     keep = {chapter.filename for chapter in CHAPTERS}
-    keep.add("13_spotter_games.md")
-    for name in (*OLD_CARD_FILES, "10_spotter_games.md"):
+    for name in (
+        *OLD_CARD_FILES,
+        "00_for_grownups.md",
+        "10_spotter_games.md",
+        "13_spotter_games.md",
+    ):
         if name in keep:
             continue
         path = ROOT / name
@@ -362,21 +399,31 @@ def remove_old_files() -> None:
 
 
 def main() -> None:
+    validate_learning_blocks()
     cards = extract_cards()
     card_to_chapter = validate_mapping()
+    unexpected_learning_cards = sorted(
+        set(LEARNING_BLOCKS_AFTER_CARD) - set(card_to_chapter)
+    )
+    if unexpected_learning_cards:
+        raise RuntimeError(
+            f"learning blocks point to unknown cards: {unexpected_learning_cards}"
+        )
     for index, chapter in enumerate(CHAPTERS):
         (ROOT / chapter.filename).write_text(
             render_chapter(index, cards),
             encoding="utf-8",
         )
-    rebuild_spotter_games()
     update_metadata(card_to_chapter)
     remove_old_files()
 
     counts = ", ".join(
         f"{chapter.number:02d}:{len(chapter.cards)}" for chapter in CHAPTERS
     )
-    print(f"Reorganized 160 cards across 11 chapters ({counts}).")
+    print(
+        "Reorganized 160 cards with 24 card-anchored principles across "
+        f"11 chapters ({counts})."
+    )
 
 
 if __name__ == "__main__":

@@ -10,12 +10,12 @@ from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
+from xml.etree import ElementTree
 
 
 ROOT = Path(__file__).resolve().parent
 
 NUMBERED_CHAPTERS = (
-    "00_for_grownups.md",
     "01_how_trains_move.md",
     "02_steam_origins.md",
     "03_power_revolution.md",
@@ -28,10 +28,41 @@ NUMBERED_CHAPTERS = (
     "10_work_trains.md",
     "11_unusual_guideways.md",
     "12_mountain_railways.md",
-    "13_spotter_games.md",
 )
-CARD_CHAPTERS = NUMBERED_CHAPTERS[2:-1]
+CARD_CHAPTERS = NUMBERED_CHAPTERS[1:]
 EXPECTED_CARD_NUMBERS = {f"{number:03d}" for number in range(1, 161)}
+EXPECTED_PRINCIPLE_SVG_COUNT = 25
+EXPECTED_PRINCIPLE_PHOTO_COUNT = 8
+EXPECTED_GENERATED_PRINCIPLE_FILES = {
+    "diesel-electric-cutaway.webp",
+    "track-layers-cutaway.webp",
+}
+EXPECTED_PRINCIPLE_AFTER_CARD = {
+    "004": "steam-power.svg",
+    "005": "steel-wheel-rail.svg",
+    "008": "wheel-flange.svg",
+    "020": "diesel-paths.svg",
+    "032": "overhead-ac-dc.svg",
+    "052": "aerodynamic-nose.svg",
+    "056": "pantograph.svg",
+    "069": "third-rail.svg",
+    "075": "points.svg",
+    "080": "curve-cant.svg",
+    "083": "suspension-comfort.svg",
+    "100": "coupler-force.svg",
+    "101": "air-brake.svg",
+    "102": "track-layers.svg",
+    "104": "straddle-monorail.svg",
+    "106": "suspended-monorail.svg",
+    "110": "maglev.svg",
+    "116": "rack-rail.svg",
+    "117": "funicular-cable.svg",
+    "124": "adhesion-traction.svg",
+    "127": "regenerative-braking.svg",
+    "129": "axle-bogie.svg",
+    "138": "rubber-guideway.svg",
+    "159": "signals.svg",
+}
 
 ATX_HEADING_RE = re.compile(r"^ {0,3}(#{1,6})(?:[ \t]+|$)")
 CARD_HEADING_RE = re.compile(
@@ -54,6 +85,15 @@ TRAIN_PATH_RE = re.compile(
     r"(?P<filename>[^\s)'\"<>]+\.webp)",
     re.IGNORECASE,
 )
+PRINCIPLE_PATH_RE = re.compile(
+    r"(?<![A-Za-z0-9_.-])(?:\./)?images/principles/"
+    r"(?P<filename>[^\s)'\"<>]+\.svg)",
+    re.IGNORECASE,
+)
+PRINCIPLE_PHOTO_CREDIT_LINK_RE = re.compile(
+    r"\[[^\]\n]+\]\(\s*(?:\./)?PRINCIPLE_PHOTO_CREDITS\.md#"
+    r"principle-photo-(?P<id>[A-Za-z0-9._-]+)(?:\s+[^)]*)?\)",
+)
 CREDIT_LINK_RE = re.compile(
     r"\[[^\]\n]+\]\(\s*(?:\./)?IMAGE_CREDITS\.md#img-"
     r"(?P<id>[A-Za-z0-9._-]+)(?:\s+[^)]*)?\)",
@@ -64,7 +104,19 @@ BIRTH_CARD_RE = re.compile(
 LOOK_FOR_RE = re.compile(
     r"^ {0,3}(?:\*\*)?找找看[：:](?:\*\*)?", re.MULTILINE
 )
-GROWNUP_RE = re.compile(r"^ {0,3}>[ \t]*给大人[：:]", re.MULTILINE)
+LEGACY_GROWNUP_RE = re.compile(r"^ {0,3}>[ \t]*给大人[：:]", re.MULTILINE)
+CARD_GROWNUP_SUMMARY = "<summary>🔎 给大人看细节</summary>"
+PRINCIPLE_GROWNUP_SUMMARY = "<summary>🔎 给大人再讲一点</summary>"
+ROUTE_PICKER_SUMMARY = "<summary>🚉 选一个小站</summary>"
+INTEGRATED_BLOCK_RE = re.compile(
+    r"<!-- integrated-learning:after-(?P<number>\d{3}):start -->\n"
+    r"(?P<body>.*?)\n"
+    r"<!-- integrated-learning:after-(?P=number):end -->",
+    re.DOTALL,
+)
+INTEGRATED_MARKER_RE = re.compile(
+    r"<!-- integrated-learning:after-(?P<number>\d{3}):(?P<edge>start|end) -->"
+)
 WORK_MARKER_RE = re.compile(r"\b(?:TODO|FIXME)\b", re.IGNORECASE)
 HTML_ID_RE = re.compile(r"\bid[ \t]*=[ \t]*(['\"])(?P<id>.*?)\1", re.IGNORECASE)
 
@@ -106,7 +158,15 @@ class Reporter:
             label = path
         self.problems.append(Problem(label, line, message))
 
-    def finish(self, *, cards: int, images: int, principles: int) -> int:
+    def finish(
+        self,
+        *,
+        cards: int,
+        images: int,
+        principle_svgs: int,
+        principle_photos: int,
+        generated_principles: int,
+    ) -> int:
         if self.problems:
             for problem in sorted(
                 self.problems,
@@ -125,7 +185,9 @@ class Reporter:
             "OK: validated "
             f"{len(NUMBERED_CHAPTERS)} numbered chapters, "
             f"{cards} train cards, {images} train WebPs, "
-            f"and {principles} principle SVGs."
+            f"{principle_svgs} principle SVGs, "
+            f"{principle_photos} principle photos, and "
+            f"{generated_principles} generated cutaway WebPs."
         )
         return 0
 
@@ -337,8 +399,21 @@ def collect_cards(texts: dict[Path, str], reporter: Reporter) -> list[Card]:
         for index, match in enumerate(matches):
             number = match.group("number")
             card_line = line_at(text, match.start())
-            block_end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
-            block = text[match.start():block_end]
+            expected_anchor = f'<a id="train-{number}"></a>\n\n'
+            if not text[: match.start()].endswith(expected_anchor):
+                reporter.add(
+                    path,
+                    f"card {number} heading must be immediately preceded by "
+                    f"the stable anchor #train-{number}",
+                    card_line,
+                )
+            candidate_end = (
+                matches[index + 1].start() if index + 1 < len(matches) else len(text)
+            )
+            candidate = text[match.start():candidate_end]
+            horizontal_rule = re.search(r"\n---[ \t]*(?:\n|\Z)", candidate)
+            block_end = horizontal_rule.start() if horizontal_rule else len(candidate)
+            block = candidate[:block_end]
             number_locations.setdefault(number, []).append(f"{chapter_name}:{card_line}")
 
             train_paths = [item.group("filename") for item in TRAIN_PATH_RE.finditer(block)]
@@ -370,9 +445,33 @@ def collect_cards(texts: dict[Path, str], reporter: Reporter) -> list[Card]:
                 path,
                 number,
                 card_line,
-                "给大人 note",
-                len(GROWNUP_RE.findall(block)),
+                "folded grownup summary",
+                block.count(CARD_GROWNUP_SUMMARY),
             )
+            check_marker_count(
+                reporter,
+                path,
+                number,
+                card_line,
+                "<details> opening tag",
+                block.count("<details>"),
+            )
+            check_marker_count(
+                reporter,
+                path,
+                number,
+                card_line,
+                "</details> closing tag",
+                block.count("</details>"),
+            )
+            legacy_grownup_count = len(LEGACY_GROWNUP_RE.findall(block))
+            if legacy_grownup_count:
+                reporter.add(
+                    path,
+                    f"card {number} still has {legacy_grownup_count} expanded "
+                    "grownup blockquote(s)",
+                    card_line,
+                )
 
             image_id = Path(train_paths[0]).stem if len(train_paths) == 1 else None
             credit_id = credit_ids[0] if len(credit_ids) == 1 else None
@@ -414,24 +513,28 @@ def collect_cards(texts: dict[Path, str], reporter: Reporter) -> list[Card]:
     return cards
 
 
-def load_json_ids(path: Path, label: str, reporter: Reporter) -> tuple[set[str], bool]:
+def load_json_records(
+    path: Path, label: str, reporter: Reporter
+) -> tuple[list[dict[str, object]], bool]:
     text = read_utf8(path, reporter)
     if text is None:
-        return set(), False
+        return [], False
     try:
         data = json.loads(text)
     except json.JSONDecodeError as exc:
         reporter.add(path, f"invalid JSON: {exc.msg}", exc.lineno)
-        return set(), False
+        return [], False
     if not isinstance(data, list):
         reporter.add(path, f"{label} must be a JSON array")
-        return set(), False
+        return [], False
 
+    records: list[dict[str, object]] = []
     ids: list[str] = []
     for index, record in enumerate(data):
         if not isinstance(record, dict):
             reporter.add(path, f"{label} item {index + 1} is not an object")
             continue
+        records.append(record)
         identifier = record.get("id")
         if not isinstance(identifier, str) or not identifier.strip():
             reporter.add(path, f"{label} item {index + 1} has no non-empty string id")
@@ -442,7 +545,17 @@ def load_json_ids(path: Path, label: str, reporter: Reporter) -> tuple[set[str],
     for identifier, count in sorted(counts.items()):
         if count > 1:
             reporter.add(path, f"duplicate ID {identifier!r} occurs {count} times")
-    return set(ids), True
+    return records, True
+
+
+def load_json_ids(path: Path, label: str, reporter: Reporter) -> tuple[set[str], bool]:
+    records, loaded = load_json_records(path, label, reporter)
+    ids = {
+        identifier
+        for record in records
+        if isinstance((identifier := record.get("id")), str) and identifier.strip()
+    }
+    return ids, loaded
 
 
 def check_json_chapters(
@@ -587,17 +700,209 @@ def check_credit_anchors(cards: list[Card], texts: dict[Path, str], reporter: Re
             )
 
 
-def check_principle_svgs(
-    references: dict[Path, list[Reference]], reporter: Reporter
-) -> int:
+def check_principle_photo_inventory(
+    photos: list[Path],
+    texts: dict[Path, str],
+    references: dict[Path, list[Reference]],
+    reporter: Reporter,
+) -> None:
+    targets_path = ROOT / "tools" / "principle_photo_targets.json"
+    metadata_path = ROOT / "principle_photo_metadata.json"
+    credits_path = ROOT / "PRINCIPLE_PHOTO_CREDITS.md"
+
+    target_records, targets_loaded = load_json_records(
+        targets_path, "principle photo target", reporter
+    )
+    metadata_records, metadata_loaded = load_json_records(
+        metadata_path, "principle photo metadata", reporter
+    )
+    target_ids = {
+        identifier
+        for record in target_records
+        if isinstance((identifier := record.get("id")), str) and identifier.strip()
+    }
+    metadata_ids = {
+        identifier
+        for record in metadata_records
+        if isinstance((identifier := record.get("id")), str) and identifier.strip()
+    }
+    if targets_loaded and metadata_loaded:
+        compare_ids(
+            reporter,
+            metadata_path,
+            metadata_ids,
+            target_ids,
+            "principle photo metadata",
+            "principle photo targets",
+        )
+
+        targets_by_id = {
+            record["id"]: record
+            for record in target_records
+            if isinstance(record.get("id"), str)
+        }
+        metadata_by_id = {
+            record["id"]: record
+            for record in metadata_records
+            if isinstance(record.get("id"), str)
+        }
+        for identifier in sorted(target_ids & metadata_ids):
+            for field in ("subject", "commons_file"):
+                target_value = targets_by_id[identifier].get(field)
+                metadata_value = metadata_by_id[identifier].get(field)
+                if target_value != metadata_value:
+                    reporter.add(
+                        metadata_path,
+                        f"principle photo {identifier!r} has {field}={metadata_value!r}; "
+                        f"target file has {target_value!r}",
+                    )
+
+    file_ids = {path.stem for path in photos}
+    if targets_loaded:
+        compare_ids(
+            reporter,
+            ROOT / "images" / "principles" / "photos",
+            file_ids,
+            target_ids,
+            "principle photo WebP files",
+            "principle photo targets",
+        )
+    if metadata_loaded:
+        compare_ids(
+            reporter,
+            ROOT / "images" / "principles" / "photos",
+            file_ids,
+            metadata_ids,
+            "principle photo WebP files",
+            "principle photo metadata",
+        )
+
+    credits_text = texts.get(credits_path)
+    if credits_text is not None:
+        anchors = Counter(match.group("id") for match in HTML_ID_RE.finditer(credits_text))
+        for identifier in sorted(file_ids):
+            expected_anchor = f"principle-photo-{identifier}"
+            if anchors[expected_anchor] != 1:
+                reporter.add(
+                    credits_path,
+                    f"must define anchor #{expected_anchor} exactly once "
+                    f"(found {anchors[expected_anchor]})",
+                )
+            expected_local_path = f"images/principles/photos/{identifier}.webp"
+            if expected_local_path not in credits_text:
+                reporter.add(
+                    credits_path,
+                    f"does not record local file {expected_local_path}",
+                )
+
+    chapter_paths = {ROOT / chapter_name for chapter_name in NUMBERED_CHAPTERS}
+    chapter_references = {
+        reference.resolved
+        for path, file_references in references.items()
+        if path in chapter_paths
+        for reference in file_references
+        if reference.resolved is not None
+    }
+    for photo in photos:
+        if photo.resolve() not in chapter_references:
+            reporter.add(photo, "principle photo is not referenced by a numbered chapter")
+
+    chapter_credit_ids = Counter(
+        match.group("id")
+        for path, text in texts.items()
+        if path in chapter_paths
+        for match in PRINCIPLE_PHOTO_CREDIT_LINK_RE.finditer(text)
+    )
+    for identifier in sorted(file_ids):
+        if chapter_credit_ids[identifier] == 0:
+            reporter.add(
+                "principle photo credits",
+                f"principle photo {identifier} has no chapter link to its credit anchor",
+            )
+    unexpected_credit_ids = sorted(set(chapter_credit_ids) - file_ids)
+    if unexpected_credit_ids:
+        reporter.add(
+            "principle photo credits",
+            "chapter credit links have no matching photo: "
+            + ", ".join(unexpected_credit_ids),
+        )
+
+
+def check_principle_assets(
+    texts: dict[Path, str],
+    references: dict[Path, list[Reference]],
+    reporter: Reporter,
+) -> tuple[int, int, int]:
     principle_dir = ROOT / "images" / "principles"
     if not principle_dir.is_dir():
         reporter.add(principle_dir, "principle image directory is missing")
-        return 0
-    svgs = sorted(principle_dir.glob("*.svg"))
+        return 0, 0, 0
+
+    svgs = sorted(principle_dir.rglob("*.svg"))
+    photo_dir = principle_dir / "photos"
+    generated_dir = principle_dir / "generated"
+    photos = sorted(photo_dir.rglob("*.webp")) if photo_dir.is_dir() else []
+    generated = sorted(generated_dir.rglob("*.webp")) if generated_dir.is_dir() else []
+    all_webps = sorted(principle_dir.rglob("*.webp"))
+
     if not svgs:
         reporter.add(principle_dir, "no principle SVG files found")
-        return 0
+    if len(svgs) != EXPECTED_PRINCIPLE_SVG_COUNT:
+        reporter.add(
+            principle_dir,
+            f"must contain {EXPECTED_PRINCIPLE_SVG_COUNT} principle SVGs "
+            f"(found {len(svgs)})",
+        )
+    if len(photos) != EXPECTED_PRINCIPLE_PHOTO_COUNT:
+        reporter.add(
+            photo_dir,
+            f"must contain {EXPECTED_PRINCIPLE_PHOTO_COUNT} principle photos "
+            f"(found {len(photos)})",
+        )
+    for svg in svgs:
+        try:
+            root = ElementTree.parse(svg).getroot()
+        except (ElementTree.ParseError, OSError) as exc:
+            reporter.add(svg, f"is not a readable SVG XML document ({exc})")
+            continue
+        namespace = "{http://www.w3.org/2000/svg}"
+        titles = root.findall(f"{namespace}title")
+        descriptions = root.findall(f"{namespace}desc")
+        if len(titles) != 1 or not "".join(titles[0].itertext()).strip():
+            reporter.add(svg, "must contain exactly one non-empty top-level <title>")
+        if len(descriptions) != 1 or not "".join(descriptions[0].itertext()).strip():
+            reporter.add(svg, "must contain exactly one non-empty top-level <desc>")
+        if root.get("role") != "img":
+            reporter.add(svg, "root <svg> must declare role='img'")
+        labelled_ids = set((root.get("aria-labelledby") or "").split())
+        title_id = titles[0].get("id") if len(titles) == 1 else None
+        description_id = descriptions[0].get("id") if len(descriptions) == 1 else None
+        if not title_id or not description_id or not {title_id, description_id} <= labelled_ids:
+            reporter.add(
+                svg,
+                "aria-labelledby must reference the top-level title and desc IDs",
+            )
+    generated_names = {path.name for path in generated}
+    if generated_names != EXPECTED_GENERATED_PRINCIPLE_FILES:
+        compare_ids(
+            reporter,
+            generated_dir,
+            generated_names,
+            EXPECTED_GENERATED_PRINCIPLE_FILES,
+            "generated cutaway WebPs",
+            "expected generated cutaways",
+        )
+
+    recognised_webps = {path.resolve() for path in photos + generated}
+    unclassified_webps = [
+        path for path in all_webps if path.resolve() not in recognised_webps
+    ]
+    for path in unclassified_webps:
+        reporter.add(
+            path,
+            "principle WebP must be stored under photos/ or generated/",
+        )
+
     referenced_paths = {
         reference.resolved
         for file_references in references.values()
@@ -607,7 +912,258 @@ def check_principle_svgs(
     for svg in svgs:
         if svg.resolve() not in referenced_paths:
             reporter.add(svg, "principle SVG is not referenced by any Markdown file")
-    return len(svgs)
+
+    chapter_paths = {ROOT / chapter_name for chapter_name in NUMBERED_CHAPTERS}
+    chapter_referenced_paths = {
+        reference.resolved
+        for path, file_references in references.items()
+        if path in chapter_paths
+        for reference in file_references
+        if reference.resolved is not None
+    }
+    for image in generated:
+        if image.resolve() not in chapter_referenced_paths:
+            reporter.add(
+                image,
+                "generated cutaway is not referenced by a numbered chapter",
+            )
+
+    check_principle_photo_inventory(photos, texts, references, reporter)
+    return len(svgs), len(photos), len(generated)
+
+
+def check_integrated_learning(texts: dict[Path, str], reporter: Reporter) -> None:
+    """Check the parts overview and principles distributed with train chapters."""
+    intro_path = ROOT / "01_how_trains_move.md"
+    intro_text = texts.get(intro_path, "")
+    intro_principles = [
+        match.group("filename") for match in PRINCIPLE_PATH_RE.finditer(intro_text)
+    ]
+    if intro_principles != ["train-parts-exploded.svg"]:
+        reporter.add(
+            intro_path,
+            "must contain exactly one train-parts-exploded.svg diagram "
+            f"(found {intro_principles})",
+        )
+
+    principle_locations: dict[str, list[str]] = {}
+    marker_locations: dict[str, str] = {}
+    raw_chapter_principles: list[str] = []
+    for chapter_name in CARD_CHAPTERS:
+        path = ROOT / chapter_name
+        text = texts.get(path, "")
+        route_picker_count = text.count(ROUTE_PICKER_SUMMARY)
+        if route_picker_count != 1:
+            reporter.add(
+                path,
+                f"must contain exactly one folded route picker "
+                f"(found {route_picker_count})",
+            )
+        route_targets = re.findall(r"\]\(#train-(\d{3})\)", text)
+        if not route_targets:
+            reporter.add(path, "folded route picker must link at least one train card")
+        for target in route_targets:
+            if f'<a id="train-{target}"></a>' not in text:
+                reporter.add(
+                    path,
+                    f"route picker links #train-{target}, but that anchor is not "
+                    "in this chapter",
+                )
+        chapter_principles = [
+            match.group("filename") for match in PRINCIPLE_PATH_RE.finditer(text)
+        ]
+        raw_chapter_principles.extend(chapter_principles)
+        if not chapter_principles:
+            reporter.add(path, "must contain at least one integrated principle SVG")
+
+        marker_tokens = list(INTEGRATED_MARKER_RE.finditer(text))
+        marker_blocks = list(INTEGRATED_BLOCK_RE.finditer(text))
+        raw_marker_count = text.count("<!-- integrated-learning:")
+        if raw_marker_count != len(marker_tokens):
+            reporter.add(
+                path,
+                "contains an integrated-learning marker that does not use the "
+                "after-NNN start/end format",
+            )
+        if len(marker_tokens) != 2 * len(marker_blocks):
+            reporter.add(
+                path,
+                f"integrated-learning markers are not paired "
+                f"({len(marker_tokens)} markers, {len(marker_blocks)} complete blocks)",
+            )
+
+        for block_match in marker_blocks:
+            number = block_match.group("number")
+            body = block_match.group("body")
+            marker_line = line_at(text, block_match.start())
+            previous_cards = list(CARD_HEADING_RE.finditer(text, 0, block_match.start()))
+            if not previous_cards or previous_cards[-1].group("number") != number:
+                previous_number = (
+                    previous_cards[-1].group("number") if previous_cards else "none"
+                )
+                reporter.add(
+                    path,
+                    f"principle after {number} must immediately follow card {number}; "
+                    f"last preceding card is {previous_number}",
+                    marker_line,
+                )
+
+            if number in marker_locations:
+                reporter.add(
+                    path,
+                    f"principle marker after card {number} is duplicated; first seen in "
+                    f"{marker_locations[number]}",
+                    marker_line,
+                )
+            else:
+                marker_locations[number] = chapter_name
+
+            principle_paths = [
+                match.group("filename") for match in PRINCIPLE_PATH_RE.finditer(body)
+            ]
+            if len(principle_paths) != 1:
+                reporter.add(
+                    path,
+                    f"principle after card {number} must contain exactly one SVG "
+                    f"(found {principle_paths})",
+                    marker_line,
+                )
+            else:
+                filename = principle_paths[0]
+                principle_locations.setdefault(filename, []).append(chapter_name)
+                expected_filename = EXPECTED_PRINCIPLE_AFTER_CARD.get(number)
+                if expected_filename is None:
+                    reporter.add(
+                        path,
+                        f"card {number} is not an approved principle attachment point",
+                        marker_line,
+                    )
+                elif filename != expected_filename:
+                    reporter.add(
+                        path,
+                        f"principle after card {number} uses {filename}; expected "
+                        f"{expected_filename}",
+                        marker_line,
+                    )
+
+            principle_headings = re.findall(r"^### 🔍 .+$", body, re.MULTILINE)
+            if len(principle_headings) != 1:
+                reporter.add(
+                    path,
+                    f"principle after card {number} must have exactly one child-facing "
+                    f"'### 🔍' heading (found {len(principle_headings)})",
+                    marker_line,
+                )
+            for label, count in (
+                ("grownup summary", body.count(PRINCIPLE_GROWNUP_SUMMARY)),
+                ("<details> opening tag", body.count("<details>")),
+                ("</details> closing tag", body.count("</details>")),
+            ):
+                if count != 1:
+                    reporter.add(
+                        path,
+                        f"principle after card {number} must have exactly one {label} "
+                        f"(found {count})",
+                        marker_line,
+                    )
+            if CARD_GROWNUP_SUMMARY in body:
+                reporter.add(
+                    path,
+                    f"principle after card {number} uses the card-level grownup summary",
+                    marker_line,
+                )
+            if "images/principles/generated/" in body and "不是实拍" not in body:
+                reporter.add(
+                    path,
+                    f"generated cutaway after card {number} must say '不是实拍'",
+                    marker_line,
+                )
+
+        matched_principles = [
+            filename
+            for block_match in marker_blocks
+            for filename in (
+                match.group("filename")
+                for match in PRINCIPLE_PATH_RE.finditer(block_match.group("body"))
+            )
+        ]
+        if Counter(matched_principles) != Counter(chapter_principles):
+            reporter.add(
+                path,
+                "every principle SVG in a train chapter must live inside exactly one "
+                "after-card learning block",
+            )
+
+    expected_marker_numbers = set(EXPECTED_PRINCIPLE_AFTER_CARD)
+    actual_marker_numbers = set(marker_locations)
+    missing_marker_numbers = sorted(expected_marker_numbers - actual_marker_numbers)
+    unexpected_marker_numbers = sorted(actual_marker_numbers - expected_marker_numbers)
+    if missing_marker_numbers:
+        reporter.add(
+            "integrated learning",
+            "missing after-card principle markers: " + ", ".join(missing_marker_numbers),
+        )
+    if unexpected_marker_numbers:
+        reporter.add(
+            "integrated learning",
+            "unexpected after-card principle markers: "
+            + ", ".join(unexpected_marker_numbers),
+        )
+
+    principle_dir = ROOT / "images" / "principles"
+    expected_child_principles = {
+        path.relative_to(principle_dir).as_posix()
+        for path in principle_dir.rglob("*.svg")
+        if path.relative_to(principle_dir).as_posix()
+        != "train-parts-exploded.svg"
+    }
+    actual_child_principles = set(principle_locations)
+    missing = sorted(expected_child_principles - actual_child_principles)
+    extra = sorted(actual_child_principles - expected_child_principles)
+    if missing:
+        reporter.add(
+            "integrated learning",
+            "principle SVGs missing from train chapters: " + ", ".join(missing),
+        )
+    if extra:
+        reporter.add(
+            "integrated learning",
+            "unexpected principle SVGs in train chapters: " + ", ".join(extra),
+        )
+    for filename, locations in sorted(principle_locations.items()):
+        if len(locations) != 1:
+            reporter.add(
+                "integrated learning",
+                f"principle SVG {filename} occurs in {len(locations)} train chapters: "
+                + ", ".join(locations),
+            )
+
+    if len(raw_chapter_principles) != len(EXPECTED_PRINCIPLE_AFTER_CARD):
+        reporter.add(
+            "integrated learning",
+            f"train chapters must contain exactly {len(EXPECTED_PRINCIPLE_AFTER_CARD)} "
+            f"principle SVG references (found {len(raw_chapter_principles)})",
+        )
+
+    for number in sorted(EXPECTED_CARD_NUMBERS):
+        anchor = f'<a id="train-{number}"></a>'
+        count = sum(texts.get(ROOT / chapter_name, "").count(anchor) for chapter_name in CARD_CHAPTERS)
+        if count != 1:
+            reporter.add(
+                "train-card anchors",
+                f"{anchor} must occur exactly once across train chapters (found {count})",
+            )
+
+    for retired_name in ("00_for_grownups.md", "13_spotter_games.md"):
+        retired_path = ROOT / retired_name
+        if retired_path.exists():
+            reporter.add(retired_path, "retired chapter must not exist")
+
+    for chapter_name in NUMBERED_CHAPTERS:
+        path = ROOT / chapter_name
+        text = texts.get(path, "")
+        if "🎲" in text or "本章游戏" in text:
+            reporter.add(path, "retired game content is still present")
 
 
 def main() -> int:
@@ -632,8 +1188,17 @@ def main() -> int:
     cards = collect_cards(texts, reporter)
     check_credit_anchors(cards, texts, reporter)
     image_count = check_image_inventory(cards, reporter)
-    principle_count = check_principle_svgs(references, reporter)
-    return reporter.finish(cards=len(cards), images=image_count, principles=principle_count)
+    check_integrated_learning(texts, reporter)
+    principle_svg_count, principle_photo_count, generated_principle_count = (
+        check_principle_assets(texts, references, reporter)
+    )
+    return reporter.finish(
+        cards=len(cards),
+        images=image_count,
+        principle_svgs=principle_svg_count,
+        principle_photos=principle_photo_count,
+        generated_principles=generated_principle_count,
+    )
 
 
 if __name__ == "__main__":

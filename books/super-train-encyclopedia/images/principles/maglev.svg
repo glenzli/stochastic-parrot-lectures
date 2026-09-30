@@ -1,23 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">磁力让列车浮起并前进</title>
-  <desc id="desc">简化示意图中，流线形列车和导向轨之间留着为便于观察而放大的空隙。两支蓝色长箭头表示磁力托起列车，一支红色长箭头表示列车向右前进；真实系统的间隙和低速支撑方式各不相同。</desc>
+  <title id="title">L0 超导磁悬浮列车低速用轮子、高速在 U 形导轨中浮起</title>
+  <desc id="desc">左边是低速状态，橡胶轮落在导轨地面上；右边是高速状态，轮子收进车内，车侧超导磁体与导轨两侧线圈产生磁力，让列车在导轨中央浮起。图中特意放大了实际约十厘米的悬浮间隙。</desc>
   <defs>
-    <marker id="upArrow" viewBox="0 0 20 20" refX="18" refY="10" markerWidth="30" markerHeight="30" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 2 18 10 2 18Z" fill="#3b82c4"/></marker>
-    <marker id="rightArrow" viewBox="0 0 20 20" refX="18" refY="10" markerWidth="30" markerHeight="30" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 2 18 10 2 18Z" fill="#d95d4f"/></marker>
+    <marker id="blueArrow" viewBox="0 0 18 18" refX="15" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 2 16 9 2 16Z" fill="#4c8fb5"/></marker>
   </defs>
   <rect width="1200" height="675" rx="34" fill="#fff9ed"/>
-  <path d="M85 535H1115V645H85Z" fill="#b9c4cd" stroke="#25364a" stroke-width="10"/>
-  <path d="M135 535V465H1065V535" fill="none" stroke="#667687" stroke-width="28" stroke-linejoin="round"/>
-
-  <path d="M105 370V235Q105 98 242 98H765Q918 98 1034 215L1128 310Q1174 357 1108 395H105Z" fill="#4f9bd8" stroke="#25364a" stroke-width="11" stroke-linejoin="round"/>
-  <path d="M245 145H735Q844 145 927 211H203Q219 163 245 145Z" fill="#dff2fb" stroke="#25364a" stroke-width="8"/>
-  <path d="M420 145V211M615 145V211M790 156L760 211" stroke="#25364a" stroke-width="7"/>
-  <path d="M180 382H955" stroke="#25364a" stroke-width="34" stroke-linecap="round"/>
-  <path d="M245 399H470V434H245ZM675 399H900V434H675Z" fill="#55b68b" stroke="#25364a" stroke-width="7"/>
-  <path d="M245 475H470V510H245ZM675 475H900V510H675Z" fill="#ffd166" stroke="#25364a" stroke-width="7"/>
-
-  <path d="M357 495V438M787 495V438" stroke="#3b82c4" stroke-width="10" stroke-linecap="round" marker-end="url(#upArrow)"/>
-  <path d="M520 64H1030" stroke="#d95d4f" stroke-width="10" stroke-linecap="round" marker-end="url(#rightArrow)"/>
-  <path d="M150 449H970" stroke="#3e9a78" stroke-width="7" stroke-dasharray="15 15"/>
-  <text x="560" y="462" font-family="sans-serif" font-size="34" font-weight="700" text-anchor="middle" fill="#25364a">小小空隙</text>
+  <path d="M400 50V625" stroke="#d9d2c4" stroke-width="4" stroke-dasharray="12 14"/>
+  <g font-family="system-ui, sans-serif" fill="#25364a" text-anchor="middle">
+    <text x="205" y="72" font-size="34" font-weight="800">慢慢走：轮子放下</text>
+    <text x="800" y="72" font-size="34" font-weight="800">跑快后：轮子收起</text>
+  </g>
+  <path d="M48 164V574H362V164" fill="#d9e0e2" stroke="#25364a" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M77 191V550H333V191" fill="#f6f0e4" stroke="#81919b" stroke-width="6"/>
+  <path d="M94 400V279Q94 201 171 201H239Q316 201 316 279V400Z" fill="#69a7bf" stroke="#25364a" stroke-width="9"/>
+  <path d="M128 286Q128 240 174 240H236Q282 240 282 286V316H128Z" fill="#dff2f6" stroke="#25364a" stroke-width="6"/>
+  <path d="M205 240V316" stroke="#25364a" stroke-width="6"/>
+  <g fill="#414f58" stroke="#25364a" stroke-width="6"><circle cx="140" cy="445" r="34"/><circle cx="270" cy="445" r="34"/></g>
+  <path d="M94 486H316" stroke="#8b938f" stroke-width="12" stroke-linecap="round"/>
+  <path d="M140 479V486M270 479V486" stroke="#25364a" stroke-width="10"/>
+  <text x="205" y="536" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="750" fill="#25364a">橡胶轮碰着地面</text>
+  <path d="M438 132V604H1160V132" fill="#d9e0e2" stroke="#25364a" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M475 169V567H1123V169" fill="#f6f0e4" stroke="#81919b" stroke-width="6"/>
+  <g fill="none" stroke="#6b9bb6" stroke-width="10">
+    <path d="M493 250c58-70 58 70 0 0s-58 70 0 0"/><path d="M493 392c58-70 58 70 0 0s-58 70 0 0"/>
+    <path d="M1105 250c-58-70-58 70 0 0s58 70 0 0"/><path d="M1105 392c-58-70-58 70 0 0s58 70 0 0"/>
+  </g>
+  <path d="M582 389V254Q582 161 683 151H915Q1016 161 1016 254V389Z" fill="#69a7bf" stroke="#25364a" stroke-width="10"/>
+  <path d="M657 223H938Q970 223 983 284H620Q629 240 657 223Z" fill="#dff2f6" stroke="#25364a" stroke-width="6"/>
+  <path d="M799 223V284" stroke="#25364a" stroke-width="6"/>
+  <rect x="561" y="332" width="55" height="104" rx="13" fill="#e2b85f" stroke="#25364a" stroke-width="7"/>
+  <rect x="982" y="332" width="55" height="104" rx="13" fill="#e2b85f" stroke="#25364a" stroke-width="7"/>
+  <g fill="#414f58" stroke="#25364a" stroke-width="5"><circle cx="667" cy="427" r="24"/><circle cx="931" cy="427" r="24"/></g>
+  <path d="M667 452V482M931 452V482" stroke="#7e8b91" stroke-width="5" stroke-dasharray="8 8"/>
+  <path d="M516 406C548 398 563 382 579 358M1082 406C1050 398 1035 382 1019 358" fill="none" stroke="#4c8fb5" stroke-width="8" stroke-linecap="round" marker-end="url(#blueArrow)"/>
+  <path d="M516 307C551 312 565 322 584 343M1082 307C1047 312 1033 322 1014 343" fill="none" stroke="#4c8fb5" stroke-width="8" stroke-linecap="round" marker-end="url(#blueArrow)"/>
+  <text x="799" y="528" text-anchor="middle" font-family="system-ui, sans-serif" font-size="29" font-weight="750" fill="#25364a">轮子收起，车身留出空隙</text>
 </svg>

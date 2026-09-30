@@ -1,18 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">一种轨旁信号向司机显示行车信息</title>
-  <desc id="desc">简化示意图中，轨旁信号机有三盏灯，一盏绿色灯亮起，蓝色列车的司机按这条线路的规则识别显示。信号灯不是用光束探测或遥控列车。</desc>
+  <title id="title">铁路先确认前方线路，再给列车行车许可</title>
+  <desc id="desc">左格里前方区段已有一列车，后车停在红色信号前等待；右格里前方区段已经空出，后车收到允许前进的显示后向前行驶。灯色只表示一种简化例子，真实信号规则随线路而异。</desc>
+  <defs><marker id="goArrow" viewBox="0 0 18 18" refX="15" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 2 16 9 2 16Z" fill="#4d9775"/></marker></defs>
   <rect width="1200" height="675" rx="34" fill="#fff9ed"/>
-  <path d="M450 612 570 76M1011 612 650 76" fill="none" stroke="#667687" stroke-width="22" stroke-linecap="round"/>
-  <g stroke="#9a7558" stroke-width="15" stroke-linecap="round">
-    <path d="M455 565h524M475 478h446M494 392h390M512 312h329M531 227h257M549 145h198"/>
+  <rect x="38" y="40" width="542" height="595" rx="30" fill="#f6f0e4" stroke="#d8d0c2" stroke-width="4"/>
+  <rect x="620" y="40" width="542" height="595" rx="30" fill="#f6f0e4" stroke="#d8d0c2" stroke-width="4"/>
+  <g font-family="system-ui, sans-serif" fill="#25364a" text-anchor="middle">
+    <text x="309" y="95" font-size="34" font-weight="800">前面有车：先等一等</text>
+    <text x="891" y="95" font-size="34" font-weight="800">前面空了：收到许可再走</text>
   </g>
-  <path d="M176 594V185" stroke="#25364a" stroke-width="24"/>
-  <path d="M123 594h107" stroke="#25364a" stroke-width="28" stroke-linecap="round"/>
-  <rect x="82" y="70" width="188" height="360" rx="78" fill="#465d73" stroke="#25364a" stroke-width="10"/>
-  <g stroke="#25364a" stroke-width="8"><circle cx="176" cy="156" r="49" fill="#7b5653"/><circle cx="176" cy="250" r="49" fill="#83764e"/><circle cx="176" cy="344" r="56" fill="#55b68b"/></g>
-  <circle cx="176" cy="344" r="76" fill="none" stroke="#55b68b" stroke-width="11" opacity=".55"/>
-  <path d="M545 604V393c0-108 87-195 195-195h46c108 0 195 87 195 195v211Z" fill="#4f9bd8" stroke="#25364a" stroke-width="11"/>
-  <path d="M620 393c0-69 56-125 125-125h36c69 0 125 56 125 125v49H620Z" fill="#dff2fb" stroke="#25364a" stroke-width="8"/>
-  <path d="M763 270v172" stroke="#25364a" stroke-width="8"/>
-  <circle cx="644" cy="532" r="25" fill="#fff1a8" stroke="#25364a" stroke-width="7"/><circle cx="879" cy="532" r="25" fill="#fff1a8" stroke="#25364a" stroke-width="7"/>
+  <g stroke="#677986" stroke-width="12" stroke-linecap="round"><path d="M75 500H545M657 500H1127"/><path d="M75 552H545M657 552H1127"/></g>
+  <g stroke="#a28366" stroke-width="8">
+    <path d="M105 479v94M170 479v94M235 479v94M300 479v94M365 479v94M430 479v94M495 479v94"/>
+    <path d="M687 479v94M752 479v94M817 479v94M882 479v94M947 479v94M1012 479v94M1077 479v94"/>
+  </g>
+  <g stroke="#25364a" stroke-width="7">
+    <path d="M82 430V343Q82 307 121 307H260Q291 307 309 430Z" fill="#6aa7c2"/>
+    <path d="M387 430V343Q387 307 426 307H518Q537 307 545 430Z" fill="#d78a72"/>
+    <path d="M664 430V343Q664 307 703 307H842Q873 307 891 430Z" fill="#6aa7c2"/>
+  </g>
+  <g fill="#dff2f6" stroke="#25364a" stroke-width="5"><rect x="115" y="334" width="124" height="55" rx="13"/><rect x="420" y="334" width="88" height="55" rx="13"/><rect x="697" y="334" width="124" height="55" rx="13"/></g>
+  <g fill="#43525c"><circle cx="135" cy="447" r="23"/><circle cx="260" cy="447" r="23"/><circle cx="435" cy="447" r="23"/><circle cx="511" cy="447" r="23"/><circle cx="717" cy="447" r="23"/><circle cx="842" cy="447" r="23"/></g>
+  <g stroke="#25364a" stroke-width="7">
+    <path d="M346 462V225"/><rect x="309" y="169" width="74" height="121" rx="30" fill="#465d73"/><circle cx="346" cy="207" r="23" fill="#e2766b"/>
+    <path d="M928 462V225"/><rect x="891" y="169" width="74" height="121" rx="30" fill="#465d73"/><circle cx="928" cy="252" r="23" fill="#66ae82"/>
+  </g>
+  <path d="M350 139H553" stroke="#e2766b" stroke-width="7" stroke-dasharray="14 12"/><path d="M932 139H1134" stroke="#66ae82" stroke-width="7" stroke-dasharray="14 12"/>
+  <text x="452" y="131" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" font-weight="750" fill="#a14f47">这段已经有车</text>
+  <text x="1033" y="131" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" font-weight="750" fill="#37775b">这段已经空出</text>
+  <path d="M902 381H1084" stroke="#4d9775" stroke-width="8" stroke-linecap="round" marker-end="url(#goArrow)"/>
 </svg>

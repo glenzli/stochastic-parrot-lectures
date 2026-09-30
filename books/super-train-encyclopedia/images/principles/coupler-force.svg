@@ -1,81 +1,68 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">车钩和缓冲装置怎样传递力</title>
-  <desc id="desc">上半图中，右侧机车向前牵引，拉力先经过靠近机车的车钩，再逐节传到车尾。下半图中，车辆互相推挤时缓冲装置压缩并传递压力。长列车各处感到变化会有先后。</desc>
+  <title id="title">前车先动，车钩拉紧，后车再跟上</title>
+  <desc id="desc">从左到右的三个时刻：前车先向右移动，车钩从松弛变成拉紧，随后后车也被拉着向右走。右下角的小弹簧图示意车钩附近的缓冲装置。</desc>
   <defs>
-    <marker id="redArrow" viewBox="0 0 24 24" refX="22" refY="12" markerWidth="25" markerHeight="25" markerUnits="userSpaceOnUse" orient="auto">
-      <path d="M2 2 22 12 2 22Z" fill="#d95d4f"/>
+    <marker id="timeArrow" viewBox="0 0 18 18" refX="16" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 16 9 2 16Z" fill="#637588"/>
     </marker>
-    <marker id="blueArrow" viewBox="0 0 24 24" refX="22" refY="12" markerWidth="25" markerHeight="25" markerUnits="userSpaceOnUse" orient="auto">
-      <path d="M2 2 22 12 2 22Z" fill="#3b82c4"/>
-    </marker>
-    <marker id="orangeArrow" viewBox="0 0 24 24" refX="22" refY="12" markerWidth="25" markerHeight="25" markerUnits="userSpaceOnUse" orient="auto">
-      <path d="M2 2 22 12 2 22Z" fill="#d97848"/>
+    <marker id="moveArrow" viewBox="0 0 18 18" refX="16" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 16 9 2 16Z" fill="#c76857"/>
     </marker>
   </defs>
+
   <rect width="1200" height="675" rx="34" fill="#fff9ed"/>
-  <path d="M50 343H1150" stroke="#eadfcb" stroke-width="5" stroke-dasharray="18 18"/>
+  <rect x="42" y="74" width="335" height="515" rx="31" fill="#f7efdf" stroke="#d7cbb7" stroke-width="5"/>
+  <rect x="433" y="74" width="335" height="515" rx="31" fill="#eef4f3" stroke="#c7d8d3" stroke-width="5"/>
+  <rect x="824" y="74" width="335" height="515" rx="31" fill="#edf3f7" stroke="#c9d6df" stroke-width="5"/>
+  <path d="M386 330H421M777 330H812" fill="none" stroke="#637588" stroke-width="5" stroke-linecap="round" marker-end="url(#timeArrow)"/>
 
-  <!-- 上半图：牵引。机车在右侧，变化从车头向车尾传。 -->
-  <text x="58" y="62" font-family="system-ui, sans-serif" font-size="34" font-weight="850" fill="#25364a">起步：车钩一节一节“拉”</text>
-  <path d="M778 67H1124" fill="none" stroke="#d95d4f" stroke-width="8" stroke-linecap="round" marker-end="url(#redArrow)"/>
-  <text x="947" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" font-weight="700" fill="#52687c">列车向前</text>
-
+  <!-- 每一格都是同一列短车，前车在右。 -->
   <g stroke="#25364a" stroke-width="7">
-    <rect x="65" y="115" width="225" height="116" rx="26" fill="#9dc9df"/>
-    <rect x="345" y="115" width="225" height="116" rx="26" fill="#86b88a"/>
-    <rect x="625" y="115" width="225" height="116" rx="26" fill="#e3ab65"/>
-    <path d="M905 231V115H1053Q1105 115 1131 160L1170 231Z" fill="#ef8a7d"/>
+    <rect x="67" y="232" width="128" height="134" rx="22" fill="#75aebe"/>
+    <path d="M234 366V232H316Q341 232 352 255L368 366Z" fill="#d98779"/>
+    <rect x="458" y="232" width="128" height="134" rx="22" fill="#75aebe"/>
+    <path d="M625 366V232H707Q732 232 743 255L759 366Z" fill="#d98779"/>
+    <rect x="849" y="232" width="128" height="134" rx="22" fill="#75aebe"/>
+    <path d="M1016 366V232H1098Q1123 232 1134 255L1150 366Z" fill="#d98779"/>
+  </g>
+  <g fill="#d9edf4" stroke="#25364a" stroke-width="5">
+    <rect x="91" y="258" width="80" height="54" rx="12"/><path d="M258 258H316L339 312H258Z"/>
+    <rect x="482" y="258" width="80" height="54" rx="12"/><path d="M649 258H707L730 312H649Z"/>
+    <rect x="873" y="258" width="80" height="54" rx="12"/><path d="M1040 258H1098L1121 312H1040Z"/>
   </g>
   <g fill="#52687c" stroke="#25364a" stroke-width="6">
-    <circle cx="115" cy="242" r="29"/><circle cx="241" cy="242" r="29"/>
-    <circle cx="395" cy="242" r="29"/><circle cx="521" cy="242" r="29"/>
-    <circle cx="675" cy="242" r="29"/><circle cx="801" cy="242" r="29"/>
-    <circle cx="962" cy="242" r="29"/><circle cx="1092" cy="242" r="29"/>
+    <circle cx="103" cy="383" r="32"/><circle cx="162" cy="383" r="32"/><circle cx="274" cy="383" r="32"/><circle cx="337" cy="383" r="32"/>
+    <circle cx="494" cy="383" r="32"/><circle cx="553" cy="383" r="32"/><circle cx="665" cy="383" r="32"/><circle cx="728" cy="383" r="32"/>
+    <circle cx="885" cy="383" r="32"/><circle cx="944" cy="383" r="32"/><circle cx="1056" cy="383" r="32"/><circle cx="1119" cy="383" r="32"/>
   </g>
 
-  <!-- 拉开的车钩；编号从机车向车尾。 -->
-  <g stroke="#3b82c4" stroke-width="7" fill="none" stroke-linecap="round">
-    <path d="M290 190H345"/><path d="M570 190H625"/><path d="M850 190H905"/>
-    <path d="M258 286H432" marker-end="url(#blueArrow)"/>
-    <path d="M538 286H712" marker-end="url(#blueArrow)"/>
-    <path d="M818 286H992" marker-end="url(#blueArrow)"/>
-  </g>
-  <g fill="#fff" stroke="#3b82c4" stroke-width="5">
-    <circle cx="878" cy="190" r="24"/><circle cx="598" cy="190" r="24"/><circle cx="318" cy="190" r="24"/>
-  </g>
-  <g font-family="system-ui, sans-serif" font-size="24" font-weight="850" text-anchor="middle" fill="#25364a">
-    <text x="878" y="199">①</text><text x="598" y="199">②</text><text x="318" y="199">③</text>
-    <text x="878" y="102">先</text><text x="598" y="102">再</text><text x="318" y="102">后</text>
-  </g>
-  <text x="599" y="322" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" font-weight="700" fill="#3b82c4">每节车都被向前拉</text>
+  <!-- 时刻一：车钩仍松，只有前车先动。 -->
+  <path d="M195 323C206 307 217 339 234 323" fill="none" stroke="#448cad" stroke-width="7" stroke-linecap="round"/>
+  <path d="M255 184H349" fill="none" stroke="#c76857" stroke-width="6" stroke-linecap="round" marker-end="url(#moveArrow)"/>
 
-  <!-- 下半图：压缩。弹簧形缓冲器被相邻车辆挤压。 -->
-  <text x="58" y="398" font-family="system-ui, sans-serif" font-size="34" font-weight="850" fill="#25364a">推挤：缓冲装置一节一节“顶”</text>
-  <g stroke="#25364a" stroke-width="7">
-    <rect x="65" y="438" width="225" height="106" rx="26" fill="#9dc9df"/>
-    <rect x="345" y="438" width="225" height="106" rx="26" fill="#86b88a"/>
-    <rect x="625" y="438" width="225" height="106" rx="26" fill="#e3ab65"/>
-    <path d="M905 544V438H1053Q1105 438 1131 478L1170 544Z" fill="#ef8a7d"/>
-  </g>
-  <g fill="#52687c" stroke="#25364a" stroke-width="6">
-    <circle cx="115" cy="555" r="27"/><circle cx="241" cy="555" r="27"/>
-    <circle cx="395" cy="555" r="27"/><circle cx="521" cy="555" r="27"/>
-    <circle cx="675" cy="555" r="27"/><circle cx="801" cy="555" r="27"/>
-    <circle cx="962" cy="555" r="27"/><circle cx="1092" cy="555" r="27"/>
-  </g>
-  <g fill="none" stroke="#d97848" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M290 499h9l8-15 10 30 10-30 10 30 8-15h10"/>
-    <path d="M570 499h9l8-15 10 30 10-30 10 30 8-15h10"/>
-    <path d="M850 499h9l8-15 10 30 10-30 10 30 8-15h10"/>
-    <path d="M203 601H302" marker-end="url(#orangeArrow)"/>
-    <path d="M437 601H536" marker-end="url(#orangeArrow)"/>
-    <path d="M717 601H816" marker-end="url(#orangeArrow)"/>
-    <path d="M997 601H1096" marker-end="url(#orangeArrow)"/>
-  </g>
-  <text x="600" y="635" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" font-weight="750" fill="#d06b3e">车辆还想向前时，缓冲器被压缩并传力</text>
+  <!-- 时刻二：车钩变直并受拉。 -->
+  <path d="M586 323H625" fill="none" stroke="#448cad" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="606" cy="323" r="9" fill="#e9c66f" stroke="#25364a" stroke-width="4"/>
+  <path d="M579 196H638" fill="none" stroke="#448cad" stroke-width="5" stroke-linecap="round"/>
+  <path d="M579 196 594 186M579 196 594 206M638 196 623 186M638 196 623 206" fill="none" stroke="#448cad" stroke-width="5" stroke-linecap="round"/>
 
-  <g transform="translate(825 359)">
-    <rect width="326" height="55" rx="27" fill="#fff" stroke="#25364a" stroke-width="4"/>
-    <text x="163" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="23" font-weight="750" fill="#25364a">列车越长，车尾越晚一点感到</text>
+  <!-- 时刻三：两节车一起向右。 -->
+  <path d="M977 323H1016" fill="none" stroke="#448cad" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="997" cy="323" r="9" fill="#e9c66f" stroke="#25364a" stroke-width="4"/>
+  <g fill="none" stroke="#c76857" stroke-width="6" stroke-linecap="round" marker-end="url(#moveArrow)">
+    <path d="M858 184H950"/><path d="M1027 184H1120"/>
   </g>
+
+  <g font-family="system-ui, sans-serif" font-size="32" font-weight="800" text-anchor="middle" fill="#25364a">
+    <text x="210" y="130">前车先动</text>
+    <text x="601" y="130">车钩拉紧</text>
+    <text x="992" y="130">后车跟上</text>
+  </g>
+
+  <!-- 小角标：缓冲弹簧，不再增加主叙事。 -->
+  <g transform="translate(945 469)">
+    <rect width="167" height="76" rx="22" fill="#fff" stroke="#c9d6df" stroke-width="4"/>
+    <path d="M21 38H42L54 20 70 56 86 20 102 56 115 38H145" fill="none" stroke="#d4a959" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <path d="M73 434H355M464 434H746M855 434H1137" stroke="#637588" stroke-width="15" stroke-linecap="round"/>
 </svg>

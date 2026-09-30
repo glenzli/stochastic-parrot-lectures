@@ -1,6 +1,6 @@
 # 按国家与铁路公司找车
 
-[🏠 全书首页](README.md) · [日本列车专题导航](JAPAN_TRAIN_GUIDE.md) · [🎲 观察游戏](13_spotter_games.md)
+[🏠 全书首页](README.md) · [日本列车专题导航](JAPAN_TRAIN_GUIDE.md)
 
 主目录按照火车的工作和运行方式分章。这一页换一张地图来找车：从去过的地方、铁路公司或车身标志出发，再回到各主题章节。这里是旅行入口，不是考试清单。
 
@@ -37,4 +37,4 @@
 
 ---
 
-[🏠 全书首页](README.md) · [日本列车专题导航](JAPAN_TRAIN_GUIDE.md) · [🎲 观察游戏](13_spotter_games.md)
+[🏠 全书首页](README.md) · [日本列车专题导航](JAPAN_TRAIN_GUIDE.md)

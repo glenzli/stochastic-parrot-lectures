@@ -26,7 +26,7 @@
 ### 书架
 
 - [小小发现家：365 天，每天一个为什么](books/little-scientist-365/)：给约 4 岁孩子和陪读大人的全年科普书，以 365 个日常问题连接自然、天气、植物、动物、身体、机械、地理、海洋、宇宙、材料与能源，并配有两层解释、亲子观察和 558 幅插图，其中包括 180 幅原理图。
-- [超级火车迷百科全书](books/super-train-encyclopedia/)：给约 4 岁孩子和陪读大人的轻松图鉴，用 25 张原理图、160 张车型图片和逐车小卡片认识蒸汽机车、新干线、通勤电车、工程车、单轨、倒挂铁路、齿轨、缆索与磁悬浮。
+- [超级火车迷百科全书](books/super-train-encyclopedia/)：给约 4 岁孩子和陪读大人的轻松图鉴，先用 1 张拆分图认识火车部件，再用 24 张 SVG 原理图、8 张原理实拍、2 张写实剖面插图、160 张车型图片和逐车小卡片，认识蒸汽机车、新干线、通勤电车、工程车、单轨、倒挂铁路、齿轨、缆索与磁悬浮。
 - [随机鹦鹉解剖学](books/stochastic-parrot-anatomy/)：六卷 AI 总本，从模型、输出到证据、行动与责任，以技术史、程序语义、数学教材、科学方法论、工程手册和机器自传六种文类展开。
 
 - [相对论讲义](books/relativity/)：中文物理数学教材草稿，尝试以较严格的方式组织从 Minkowski 时空、Lorentz 变换和相对论场论到微分几何、Einstein 方程、Schwarzschild/Kerr 几何、FLRW 宇宙学、宇宙扰动、引力波、后 Newton 近似与整体结构的内容。
@@ -50,7 +50,7 @@
 
 ### 许可协议
 
-除另有注明的第三方素材外，本仓库原创内容采用 **[CC0 1.0 Universal](LICENSE.md)** 发布。第三方素材保留各自的许可或版权状态；例如本书的列车图片见 [《超级火车迷百科全书》图片来源与许可](books/super-train-encyclopedia/IMAGE_CREDITS.md)。
+除另有注明的第三方素材外，本仓库原创内容采用 **[CC0 1.0 Universal](LICENSE.md)** 发布。第三方素材保留各自的许可或版权状态；例如《超级火车迷百科全书》的[车型图片](books/super-train-encyclopedia/IMAGE_CREDITS.md)与[原理实拍](books/super-train-encyclopedia/PRINCIPLE_PHOTO_CREDITS.md)分别列出来源和许可。AI 生成的教育剖面插图另有[生成记录与用途边界](books/super-train-encyclopedia/GENERATED_PRINCIPLE_IMAGES.md)，不能当作实拍或工程图。
 
 对于上述 CC0 内容，不要求署名，不要求致谢，不要求说明来源。你可以复制、修改、翻译、售卖、删改、改名，甚至把它放进自己的作品里，仿佛它本来就在你的草稿箱里。复用另有注明的第三方素材时，请遵守其各自的要求。
 
@@ -75,7 +75,7 @@ So this repository does not pretend to be an authoritative textbook, nor does it
 ### Bookshelf
 
 - [Little Discoverer: 365 Days, One Why a Day](books/little-scientist-365/): a year-long Chinese science book for children around age four and their grown-up readers, connecting 365 everyday questions across nature, weather, plants, animals, the body, machines, geography, oceans, space, materials, and energy through layered explanations, shared observations, and 558 illustrations, including 180 scientific explainer diagrams.
-- [Super Train Fan Encyclopedia](books/super-train-encyclopedia/): a relaxed, picture-rich Chinese guide for children around age four and their grown-up readers, with 25 mechanism diagrams, 160 train images, and individual cards spanning steam, Shinkansen, commuter trains, work trains, monorails, suspended railways, rack railways, funiculars, and maglev.
+- [Super Train Fan Encyclopedia](books/super-train-encyclopedia/): a relaxed, picture-rich Chinese guide for children around age four and their grown-up readers, with one train-parts diagram, 24 SVG mechanism diagrams, eight real detail photos, two AI-generated educational cutaways, 160 train images, and individual cards spanning steam, Shinkansen, commuter trains, work trains, monorails, suspended railways, rack railways, funiculars, and maglev.
 - [Anatomy of the Stochastic Parrot](books/stochastic-parrot-anatomy/): a six-volume AI work tracing models and outputs through evidence, action, and responsibility across technical history, operational semantics, mathematical probability, scientific methodology, engineering governance, and machine autobiography.
 
 - [Relativity Lectures](books/relativity/): a Chinese physics-mathematics textbook draft that organizes special relativity, Minkowski geometry, relativistic field theory, tensor calculus, Einstein equations, Schwarzschild/Kerr geometry, FLRW cosmology, cosmological perturbations, gravitational waves, post-Newtonian methods, and global structure in a relatively rigorous style.
@@ -99,7 +99,7 @@ Each book lives in its own folder under `books/`. Future AI-written surveys, lec
 
 ### License
 
-Except for separately identified third-party material, the repository's original content is released under **[CC0 1.0 Universal](LICENSE.md)**. Third-party material retains its own license or copyright status; for example, see the [image credits for the Super Train Fan Encyclopedia](books/super-train-encyclopedia/IMAGE_CREDITS.md).
+Except for separately identified third-party material, the repository's original content is released under **[CC0 1.0 Universal](LICENSE.md)**. Third-party material retains its own license or copyright status; the Super Train Fan Encyclopedia records [train-image credits](books/super-train-encyclopedia/IMAGE_CREDITS.md) and [principle-photo credits](books/super-train-encyclopedia/PRINCIPLE_PHOTO_CREDITS.md) separately. Its AI-generated educational cutaways have a separate [generation record and use boundary](books/super-train-encyclopedia/GENERATED_PRINCIPLE_IMAGES.md) and must not be treated as photographs or engineering drawings.
 
 For that CC0 content, no attribution, thanks, or provenance is required. You may copy, modify, translate, sell, rename, remix, or fold it into your own work as if it had always been sitting in your drafts. When reusing separately identified third-party material, follow its own terms.
 

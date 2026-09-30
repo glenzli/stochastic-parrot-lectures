@@ -1,34 +1,47 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">柴油机械与柴油电力两条动力路线</title>
-  <desc id="desc">上下两条图示都从柴油机开始；上方经过相互咬合的齿轮到车轮，下方经过发电机、闪电和电动机到车轮。</desc>
+  <title id="title">柴油电力车辆把动力送到车轮</title>
+  <desc id="desc">一条从左到右的单一路线：绿色柴油机带动蓝色发电机，电送到黄色电动机，最后转动车轮。</desc>
   <defs>
-    <marker id="arrow" viewBox="0 0 20 20" refX="18" refY="10" markerWidth="30" markerHeight="30" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 2 18 10 2 18Z" fill="#3b82c4"/></marker>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 14 8 2 14Z" fill="#3b82c4"/>
+    </marker>
   </defs>
   <rect width="1200" height="675" rx="34" fill="#fff9ed"/>
-  <path d="M85 337h1030" stroke="#d8c5a9" stroke-width="5" stroke-dasharray="18 18"/>
-  <text x="110" y="70" font-family="sans-serif" font-size="36" font-weight="700" fill="#25364a">机械路线</text>
-  <g transform="translate(105 88)">
-    <rect x="0" y="36" width="230" height="155" rx="35" fill="#55b68b" stroke="#25364a" stroke-width="9"/>
-    <path d="M45 38V8h43v30M137 38V8h43v30" stroke="#25364a" stroke-width="12"/>
-    <path d="M48 91h136M48 137h136" stroke="#dff2fb" stroke-width="19" stroke-linecap="round"/>
+
+  <path d="M74 472V282Q74 164 205 150H979Q1076 174 1120 310V472Z" fill="#dff2fb" stroke="#25364a" stroke-width="10"/>
+  <path d="M166 196H907Q997 196 1035 289H141Q147 226 166 196Z" fill="#fff" stroke="#25364a" stroke-width="7"/>
+  <path d="M351 196V289M615 196V289M862 199L836 289" stroke="#25364a" stroke-width="6"/>
+  <rect x="118" y="426" width="942" height="62" rx="22" fill="#25364a"/>
+
+  <g transform="translate(150 330)">
+    <rect width="205" height="132" rx="28" fill="#55b68b" stroke="#25364a" stroke-width="8"/>
+    <path d="M43 1V-30h38V1M124 1V-30h38V1" stroke="#25364a" stroke-width="10"/>
+    <path d="M42 51h121M42 91h121" stroke="#e9fff6" stroke-width="15" stroke-linecap="round"/>
   </g>
-  <path d="M359 190h155" stroke="#3b82c4" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <g fill="#ffd166" stroke="#25364a" stroke-width="8">
-    <circle cx="584" cy="190" r="62"/><circle cx="682" cy="190" r="45"/>
+
+  <path d="M373 396H475" fill="none" stroke="#3b82c4" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <g transform="translate(548 396)">
+    <circle r="69" fill="#4f9bd8" stroke="#25364a" stroke-width="8"/>
+    <path d="M-36 0c21-34 49-34 70 0s49 34 70 0" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round"/>
   </g>
-  <g stroke="#25364a" stroke-width="8"><path d="M584 114v35M584 231v35M508 190h35M625 190h35M530 136l25 25M613 219l25 25"/><path d="M682 133v26M682 221v26M625 190h29M710 190h29"/></g>
-  <path d="M753 190h155" stroke="#3b82c4" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <g transform="translate(1015 190)" fill="#465d73" stroke="#25364a" stroke-width="9"><circle r="89"/><circle r="29" fill="#ffd166"/><path d="M-70 64h140"/></g>
-  <g transform="translate(105 401)">
-    <rect x="0" y="36" width="230" height="155" rx="35" fill="#55b68b" stroke="#25364a" stroke-width="9"/>
-    <path d="M45 38V8h43v30M137 38V8h43v30" stroke="#25364a" stroke-width="12"/>
-    <path d="M48 91h136M48 137h136" stroke="#dff2fb" stroke-width="19" stroke-linecap="round"/>
+
+  <path d="M635 396H731" fill="none" stroke="#3b82c4" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <g transform="translate(804 396)">
+    <circle r="66" fill="#ffd166" stroke="#25364a" stroke-width="8"/>
+    <path d="M-23-28v56M23-28v56M-23-28 0 5 23-28" fill="none" stroke="#25364a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <text x="110" y="388" font-family="sans-serif" font-size="36" font-weight="700" fill="#25364a">电力路线</text>
-  <path d="M359 503h123" stroke="#3b82c4" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <g transform="translate(563 503)"><circle r="67" fill="#4f9bd8" stroke="#25364a" stroke-width="9"/><path d="M-32-5c18-31 46-31 64 0S78 26 94-5" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/></g>
-  <path d="M653 503h88" stroke="#3b82c4" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <g transform="translate(816 503)"><circle r="63" fill="#ffd166" stroke="#25364a" stroke-width="9"/><text y="15" font-family="sans-serif" font-size="44" font-weight="700" text-anchor="middle" fill="#25364a">M</text></g>
-  <path d="M900 503h39" stroke="#3b82c4" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <g transform="translate(1015 503)" fill="#465d73" stroke="#25364a" stroke-width="9"><circle r="89"/><circle r="29" fill="#4f9bd8"/><path d="M-70 64h140"/></g>
+
+  <path d="M887 396H955" fill="none" stroke="#3b82c4" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <g transform="translate(1035 438)">
+    <circle r="77" fill="#52687c" stroke="#25364a" stroke-width="9"/>
+    <circle r="25" fill="#ffd166" stroke="#25364a" stroke-width="7"/>
+  </g>
+
+  <g font-family="system-ui, sans-serif" font-size="29" font-weight="750" text-anchor="middle" fill="#25364a">
+    <text x="252" y="559">① 柴油机转起来</text>
+    <text x="548" y="559">② 发出电</text>
+    <text x="804" y="559">③ 电动机转</text>
+    <text x="1035" y="559">④ 车轮前进</text>
+  </g>
+  <path d="M72 594H1128" stroke="#667687" stroke-width="18" stroke-linecap="round"/>
 </svg>

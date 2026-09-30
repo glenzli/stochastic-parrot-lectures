@@ -1,10 +1,12 @@
 # 图片来源与许可
 
-本书正文、`images/cover-super-train-encyclopedia.webp` 封面插画与原创 SVG 原理图按仓库的 CC0 许可发布。
+本书正文、`images/cover-super-train-encyclopedia.webp` 封面插画与 25 张原创 SVG（1 张部件图、24 张运行原理图）按仓库的 CC0 许可发布。
 `images/trains/` 中的车型图片**不适用仓库的 CC0**；每张图片保留
 下表所列的原作者信息及许可或公有领域状态。需要署名的图片须按其许可署名。
 图片只做了等比例缩小与 WebP 格式转换，
 没有裁切；这项技术处理记为“已调整尺寸与格式”。
+
+原理讲解使用的第三方实拍另见[原理实拍图来源与许可](PRINCIPLE_PHOTO_CREDITS.md)。两张难以实拍的内部结构图是 AI 生成的教育剖面插图，不是照片；其提示词、尺寸、文件哈希和用途边界见[生成原理图记录](GENERATED_PRINCIPLE_IMAGES.md)。三类视觉素材不能混用许可说明或伪装成彼此。
 
 重新使用图片前，请打开原文件页核对最新许可说明。Wikimedia Commons
 也提醒使用者自行确认文件页中的作者、许可与其他可能适用的权利。
@@ -178,6 +180,8 @@
 
 - 图片元数据快照见 [`image_metadata.json`](image_metadata.json)。
 - 获取脚本见 [`tools/fetch_commons_images.py`](tools/fetch_commons_images.py)。
+- 原理实拍的元数据与获取方式见 [`PRINCIPLE_PHOTO_CREDITS.md`](PRINCIPLE_PHOTO_CREDITS.md)。
+- AI 生成剖面图的可复核记录见 [`GENERATED_PRINCIPLE_IMAGES.md`](GENERATED_PRINCIPLE_IMAGES.md)。
 - 如需重新运行获取脚本，使用 Python 3，并先安装 [`tools/requirements.txt`](tools/requirements.txt) 中的 Pillow。
 - Wikimedia Commons 的站外复用说明：
   [Commons:Reusing content outside Wikimedia](https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia/en)。

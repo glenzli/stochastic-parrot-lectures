@@ -1,6 +1,6 @@
 # 日本列车专题导航
 
-[🏠 全书首页](README.md) · [按国家与铁路公司找车](INDEX_BY_PLACE.md) · [🎲 观察游戏](13_spotter_games.md)
+[🏠 全书首页](README.md) · [按国家与铁路公司找车](INDEX_BY_PLACE.md)
 
 主目录按照“火车做什么、怎样运行”分章，所以日本列车会和世界各地的同类伙伴站在一起。这里把 100 张日本车卡重新串成几条旅行路线；卡片仍只在正文出现一次。
 
@@ -45,4 +45,4 @@
 
 ---
 
-[🏠 全书首页](README.md) · [按国家与铁路公司找车](INDEX_BY_PLACE.md) · [🎲 观察游戏](13_spotter_games.md)
+[🏠 全书首页](README.md) · [按国家与铁路公司找车](INDEX_BY_PLACE.md)

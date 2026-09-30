@@ -1,40 +1,61 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">道岔怎样把列车带到支路</title>
-  <desc id="desc">从上方看道岔。列车从左边驶来，贴合的尖轨接上弯曲支路，红色路线连续通向右上方；直行线路显示为未选择的灰色路线。</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">尖轨贴向哪边，列车就走向哪边</title>
+  <desc id="desc">上下两幅道岔俯视图。上图尖轨贴住直线一侧，蓝色路线直行；下图尖轨贴住弯线一侧，蓝色路线转弯。每幅图只突出当前接通的一条路线。</desc>
   <defs>
-    <marker id="arrow" viewBox="0 0 20 20" refX="18" refY="10" markerWidth="30" markerHeight="30" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 2 18 10 2 18Z" fill="#d95d4f"/></marker>
+    <marker id="routeArrow" viewBox="0 0 18 18" refX="16" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 16 9 2 16Z" fill="#4f8298"/>
+    </marker>
   </defs>
-  <rect width="1200" height="675" rx="34" fill="#fff9ed"/>
+  <rect width="1200" height="760" rx="34" fill="#fffaf1"/>
 
-  <!-- 枕木：直线段和支路段分开画，交会处留白，避免视觉打结。 -->
-  <g stroke="#9a7558" stroke-width="15" stroke-linecap="round" opacity=".9">
-    <path d="M105 278V502M225 278V502M345 278V502M465 278V502M585 278V502M705 278V502M825 278V502M945 278V502M1065 278V502"/>
-    <path d="M520 259L489 155M630 217L599 113M746 173L715 69M872 139L849 55M1001 126L988 48"/>
+  <!-- 两幅图使用同一套灰色道岔；蓝线只表示这一刻接通的路线。 -->
+  <g font-family="system-ui, sans-serif" fill="#26394b">
+    <g transform="translate(45 38)">
+      <rect width="1110" height="318" rx="28" fill="#f3f0e8" stroke="#d5c9b7" stroke-width="5"/>
+      <rect x="24" y="23" width="214" height="62" rx="31" fill="#d7e8ed"/>
+      <text x="131" y="66" font-size="39" font-weight="800" text-anchor="middle">去这边：直走</text>
+
+      <g fill="none" stroke="#788794" stroke-width="15" stroke-linecap="round">
+        <path d="M82 166H1030"/>
+        <path d="M425 166C600 166 690 104 1030 103"/>
+      </g>
+      <g fill="none" stroke="#dfe4e6" stroke-width="5" stroke-linecap="round">
+        <path d="M82 166H1030"/>
+        <path d="M425 166C600 166 690 104 1030 103"/>
+      </g>
+
+      <!-- 尖轨平贴直线。 -->
+      <path d="M410 181C505 181 570 178 652 171" fill="none" stroke="#d6ae66" stroke-width="20" stroke-linecap="round"/>
+      <path d="M410 181C505 181 570 178 652 171" fill="none" stroke="#fff3d5" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="421" cy="181" r="17" fill="#e8c87e" stroke="#26394b" stroke-width="5"/>
+
+      <path d="M104 166H1002" fill="none" stroke="#4f8298" stroke-width="7" stroke-linecap="round" marker-end="url(#routeArrow)"/>
+      <text x="560" y="267" font-size="34" font-weight="750" text-anchor="middle">尖轨贴住直线</text>
+      <path d="M560 239V204" fill="none" stroke="#846f4b" stroke-width="4" stroke-linecap="round"/>
+    </g>
+
+    <g transform="translate(45 404)">
+      <rect width="1110" height="318" rx="28" fill="#f3f0e8" stroke="#d5c9b7" stroke-width="5"/>
+      <rect x="24" y="23" width="214" height="62" rx="31" fill="#d7e8ed"/>
+      <text x="131" y="66" font-size="39" font-weight="800" text-anchor="middle">去那边：转弯</text>
+
+      <g fill="none" stroke="#788794" stroke-width="15" stroke-linecap="round">
+        <path d="M82 166H1030"/>
+        <path d="M425 166C600 166 690 104 1030 103"/>
+      </g>
+      <g fill="none" stroke="#dfe4e6" stroke-width="5" stroke-linecap="round">
+        <path d="M82 166H1030"/>
+        <path d="M425 166C600 166 690 104 1030 103"/>
+      </g>
+
+      <!-- 同一片尖轨转到弯线一侧。 -->
+      <path d="M410 181C505 174 570 148 652 121" fill="none" stroke="#d6ae66" stroke-width="20" stroke-linecap="round"/>
+      <path d="M410 181C505 174 570 148 652 121" fill="none" stroke="#fff3d5" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="421" cy="181" r="17" fill="#e8c87e" stroke="#26394b" stroke-width="5"/>
+
+      <path d="M104 166H404C568 166 684 104 1002 103" fill="none" stroke="#4f8298" stroke-width="7" stroke-linecap="round" marker-end="url(#routeArrow)"/>
+      <text x="560" y="267" font-size="34" font-weight="750" text-anchor="middle">尖轨贴住弯线</text>
+      <path d="M560 239 579 171" fill="none" stroke="#846f4b" stroke-width="4" stroke-linecap="round"/>
+    </g>
   </g>
-
-  <!-- 两条直轨。 -->
-  <g fill="none" stroke-linecap="round">
-    <path d="M65 325H1135M65 455H1135" stroke="#667687" stroke-width="22"/>
-    <path d="M65 325H1135M65 455H1135" stroke="#d8e0e7" stroke-width="6"/>
-  </g>
-
-  <!-- 两条支路轨；下方支路轨穿过上方直轨，交点是简化的辙叉。 -->
-  <g fill="none" stroke-linecap="round">
-    <path d="M405 325C650 321 695 96 1135 92" stroke="#667687" stroke-width="22"/>
-    <path d="M405 455C635 449 720 222 1135 218" stroke="#667687" stroke-width="22"/>
-    <path d="M405 325C650 321 695 96 1135 92M405 455C635 449 720 222 1135 218" stroke="#d8e0e7" stroke-width="6"/>
-  </g>
-
-  <!-- 选择弯道时：一片尖轨贴住支路，另一片与直轨留出小缝。 -->
-  <path d="M360 442C470 431 520 392 575 345" fill="none" stroke="#3e9a78" stroke-width="13" stroke-linecap="round"/>
-  <path d="M360 338H535" fill="none" stroke="#667687" stroke-width="12" stroke-linecap="round"/>
-  <circle cx="673" cy="321" r="18" fill="#ffd166" stroke="#25364a" stroke-width="6"/>
-
-  <!-- 一条不间断的中心线表示被选择的路线。 -->
-  <path d="M120 390H355C595 390 676 176 1090 154" fill="none" stroke="#d95d4f" stroke-width="10" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <g transform="translate(185 390)">
-    <rect x="-92" y="-62" width="184" height="124" rx="42" fill="#4f9bd8" stroke="#25364a" stroke-width="9"/>
-    <path d="M-40-32H40V32H-40Z" fill="#dff2fb" stroke="#25364a" stroke-width="7"/>
-  </g>
-  <text x="815" y="575" font-family="sans-serif" font-size="38" font-weight="700" text-anchor="middle" fill="#25364a">弯道接上</text>
 </svg>

@@ -1,47 +1,78 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">蒸汽怎样推动火车轮</title>
-  <desc id="desc">火焰把锅炉里的水加热成蒸汽。蓝色管路把蒸汽送到汽缸，活塞和一根连续的连杆推动大车轮上的曲柄。</desc>
+  <title id="title">蒸汽怎样经过活塞和连杆转动车轮</title>
+  <desc id="desc">可信的蒸汽机车侧剖面：火箱的火焰加热圆筒锅炉，蒸汽沿细管进入前方汽缸，推动活塞；活塞杆和连杆带动两个大动轮转动。</desc>
   <defs>
-    <marker id="steamArrow" viewBox="0 0 20 20" refX="18" refY="10" markerWidth="30" markerHeight="30" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 2 18 10 2 18Z" fill="#3b82c4"/></marker>
-    <marker id="motionArrow" viewBox="0 0 20 20" refX="18" refY="10" markerWidth="30" markerHeight="30" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 2 18 10 2 18Z" fill="#d95d4f"/></marker>
+    <marker id="steamArrow" viewBox="0 0 18 18" refX="16" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 16 9 2 16Z" fill="#448cad"/>
+    </marker>
+    <marker id="moveArrow" viewBox="0 0 18 18" refX="16" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 16 9 2 16Z" fill="#c76857"/>
+    </marker>
+    <clipPath id="boilerClip">
+      <path d="M278 173H747A91 91 0 0 1 838 264V366A91 91 0 0 1 747 457H278Z"/>
+    </clipPath>
   </defs>
+
   <rect width="1200" height="675" rx="34" fill="#fff9ed"/>
-  <path d="M70 574H1130" stroke="#667687" stroke-width="24" stroke-linecap="round"/>
+  <path d="M68 582H1132" stroke="#667687" stroke-width="22" stroke-linecap="round"/>
+  <path d="M88 616H1112" stroke="#a77d5b" stroke-width="15" stroke-dasharray="86 34" stroke-linecap="round"/>
 
-  <!-- 锅炉与火箱 -->
-  <path d="M115 478V210Q115 135 190 135H735Q815 135 815 215V478Z" fill="#55b68b" stroke="#25364a" stroke-width="11"/>
-  <path d="M270 174H720Q770 174 770 224V305H270Z" fill="#dff2fb" stroke="#25364a" stroke-width="8"/>
-  <path d="M270 305H770V446H270Z" fill="#4f9bd8" fill-opacity=".68" stroke="#25364a" stroke-width="8"/>
-  <path d="M139 347Q183 245 232 347Q209 373 220 433H151Q163 373 139 347Z" fill="#ff9f43" stroke="#25364a" stroke-width="8"/>
-  <path d="M164 382Q185 330 207 382Q195 402 201 433H170Q177 402 164 382Z" fill="#ffd166"/>
+  <!-- 驾驶室和真正的火箱在锅炉后部。 -->
+  <path d="M92 483V164H292V483Z" fill="#6da891" stroke="#25364a" stroke-width="9"/>
+  <path d="M121 196H250V296H121Z" fill="#d9edf4" stroke="#25364a" stroke-width="7"/>
+  <path d="M170 443V306H287V443Z" fill="#8b6253" stroke="#25364a" stroke-width="8"/>
+  <path d="M193 416Q207 374 221 416Q230 381 242 414Q236 444 218 457Q199 444 193 416Z" fill="#e98a4a"/>
+  <path d="M206 423Q217 399 228 423Q226 440 217 447Q208 440 206 423Z" fill="#f1c46b"/>
 
-  <!-- 蒸汽从锅炉连续流入汽缸。 -->
-  <path d="M505 218Q590 174 675 218" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/>
-  <path d="M650 208H790Q874 208 874 310V354H966" fill="none" stroke="#3b82c4" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#steamArrow)"/>
-  <rect x="930" y="326" width="180" height="108" rx="30" fill="#ffd166" stroke="#25364a" stroke-width="10"/>
-  <rect x="966" y="349" width="58" height="62" rx="14" fill="#ef6a5b" stroke="#25364a" stroke-width="7"/>
-
-  <!-- 活塞杆直接连到主动轮曲柄。 -->
-  <g fill="#465d73" stroke="#25364a" stroke-width="10">
-    <circle cx="410" cy="500" r="70"/>
-    <circle cx="610" cy="500" r="70"/>
-    <circle cx="865" cy="492" r="112"/>
+  <!-- 圆筒锅炉剖面：下方是水，上方是蒸汽空间。 -->
+  <path d="M278 173H747A91 91 0 0 1 838 264V366A91 91 0 0 1 747 457H278Z" fill="#dfe8df" stroke="#25364a" stroke-width="10"/>
+  <g clip-path="url(#boilerClip)">
+    <rect x="268" y="319" width="580" height="148" fill="#8ebfd0"/>
+    <path d="M284 319Q350 302 416 319T548 319T680 319T812 319" fill="none" stroke="#f7fbfb" stroke-width="7"/>
+    <g stroke="#b27a58" stroke-width="9" stroke-linecap="round" opacity=".85">
+      <path d="M279 389H780"/><path d="M279 418H780"/>
+    </g>
   </g>
-  <g fill="#ffd166" stroke="#25364a" stroke-width="8">
-    <circle cx="410" cy="500" r="20"/>
-    <circle cx="610" cy="500" r="20"/>
-    <circle cx="865" cy="492" r="24"/>
-    <circle cx="900" cy="455" r="18"/>
-  </g>
-  <path d="M995 380L900 455" fill="none" stroke="#d95d4f" stroke-width="16" stroke-linecap="round"/>
-  <path d="M410 500L610 480L900 455" fill="none" stroke="#d95d4f" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M765 415A132 132 0 0 1 974 500" fill="none" stroke="#d95d4f" stroke-width="9" stroke-linecap="round" marker-end="url(#motionArrow)"/>
+  <path d="M510 173V128H610V173" fill="#6da891" stroke="#25364a" stroke-width="9"/>
+  <path d="M742 173V92H798V173" fill="#465d73" stroke="#25364a" stroke-width="9"/>
+  <path d="M721 92H818" stroke="#25364a" stroke-width="12" stroke-linecap="round"/>
 
-  <g font-family="sans-serif" font-size="34" font-weight="700" text-anchor="middle" fill="#25364a">
-    <text x="184" y="105">火</text>
-    <text x="665" y="105">蒸汽</text>
-    <text x="1014" y="290">推动</text>
+  <!-- 蒸汽到汽缸。 -->
+  <path d="M557 156C624 115 707 126 752 179C793 228 837 270 915 321" fill="none" stroke="#448cad" stroke-width="7" stroke-linecap="round" marker-end="url(#steamArrow)"/>
+  <g fill="none" stroke="#f7fbfb" stroke-width="9" stroke-linecap="round" opacity=".9">
+    <path d="M430 257q23-34 46 0"/><path d="M510 234q23-34 46 0"/><path d="M594 257q23-34 46 0"/>
   </g>
-  <path d="M175 135V70H285L300 135" fill="#465d73" stroke="#25364a" stroke-width="10" stroke-linejoin="round"/>
-  <g fill="#dff2fb"><circle cx="238" cy="55" r="25"/><circle cx="280" cy="42" r="34"/><circle cx="325" cy="58" r="23"/></g>
+
+  <!-- 前方汽缸、活塞杆、连杆和大动轮。 -->
+  <rect x="884" y="321" width="198" height="111" rx="34" fill="#d7a763" stroke="#25364a" stroke-width="9"/>
+  <rect x="922" y="342" width="55" height="69" rx="13" fill="#c76857" stroke="#25364a" stroke-width="7"/>
+  <path d="M949 376H840" stroke="#c76857" stroke-width="11" stroke-linecap="round"/>
+  <g fill="#4f6477" stroke="#25364a" stroke-width="10">
+    <circle cx="529" cy="493" r="100"/>
+    <circle cx="779" cy="493" r="100"/>
+    <circle cx="1031" cy="498" r="58"/>
+  </g>
+  <g fill="#e9c66f" stroke="#25364a" stroke-width="7">
+    <circle cx="529" cy="493" r="25"/>
+    <circle cx="779" cy="493" r="25"/>
+    <circle cx="1031" cy="498" r="18"/>
+    <circle cx="563" cy="456" r="17"/>
+    <circle cx="813" cy="456" r="17"/>
+  </g>
+  <path d="M840 376 813 456" fill="none" stroke="#c76857" stroke-width="12" stroke-linecap="round"/>
+  <path d="M563 456H813" fill="none" stroke="#c76857" stroke-width="11" stroke-linecap="round"/>
+  <path d="M457 493A76 76 0 0 1 544 419" fill="none" stroke="#c76857" stroke-width="6" stroke-linecap="round" marker-end="url(#moveArrow)"/>
+  <path d="M707 493A76 76 0 0 1 794 419" fill="none" stroke="#c76857" stroke-width="6" stroke-linecap="round" marker-end="url(#moveArrow)"/>
+
+  <!-- 三个短标签对应一条完整因果链。 -->
+  <g font-family="system-ui, sans-serif" font-size="31" font-weight="800" text-anchor="middle" fill="#25364a">
+    <text x="207" y="92">火烧热锅炉</text>
+    <text x="924" y="278">蒸汽推活塞</text>
+    <text x="666" y="645">连杆转动车轮</text>
+  </g>
+  <g fill="none" stroke="#637588" stroke-width="4" stroke-linecap="round">
+    <path d="M207 106V164"/>
+    <path d="M924 290 945 321"/>
+    <path d="M666 612V575"/>
+  </g>
 </svg>

@@ -1,47 +1,48 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">轮缘怎样帮助车轮留在轨道上</title>
-  <desc id="desc">两幅正面剖面图。车轮居中时两边轮缘都和钢轨留有小缝；轮对偏得过多时，右侧轮缘靠近钢轨并帮助限制继续偏移。轮轨踏面轮廓才是日常导向的重要部分。</desc>
+  <title id="title">轮缘平时留着小缝，偏得太多才碰钢轨</title>
+  <desc id="desc">一只大钢轮的剖面落在钢轨上。轮子的踏面正常接触钢轨顶面，向下伸出的轮缘和钢轨内侧留着小缝。右边的放大镜把接触处和轮缘的留隙放大给孩子看。</desc>
+  <defs>
+    <marker id="thinArrow" viewBox="0 0 18 18" refX="15" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 16 9 2 16Z" fill="#49687d"/>
+    </marker>
+    <clipPath id="lensClip"><circle cx="930" cy="345" r="205"/></clipPath>
+  </defs>
   <rect width="1200" height="675" rx="34" fill="#fff9ed"/>
-  <path d="M600 70V610" stroke="#d8c5a9" stroke-width="6" stroke-dasharray="18 18"/>
 
-  <g font-family="sans-serif" font-size="38" font-weight="700" text-anchor="middle" fill="#25364a">
-    <text x="300" y="86">居中</text>
-    <text x="900" y="86">偏向一侧</text>
+  <path d="M142 78H504Q574 78 596 144L626 235 612 361Q610 388 584 388H542V455H474V388H209Q174 388 166 354L117 152Q99 78 142 78Z"
+        fill="#66879b" stroke="#25364a" stroke-width="11" stroke-linejoin="round"/>
+  <path d="M188 344Q330 367 542 356" fill="none" stroke="#dbe7ec" stroke-width="15" stroke-linecap="round"/>
+  <path d="M220 385H523" stroke="#55a183" stroke-width="10" stroke-linecap="round"/>
+
+  <path d="M174 396H532V438H483V531H548V575H158V531H223V438H174Z"
+        fill="#6f7f8c" stroke="#25364a" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M190 408H515" stroke="#dbe2e7" stroke-width="8" stroke-linecap="round"/>
+  <path d="M536 405V455" stroke="#6cae9a" stroke-width="6" stroke-dasharray="10 10" stroke-linecap="round"/>
+
+  <g font-family="system-ui, sans-serif" font-weight="750" fill="#25364a">
+    <text x="118" y="625" font-size="38">钢轨</text>
+    <path d="M235 612 320 540" fill="none" stroke="#49687d" stroke-width="5" stroke-linecap="round" marker-end="url(#thinArrow)"/>
+    <text x="350" y="58" font-size="38">车轮</text>
+    <path d="M445 64 487 126" fill="none" stroke="#49687d" stroke-width="5" stroke-linecap="round" marker-end="url(#thinArrow)"/>
+    <text x="585" y="500" font-size="38">轮缘</text>
+    <path d="M678 486 558 448" fill="none" stroke="#49687d" stroke-width="5" stroke-linecap="round" marker-end="url(#thinArrow)"/>
   </g>
 
-  <!-- 左：轮对居中，两侧轮缘都与钢轨留有余量。 -->
-  <g>
-    <path d="M150 265H450" stroke="#25364a" stroke-width="34" stroke-linecap="round"/>
-    <g fill="#4f9bd8" stroke="#25364a" stroke-width="10" stroke-linejoin="round">
-      <path d="M128 155H228Q246 155 246 176V420H270V486H225V438H128Q110 438 110 420V176Q110 155 128 155Z"/>
-      <path d="M472 155H372Q354 155 354 176V420H330V486H375V438H472Q490 438 490 420V176Q490 155 472 155Z"/>
-    </g>
-    <g fill="#667687" stroke="#25364a" stroke-width="9">
-      <path d="M135 438H225V474H135Z"/>
-      <path d="M375 438H465V474H375Z"/>
-      <path d="M148 474H212L232 570H128Z"/>
-      <path d="M388 474H452L472 570H368Z"/>
-    </g>
-    <path d="M270 474H232" stroke="#3e9a78" stroke-width="8" stroke-linecap="round" stroke-dasharray="8 11"/>
-    <path d="M330 474H368" stroke="#3e9a78" stroke-width="8" stroke-linecap="round" stroke-dasharray="8 11"/>
+  <path d="M500 382C650 295 704 270 739 270" fill="none" stroke="#8aa0ad" stroke-width="5" stroke-dasharray="13 13"/>
+  <circle cx="930" cy="345" r="214" fill="#f8f3e8" stroke="#25364a" stroke-width="10"/>
+  <g clip-path="url(#lensClip)">
+    <rect x="720" y="140" width="420" height="410" fill="#f8f3e8"/>
+    <path d="M690 78H1038Q1093 78 1110 132L1150 257Q1161 292 1127 301L1038 325V421H965V335H752Q719 335 712 303L672 134Q660 78 690 78Z"
+          fill="#66879b" stroke="#25364a" stroke-width="10" stroke-linejoin="round"/>
+    <path d="M735 319Q854 340 1038 311" fill="none" stroke="#dbe7ec" stroke-width="14" stroke-linecap="round"/>
+    <path d="M730 347H1046V389H1003V486H1065V530H714V486H772V389H730Z"
+          fill="#6f7f8c" stroke="#25364a" stroke-width="10" stroke-linejoin="round"/>
+    <path d="M754 347H986" stroke="#55a183" stroke-width="12" stroke-linecap="round"/>
+    <path d="M1046 360V417" stroke="#6cae9a" stroke-width="8" stroke-dasharray="12 11" stroke-linecap="round"/>
   </g>
-
-  <!-- 右：钢轨不动，整根轮对向右偏，右轮缘接近右轨内侧。 -->
-  <g>
-    <path d="M774 265H1074" stroke="#25364a" stroke-width="34" stroke-linecap="round"/>
-    <g fill="#4f9bd8" stroke="#25364a" stroke-width="10" stroke-linejoin="round">
-      <path d="M752 155H852Q870 155 870 176V420H894V486H849V438H752Q734 438 734 420V176Q734 155 752 155Z"/>
-      <path d="M1096 155H996Q978 155 978 176V420H954V486H999V438H1096Q1114 438 1114 420V176Q1114 155 1096 155Z"/>
-    </g>
-    <g fill="#667687" stroke="#25364a" stroke-width="9">
-      <path d="M735 438H825V474H735Z"/>
-      <path d="M975 438H1065V474H975Z"/>
-      <path d="M748 474H812L832 570H728Z"/>
-      <path d="M988 474H1052L1072 570H968Z"/>
-    </g>
-    <path d="M894 474H832" stroke="#3e9a78" stroke-width="8" stroke-linecap="round" stroke-dasharray="8 11"/>
-    <circle cx="959" cy="472" r="13" fill="#3e9a78" stroke="#25364a" stroke-width="5"/>
+  <g font-family="system-ui, sans-serif" font-size="30" font-weight="760" text-anchor="middle" fill="#25364a">
+    <text x="930" y="115">接触处放大</text>
+    <text x="837" y="582" fill="#3f826b">踏面接触</text>
+    <text x="1030" y="625" fill="#55798e">轮缘留缝</text>
   </g>
-
-  <path d="M85 585H515M685 585H1115" stroke="#d8c5a9" stroke-width="26" stroke-linecap="round"/>
 </svg>

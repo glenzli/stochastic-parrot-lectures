@@ -1,33 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">集电靴贴着轨旁供电轨取电</title>
-  <desc id="desc">电车下方的深色支臂连接一只集电靴；集电靴底面贴住蓝色第三轨顶面。第三轨由黄色绝缘支座托起，蓝色箭头表示电能进入车辆。</desc>
+  <title id="title">集电靴贴住供电轨，把电送进车里</title>
+  <desc id="desc">电车底部的转向架伸出一根连续支臂，支臂末端的集电靴贴住有保护罩的第三轨。蓝色细箭头从供电轨经过集电靴和支臂进入车内，没有火花。</desc>
   <defs>
-    <marker id="energyArrow" viewBox="0 0 28 28" refX="26" refY="14" markerWidth="28" markerHeight="28" markerUnits="userSpaceOnUse" orient="auto">
-      <path d="M2 2 26 14 2 26Z" fill="#3b82c4"/>
+    <marker id="electricArrow" viewBox="0 0 18 18" refX="15" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 16 9 2 16Z" fill="#3f7fa5"/>
+    </marker>
+    <marker id="labelArrow" viewBox="0 0 18 18" refX="15" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 16 9 2 16Z" fill="#526c7b"/>
     </marker>
   </defs>
   <rect width="1200" height="675" rx="34" fill="#fff9ed"/>
-  <ellipse cx="600" cy="625" rx="545" ry="38" fill="#eadfcb"/>
-  <path d="M65 570h830" stroke="#667687" stroke-width="24" stroke-linecap="round"/>
-  <path d="M65 563h830" stroke="#d8e0e7" stroke-width="6" stroke-linecap="round"/>
 
-  <path d="M120 470V259c0-67 55-122 122-122h490c91 0 151 55 174 142l20 77v114Z" fill="#ef6a5b" stroke="#25364a" stroke-width="11"/>
-  <path d="M226 179h458c64 0 108 36 130 99H195c8-62 17-99 31-99Z" fill="#dff2fb" stroke="#25364a" stroke-width="8"/>
-  <path d="M390 179v99M575 179v99M722 182l-24 95" stroke="#25364a" stroke-width="7"/>
-  <rect x="188" y="384" width="610" height="62" rx="24" fill="#25364a"/>
-  <g fill="#465d73" stroke="#25364a" stroke-width="9"><circle cx="315" cy="500" r="70"/><circle cx="740" cy="500" r="70"/></g>
-  <g fill="#ffd166" stroke="#25364a" stroke-width="7"><circle cx="315" cy="500" r="24"/><circle cx="740" cy="500" r="24"/></g>
-
-  <path d="M825 432v67l119 39" fill="none" stroke="#25364a" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="926" y="532" width="164" height="28" rx="10" fill="#25364a" stroke="#25364a" stroke-width="6"/>
-  <rect x="900" y="560" width="250" height="34" rx="8" fill="#4f9bd8" stroke="#25364a" stroke-width="8"/>
-  <path d="M943 560h128" stroke="#55b68b" stroke-width="7" stroke-linecap="round"/>
-  <g fill="#ffd166" stroke="#25364a" stroke-width="7">
-    <path d="M928 594h44v42h-44zM1078 594h44v42h-44z"/>
+  <path d="M82 98H886Q940 98 958 151L991 250H82Z" fill="#c96861" stroke="#25364a" stroke-width="11" stroke-linejoin="round"/>
+  <rect x="150" y="145" width="704" height="54" rx="19" fill="#dcebf0" stroke="#25364a" stroke-width="8"/>
+  <rect x="185" y="270" width="640" height="76" rx="28" fill="#3d5364" stroke="#25364a" stroke-width="10"/>
+  <g fill="#647f91" stroke="#25364a" stroke-width="10">
+    <circle cx="310" cy="431" r="91"/><circle cx="710" cy="431" r="91"/>
   </g>
-  <path d="M972 524c-8-76-69-124-139-158" fill="none" stroke="#3b82c4" stroke-width="9" stroke-linecap="round" marker-end="url(#energyArrow)"/>
-  <path d="m1090 480 27-54 18 34 36-7-40 68-17-34Z" fill="#ffd166" stroke="#25364a" stroke-width="7" stroke-linejoin="round"/>
+  <g fill="#d9b965" stroke="#25364a" stroke-width="8"><circle cx="310" cy="431" r="28"/><circle cx="710" cy="431" r="28"/></g>
+  <path d="M120 525H865" stroke="#6f7f8c" stroke-width="34" stroke-linecap="round"/>
+  <path d="M120 516H865" stroke="#dbe2e7" stroke-width="8" stroke-linecap="round"/>
 
-  <text x="891" y="511" font-family="system-ui, sans-serif" font-size="30" font-weight="700" fill="#25364a">集电靴</text>
-  <text x="976" y="660" font-family="system-ui, sans-serif" font-size="30" font-weight="700" fill="#25364a">供电轨</text>
+  <path d="M778 326 852 366 925 453" fill="none" stroke="#364b5a" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="902" y="437" width="170" height="36" rx="14" fill="#364b5a" stroke="#25364a" stroke-width="7"/>
+
+  <g fill="#d7b96e" stroke="#25364a" stroke-width="7">
+    <path d="M918 550h43v76h-43zM1080 550h43v76h-43z"/>
+  </g>
+  <rect x="882" y="482" width="278" height="61" rx="10" fill="#648da5" stroke="#25364a" stroke-width="9"/>
+  <path d="M870 462V418Q870 389 900 389H1145Q1170 389 1170 418V459" fill="none" stroke="#9aabaf" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M926 474H1060" stroke="#73ac96" stroke-width="9" stroke-linecap="round"/>
+
+  <path d="M1080 500H982Q946 500 930 467L852 369 778 326V236" fill="none" stroke="#3f7fa5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#electricArrow)"/>
+  <rect x="647" y="116" width="264" height="72" rx="24" fill="#dceaf1" stroke="#3f7fa5" stroke-width="6"/>
+  <text x="779" y="163" font-family="system-ui, sans-serif" font-size="34" font-weight="760" text-anchor="middle" fill="#315f7b">电送进车里</text>
+
+  <g font-family="system-ui, sans-serif" font-size="34" font-weight="760" fill="#25364a">
+    <text x="735" y="600">供电轨</text>
+    <path d="M858 587 948 530" fill="none" stroke="#526c7b" stroke-width="5" stroke-linecap="round" marker-end="url(#labelArrow)"/>
+    <text x="900" y="347">集电靴</text>
+    <path d="M1019 355 1001 449" fill="none" stroke="#526c7b" stroke-width="5" stroke-linecap="round" marker-end="url(#labelArrow)"/>
+  </g>
 </svg>

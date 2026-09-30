@@ -1,0 +1,42 @@
+[
+  {
+    "id": "p001-wheel-on-rail",
+    "subject": "博物馆中落在钢轨上的铁路轮对，可看见车轮内侧轮缘",
+    "commons_file": "Vista frontal de ruedas de tren en riel.jpg"
+  },
+  {
+    "id": "p002-e5-pantograph",
+    "subject": "E5 系新干线车顶的 PS208 型受电弓",
+    "commons_file": "E5kei PS208.jpg"
+  },
+  {
+    "id": "p003-bogie-suspension",
+    "subject": "德国 640 型柴油动车的转向架、悬挂与减振器",
+    "commons_file": "Class 640 railcar bogie.jpg"
+  },
+  {
+    "id": "p004-third-rail-shoe",
+    "subject": "码头区轻便铁路车辆的下接触式第三轨集电靴",
+    "commons_file": "DLR bottom contact pickup shoe 01.jpg"
+  },
+  {
+    "id": "p005-switch-points",
+    "subject": "铁路道岔尖轨细节",
+    "commons_file": "Railroad switch details b.jpg"
+  },
+  {
+    "id": "p006-rack-pinion",
+    "subject": "齿轨铁路的齿轮与齿条啮合细节",
+    "commons_file": "Rack Railway Rack and Pinion Gear - panoramio.jpg"
+  },
+  {
+    "id": "p007-funicular-passing-loop",
+    "subject": "斯堪森缆车的两辆车在会车区段交会",
+    "commons_file": "Skansens funicular (2023).jpg"
+  },
+  {
+    "id": "p008-rubber-tyred-bogie",
+    "subject": "蒙特利尔地铁 MR-63 型胶轮转向架，可见承重轮、导向轮与集电装置",
+    "commons_file": "Bogie avant MR-63 metro de Montreal.jpg"
+  }
+]

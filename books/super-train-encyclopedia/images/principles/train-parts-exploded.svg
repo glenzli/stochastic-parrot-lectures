@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1120" role="img" aria-labelledby="title desc">
+  <title id="title">列车从车顶、车身到车底与轨道的拆分图</title>
+  <desc id="desc">纵向三段拆分图。车顶段标出受电弓；车身段标出车身和车厢、车头和驾驶室、车窗、车门与连结器；车底与轨道段标出转向架、车轮和车轴、钢轨和轨枕。虚线表示这些部件原本上下相连。</desc>
+  <rect width="1200" height="1120" rx="36" fill="#fffaf1"/>
+
+  <!-- 三段背景让孩子先认位置，再看名字。 -->
+  <rect x="35" y="30" width="1130" height="245" rx="28" fill="#edf3f2" stroke="#c4d4d0" stroke-width="5"/>
+  <rect x="35" y="295" width="1130" height="405" rx="28" fill="#f7eee4" stroke="#dbc9b8" stroke-width="5"/>
+  <rect x="35" y="720" width="1130" height="365" rx="28" fill="#eef1f3" stroke="#cbd3d8" stroke-width="5"/>
+
+  <g font-family="system-ui, sans-serif" font-weight="800" fill="#26394b">
+    <g transform="translate(62 55)">
+      <rect width="145" height="62" rx="31" fill="#cfe0dc"/>
+      <text x="72" y="43" font-size="42" text-anchor="middle">车顶</text>
+    </g>
+    <g transform="translate(62 320)">
+      <rect width="145" height="62" rx="31" fill="#e8d3c0"/>
+      <text x="72" y="43" font-size="42" text-anchor="middle">车身</text>
+    </g>
+    <g transform="translate(62 745)">
+      <rect width="250" height="62" rx="31" fill="#d4dce1"/>
+      <text x="125" y="43" font-size="42" text-anchor="middle">车底与轨道</text>
+    </g>
+  </g>
+
+  <!-- 车顶：一个大标签，一个受电弓。 -->
+  <g transform="translate(515 78)" fill="none" stroke="#26394b" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 143H248"/>
+    <path d="M38 139 104 42 173 139M104 42H190"/>
+  </g>
+  <path d="M640 219V307" fill="none" stroke="#8da5ad" stroke-width="5" stroke-dasharray="11 11"/>
+  <g transform="translate(818 132)" font-family="system-ui, sans-serif" font-size="39" font-weight="800" fill="#26394b">
+    <rect x="-18" y="-44" width="274" height="72" rx="24" fill="#fffaf1" stroke="#9fb7b1" stroke-width="5"/>
+    <circle cx="19" cy="-8" r="21" fill="#d7c17f"/>
+    <text x="19" y="5" font-size="27" text-anchor="middle">1</text>
+    <text x="55" y="6">受电弓</text>
+    <path d="M-18 13-85 45" fill="none" stroke="#6f8790" stroke-width="4"/>
+  </g>
+
+  <!-- 车身：四组大标签，合起来覆盖五个基本部件。 -->
+  <g font-family="system-ui, sans-serif" font-size="35" font-weight="800" fill="#26394b">
+    <g transform="translate(244 356)">
+      <rect x="-18" y="-42" width="300" height="66" rx="23" fill="#fffaf1" stroke="#c5ad97" stroke-width="4"/>
+      <text x="18" y="3" text-anchor="middle" font-size="26">2</text>
+      <text x="52" y="4">车身／车厢</text>
+    </g>
+    <g transform="translate(776 356)">
+      <rect x="-18" y="-42" width="340" height="66" rx="23" fill="#fffaf1" stroke="#c5ad97" stroke-width="4"/>
+      <text x="18" y="3" text-anchor="middle" font-size="26">3</text>
+      <text x="52" y="4">车头／驾驶室</text>
+    </g>
+    <g transform="translate(668 659)">
+      <rect x="-18" y="-42" width="360" height="66" rx="23" fill="#fffaf1" stroke="#c5ad97" stroke-width="4"/>
+      <text x="18" y="3" text-anchor="middle" font-size="26">4</text>
+      <text x="50" y="4">车窗　5 车门</text>
+    </g>
+    <g transform="translate(220 659)">
+      <rect x="-18" y="-42" width="270" height="66" rx="23" fill="#fffaf1" stroke="#c5ad97" stroke-width="4"/>
+      <text x="18" y="3" text-anchor="middle" font-size="26">6</text>
+      <text x="52" y="4">连结器</text>
+    </g>
+  </g>
+
+  <path d="M142 592V444Q142 406 184 406H846Q970 406 1050 508L1092 565Q1109 592 1067 592Z" fill="#76aaa6" stroke="#26394b" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M205 450H817Q916 450 984 522H205Z" fill="#dcebf0" stroke="#26394b" stroke-width="7"/>
+  <path d="M395 450V522M608 450V522M834 457 804 522" stroke="#526a79" stroke-width="6"/>
+  <path d="M890 450Q972 469 1033 548H890Z" fill="#c7e0e5" stroke="#26394b" stroke-width="7"/>
+  <rect x="488" y="462" width="105" height="130" rx="10" fill="#d9a08c" stroke="#26394b" stroke-width="7"/>
+  <rect x="511" y="480" width="59" height="49" rx="6" fill="#dcebf0" stroke="#26394b" stroke-width="5"/>
+  <path d="M141 574H1072" stroke="#26394b" stroke-width="24" stroke-linecap="round"/>
+  <g fill="none" stroke="#26394b" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M82 543H113L139 520"/>
+    <path d="M54 525V564M30 537H54M30 554H54"/>
+  </g>
+  <g fill="none" stroke="#6f8790" stroke-width="4" stroke-linecap="round">
+    <path d="M390 378 433 406"/>
+    <path d="M934 378 965 454"/>
+    <path d="M760 617 570 522"/>
+    <path d="M282 617 113 548"/>
+  </g>
+
+  <!-- 车底与轨道：三组标签，图形继续向下拆开。 -->
+  <g font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#26394b">
+    <g transform="translate(356 785)">
+      <rect x="-18" y="-38" width="246" height="62" rx="22" fill="#fffaf1" stroke="#aab7bf" stroke-width="4"/>
+      <text x="17" y="4" text-anchor="middle" font-size="25">7</text>
+      <text x="50" y="5">转向架</text>
+    </g>
+    <g transform="translate(626 785)">
+      <rect x="-18" y="-38" width="294" height="62" rx="22" fill="#fffaf1" stroke="#aab7bf" stroke-width="4"/>
+      <text x="17" y="4" text-anchor="middle" font-size="25">8</text>
+      <text x="50" y="5">车轮＋车轴</text>
+    </g>
+    <g transform="translate(936 785)">
+      <rect x="-18" y="-38" width="250" height="62" rx="22" fill="#fffaf1" stroke="#aab7bf" stroke-width="4"/>
+      <text x="17" y="4" text-anchor="middle" font-size="25">9</text>
+      <text x="50" y="5">钢轨＋轨枕</text>
+    </g>
+  </g>
+
+  <g fill="none" stroke="#8da5ad" stroke-width="5" stroke-dasharray="11 11">
+    <path d="M395 593V833M805 593V833"/>
+    <path d="M395 976V1010M805 976V1010"/>
+  </g>
+  <g transform="translate(395 862)">
+    <rect x="-120" y="-28" width="240" height="58" rx="21" fill="#708390" stroke="#26394b" stroke-width="8"/>
+    <path d="M-86-28 -48-65H48L86-28" fill="#a6bec8" stroke="#26394b" stroke-width="7" stroke-linejoin="round"/>
+    <circle cx="-73" cy="59" r="50" fill="#60717e" stroke="#26394b" stroke-width="8"/>
+    <circle cx="73" cy="59" r="50" fill="#60717e" stroke="#26394b" stroke-width="8"/>
+    <circle cx="-73" cy="59" r="17" fill="#d7c17f" stroke="#26394b" stroke-width="5"/>
+    <circle cx="73" cy="59" r="17" fill="#d7c17f" stroke="#26394b" stroke-width="5"/>
+    <path d="M-54 59H54" stroke="#26394b" stroke-width="10"/>
+  </g>
+  <g transform="translate(805 862)">
+    <rect x="-120" y="-28" width="240" height="58" rx="21" fill="#708390" stroke="#26394b" stroke-width="8"/>
+    <path d="M-86-28 -48-65H48L86-28" fill="#a6bec8" stroke="#26394b" stroke-width="7" stroke-linejoin="round"/>
+    <circle cx="-73" cy="59" r="50" fill="#60717e" stroke="#26394b" stroke-width="8"/>
+    <circle cx="73" cy="59" r="50" fill="#60717e" stroke="#26394b" stroke-width="8"/>
+    <circle cx="-73" cy="59" r="17" fill="#d7c17f" stroke="#26394b" stroke-width="5"/>
+    <circle cx="73" cy="59" r="17" fill="#d7c17f" stroke="#26394b" stroke-width="5"/>
+    <path d="M-54 59H54" stroke="#26394b" stroke-width="10"/>
+  </g>
+  <g stroke-linecap="round">
+    <g stroke="#9a806a" stroke-width="17">
+      <path d="M185 1020V1062M330 1020V1062M475 1020V1062M620 1020V1062M765 1020V1062M910 1020V1062M1055 1020V1062"/>
+    </g>
+    <path d="M140 1023H1090M140 1062H1090" stroke="#667687" stroke-width="20"/>
+    <path d="M140 1018H1090M140 1057H1090" stroke="#dce2e5" stroke-width="6"/>
+  </g>
+</svg>

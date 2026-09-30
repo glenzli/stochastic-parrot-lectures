@@ -1,29 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">钢轮在钢轨上滚动</title>
-  <desc id="desc">侧面图中，两只钢轮托着车身并接触同一根钢轨。车轮旁的长圆弧表示滚动，车顶上方的长箭头表示列车向右前进。</desc>
+  <title id="title">硬硬的钢轮只压扁一点点，所以容易向前滚</title>
+  <desc id="desc">左边是一只大钢轮在钢轨上向右滚动。右边的圆形放大图用夸张示意显示轮轨接触处只有很小的变形，不代表实际比例。变形小，滚动阻力也小。</desc>
   <defs>
-    <marker id="arrow" viewBox="0 0 20 20" refX="18" refY="10" markerWidth="30" markerHeight="30" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 2 18 10 2 18Z" fill="#d95d4f"/></marker>
+    <marker id="rollArrow" viewBox="0 0 20 20" refX="17" refY="10" markerWidth="20" markerHeight="20" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 18 10 2 18Z" fill="#bf6559"/>
+    </marker>
+    <clipPath id="zoomClip"><circle cx="913" cy="353" r="194"/></clipPath>
   </defs>
   <rect width="1200" height="675" rx="34" fill="#fff9ed"/>
-  <ellipse cx="600" cy="592" rx="520" ry="42" fill="#eadfcb"/>
-  <g fill="#9a7558">
-    <rect x="110" y="558" width="180" height="27" rx="10"/><rect x="335" y="558" width="180" height="27" rx="10"/>
-    <rect x="560" y="558" width="180" height="27" rx="10"/><rect x="785" y="558" width="180" height="27" rx="10"/>
-  </g>
-  <path d="M70 535H1130" stroke="#667687" stroke-width="30" stroke-linecap="round"/>
-  <path d="M70 527H1130" stroke="#d8e0e7" stroke-width="8" stroke-linecap="round"/>
 
-  <path d="M214 215H863Q967 215 1020 314L1067 401H158L178 296Q194 215 214 215Z" fill="#ef6a5b" stroke="#25364a" stroke-width="11" stroke-linejoin="round"/>
-  <path d="M314 255H816Q884 255 923 326H278L289 283Q295 255 314 255Z" fill="#dff2fb" stroke="#25364a" stroke-width="8"/>
-  <path d="M470 255V326M665 255V326M820 257L795 326" stroke="#25364a" stroke-width="7"/>
-  <rect x="235" y="384" width="700" height="55" rx="20" fill="#25364a"/>
-  <g fill="#465d73" stroke="#25364a" stroke-width="10">
-    <circle cx="380" cy="445" r="88"/><circle cx="820" cy="445" r="88"/>
-  </g>
-  <g fill="#ffd166" stroke="#25364a" stroke-width="8"><circle cx="380" cy="445" r="29"/><circle cx="820" cy="445" r="29"/></g>
+  <path d="M125 528H718" stroke="#6f7f8c" stroke-width="48" stroke-linecap="round"/>
+  <path d="M125 514H718" stroke="#dbe2e7" stroke-width="10" stroke-linecap="round"/>
+  <path d="M172 563H678" stroke="#b89d7b" stroke-width="28" stroke-linecap="round" stroke-dasharray="100 48"/>
 
-  <path d="M292 474A105 105 0 1 1 432 342" fill="none" stroke="#d95d4f" stroke-width="9" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <path d="M732 474A105 105 0 1 1 872 342" fill="none" stroke="#d95d4f" stroke-width="9" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <path d="M285 143H975" fill="none" stroke="#d95d4f" stroke-width="10" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <text x="630" y="110" font-family="sans-serif" font-size="36" font-weight="700" text-anchor="middle" fill="#25364a">向前滚动</text>
+  <circle cx="390" cy="316" r="210" fill="#66879b" stroke="#25364a" stroke-width="12"/>
+  <circle cx="390" cy="316" r="64" fill="#d9b965" stroke="#25364a" stroke-width="10"/>
+  <path d="M221 434Q390 525 559 434" fill="none" stroke="#dbe7ec" stroke-width="18" stroke-linecap="round"/>
+  <path d="M170 92H624" fill="none" stroke="#bf6559" stroke-width="7" stroke-linecap="round" marker-end="url(#rollArrow)"/>
+  <text x="395" y="66" font-family="system-ui, sans-serif" font-size="38" font-weight="760" text-anchor="middle" fill="#25364a">硬钢轮向前滚</text>
+
+  <path d="M524 470C650 390 680 349 713 349" fill="none" stroke="#8aa0ad" stroke-width="5" stroke-dasharray="13 13"/>
+  <circle cx="913" cy="353" r="204" fill="#f8f3e8" stroke="#25364a" stroke-width="10"/>
+  <g clip-path="url(#zoomClip)">
+    <rect x="710" y="146" width="410" height="414" fill="#f8f3e8"/>
+    <path d="M654 23C746 62 831 159 852 261Q858 291 889 294H981Q1012 291 1019 261C1040 162 1127 64 1210 25V-30H654Z"
+          fill="#66879b" stroke="#25364a" stroke-width="10"/>
+    <path d="M842 301Q913 287 1028 301" fill="none" stroke="#dbe7ec" stroke-width="13" stroke-linecap="round"/>
+    <path d="M700 326H1117V370H1061V497H1106V548H710V497H754V370H700Z"
+          fill="#6f7f8c" stroke="#25364a" stroke-width="10" stroke-linejoin="round"/>
+    <ellipse cx="935" cy="319" rx="45" ry="11" fill="#c87366" opacity=".82"/>
+    <path d="M735 396H1082" stroke="#cdd8de" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <g font-family="system-ui, sans-serif" text-anchor="middle" font-weight="760" fill="#25364a">
+    <text x="913" y="122" font-size="34">接触处放大</text>
+    <text x="913" y="593" font-size="38" fill="#3f826b">只压扁一点点</text>
+    <text x="913" y="632" font-size="26" fill="#6e655a">夸张示意，不是实际比例</text>
+  </g>
+  <rect x="146" y="601" width="506" height="54" rx="27" fill="#dceee5"/>
+  <text x="399" y="639" font-family="system-ui, sans-serif" font-size="33" font-weight="760" text-anchor="middle" fill="#346f5c">变形小 · 滚起来省力</text>
 </svg>

@@ -1,46 +1,53 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">架空线可以输送交流电或直流电</title>
-  <desc id="desc">左右两列电车的受电弓滑板都贴住头顶接触线。左侧双向箭头表示交流方向来回改变，右侧单向箭头表示直流方向保持一致。</desc>
+  <title id="title">两种供电都先在车内处理，再送给同一个电动机</title>
+  <desc id="desc">左边的交流供电和直流供电各有一条细箭头，两条箭头汇入中间同一个车内先处理盒，再由一条箭头送到右边同一个电动机和车轮。</desc>
   <defs>
-    <marker id="acArrow" viewBox="0 0 28 28" refX="26" refY="14" markerWidth="28" markerHeight="28" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
-      <path d="M2 2 26 14 2 26Z" fill="#3b82c4"/>
-    </marker>
-    <marker id="dcArrow" viewBox="0 0 28 28" refX="26" refY="14" markerWidth="28" markerHeight="28" markerUnits="userSpaceOnUse" orient="auto">
-      <path d="M2 2 26 14 2 26Z" fill="#d95d4f"/>
+    <marker id="flowArrow" viewBox="0 0 18 18" refX="16" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 16 9 2 16Z" fill="#55788a"/>
     </marker>
   </defs>
-  <rect width="1200" height="675" rx="34" fill="#fff9ed"/>
-  <path d="M600 42v584" stroke="#d8c5a9" stroke-width="5" stroke-dasharray="18 18"/>
+  <rect width="1200" height="675" rx="34" fill="#fffaf1"/>
+  <text x="600" y="69" font-family="system-ui, sans-serif" font-size="42" font-weight="800" text-anchor="middle" fill="#26394b">不同的电，先在车里准备好</text>
 
-  <text x="300" y="66" text-anchor="middle" font-family="system-ui, sans-serif" font-size="34" font-weight="750" fill="#25364a">交流：来回</text>
-  <text x="900" y="66" text-anchor="middle" font-family="system-ui, sans-serif" font-size="34" font-weight="750" fill="#25364a">直流：同向</text>
-  <path d="M165 118h270" stroke="#3b82c4" stroke-width="9" stroke-linecap="round" marker-start="url(#acArrow)" marker-end="url(#acArrow)"/>
-  <path d="M765 118h270" stroke="#d95d4f" stroke-width="9" stroke-linecap="round" marker-end="url(#dcArrow)"/>
-
-  <g>
-    <path d="M72 190h456" stroke="#25364a" stroke-width="11" stroke-linecap="round"/>
-    <path d="M230 190h140" stroke="#4f9bd8" stroke-width="21" stroke-linecap="round"/>
-    <g fill="none" stroke="#25364a" stroke-width="14" stroke-linecap="round">
-      <path d="M200 415 340 215M400 415 260 215"/>
-      <path d="M260 215v-25M340 215v-25"/>
+  <!-- 两个供电入口。 -->
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <g transform="translate(55 127)">
+      <rect width="300" height="165" rx="28" fill="#e3eef2" stroke="#6f91a0" stroke-width="7"/>
+      <path d="M45 48H255" stroke="#55788a" stroke-width="8" stroke-linecap="round"/>
+      <path d="M112 112 151 53 190 112M151 53H196" fill="none" stroke="#26394b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="150" y="147" font-size="37" font-weight="800" fill="#26394b">交流供电 AC</text>
     </g>
-    <circle cx="300" cy="315" r="15" fill="#ffd166" stroke="#25364a" stroke-width="7"/>
-    <path d="M88 415h424c35 0 64 29 64 64v78H24v-78c0-35 29-64 64-64Z" fill="#4f9bd8" stroke="#25364a" stroke-width="10"/>
-    <path d="M105 455h390c17 0 31 14 31 31v22H74v-22c0-17 14-31 31-31Z" fill="#dff2fb" stroke="#25364a" stroke-width="7"/>
-    <g fill="#465d73" stroke="#25364a" stroke-width="8"><circle cx="154" cy="558" r="54"/><circle cx="446" cy="558" r="54"/></g>
+    <g transform="translate(55 383)">
+      <rect width="300" height="165" rx="28" fill="#f2e7de" stroke="#b58a76" stroke-width="7"/>
+      <path d="M45 48H255" stroke="#a57060" stroke-width="8" stroke-linecap="round"/>
+      <path d="M112 112 151 53 190 112M151 53H196" fill="none" stroke="#26394b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="150" y="147" font-size="37" font-weight="800" fill="#26394b">直流供电 DC</text>
+    </g>
   </g>
 
-  <g transform="translate(600)">
-    <path d="M72 190h456" stroke="#25364a" stroke-width="11" stroke-linecap="round"/>
-    <path d="M230 190h140" stroke="#ef6a5b" stroke-width="21" stroke-linecap="round"/>
-    <g fill="none" stroke="#25364a" stroke-width="14" stroke-linecap="round">
-      <path d="M200 415 340 215M400 415 260 215"/>
-      <path d="M260 215v-25M340 215v-25"/>
-    </g>
-    <circle cx="300" cy="315" r="15" fill="#ffd166" stroke="#25364a" stroke-width="7"/>
-    <path d="M88 415h424c35 0 64 29 64 64v78H24v-78c0-35 29-64 64-64Z" fill="#ef6a5b" stroke="#25364a" stroke-width="10"/>
-    <path d="M105 455h390c17 0 31 14 31 31v22H74v-22c0-17 14-31 31-31Z" fill="#dff2fb" stroke="#25364a" stroke-width="7"/>
-    <g fill="#465d73" stroke="#25364a" stroke-width="8"><circle cx="154" cy="558" r="54"/><circle cx="446" cy="558" r="54"/></g>
+  <!-- 一截透明车厢轮廓，把处理盒和电机圈在车内。 -->
+  <path d="M458 159H946Q1052 159 1115 245V571H442V191Q442 159 458 159Z" fill="#edf2ef" stroke="#a5b0aa" stroke-width="7" stroke-dasharray="15 13"/>
+  <text x="490" y="207" font-family="system-ui, sans-serif" font-size="30" font-weight="750" fill="#66766e">车里面</text>
+
+  <!-- 两条输入线在同一个盒子前汇合。 -->
+  <g fill="none" stroke="#55788a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M355 210H402Q430 210 430 238V312Q430 337 455 337H494" marker-end="url(#flowArrow)"/>
+    <path d="M355 466H402Q430 466 430 438V362Q430 337 455 337H494" marker-end="url(#flowArrow)"/>
   </g>
-  <path d="M55 616h1090" stroke="#667687" stroke-width="22" stroke-linecap="round"/>
+
+  <rect x="515" y="254" width="316" height="166" rx="30" fill="#fff4d8" stroke="#917d52" stroke-width="8"/>
+  <text x="673" y="324" font-family="system-ui, sans-serif" font-size="38" font-weight="800" text-anchor="middle" fill="#26394b">车内先处理</text>
+  <text x="673" y="374" font-family="system-ui, sans-serif" font-size="29" font-weight="650" text-anchor="middle" fill="#665c47">变成电机能用的电</text>
+
+  <!-- 处理好以后，只去同一个电动机和车轮。 -->
+  <path d="M831 337H941" fill="none" stroke="#55788a" stroke-width="7" stroke-linecap="round" marker-end="url(#flowArrow)"/>
+  <g transform="translate(1012 337)">
+    <circle r="56" fill="#d4b878" stroke="#26394b" stroke-width="8"/>
+    <path d="M-28 0q14-25 28 0t28 0" fill="none" stroke="#715b34" stroke-width="7" stroke-linecap="round"/>
+    <text y="-77" font-family="system-ui, sans-serif" font-size="34" font-weight="800" text-anchor="middle" fill="#26394b">电动机</text>
+    <path d="M0 58V91" stroke="#26394b" stroke-width="8"/>
+    <circle cy="145" r="53" fill="#647481" stroke="#26394b" stroke-width="8"/>
+    <circle cy="145" r="19" fill="#d8e0e3" stroke="#26394b" stroke-width="6"/>
+    <text y="226" font-family="system-ui, sans-serif" font-size="34" font-weight="800" text-anchor="middle" fill="#26394b">车轮</text>
+  </g>
 </svg>

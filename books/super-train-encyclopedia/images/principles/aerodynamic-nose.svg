@@ -1,52 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">流线形车头帮助高速列车穿过空气</title>
-  <desc id="desc">高速列车的流线形车头正进入隧道，细长蓝箭头沿车头上下平顺绕开。隧道内的波纹表示压力变化；下方提醒车速、隧道大小和车体密封也会影响结果，鼻子不是越长就一定越好。</desc>
+  <title id="title">圆滑车头让空气顺着车身绕过去</title>
+  <desc id="desc">一列只有一个圆滑车鼻的高速列车正在进入一个隧道门。三条细长蓝色气流线从左向右，平顺地绕过车头上方和下方。</desc>
   <defs>
-    <marker id="airArrow" viewBox="0 0 24 24" refX="21" refY="12" markerWidth="22" markerHeight="22" markerUnits="userSpaceOnUse" orient="auto">
-      <path d="M3 3 21 12 3 21Z" fill="#3b82c4"/>
-    </marker>
-    <marker id="pressureArrow" viewBox="0 0 24 24" refX="21" refY="12" markerWidth="22" markerHeight="22" markerUnits="userSpaceOnUse" orient="auto">
-      <path d="M3 3 21 12 3 21Z" fill="#d95d4f"/>
+    <marker id="airArrow" viewBox="0 0 18 18" refX="16" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 16 9 2 16Z" fill="#4f8298"/>
     </marker>
   </defs>
-  <rect width="1200" height="675" rx="34" fill="#fff9ed"/>
+  <rect width="1200" height="675" rx="34" fill="#fffaf1"/>
 
-  <path d="M890 584V253A190 190 0 0 1 1080 63H1200V584Z" fill="#eadfcb" stroke="#9a7558" stroke-width="9"/>
-  <path d="M942 584V275A139 139 0 0 1 1081 136H1200V584Z" fill="#465d73" stroke="#25364a" stroke-width="9"/>
-  <path d="M890 584H1200" stroke="#667687" stroke-width="24"/>
-  <path d="M890 576H1200" stroke="#d8e0e7" stroke-width="7"/>
-  <path d="M55 570H1170" stroke="#667687" stroke-width="12" stroke-linecap="round"/>
+  <text x="62" y="76" font-family="system-ui, sans-serif" font-size="43" font-weight="800" fill="#26394b">空气顺着圆滑车头绕过去</text>
 
-  <path d="M78 492V286H600Q751 286 857 350L1032 455Q1065 475 1025 492Z" fill="#4f9bd8" stroke="#25364a" stroke-width="10" stroke-linejoin="round"/>
-  <path d="M138 326H585Q700 326 789 372H138Z" fill="#dff2fb" stroke="#25364a" stroke-width="8"/>
-  <path d="M316 326V372M492 326V372M648 337 631 372" stroke="#25364a" stroke-width="7"/>
-  <path d="M130 492H1015" stroke="#25364a" stroke-width="26" stroke-linecap="round"/>
-  <g fill="#465d73" stroke="#25364a" stroke-width="8">
-    <circle cx="270" cy="515" r="47"/>
-    <circle cx="690" cy="515" r="47"/>
-  </g>
-  <g fill="#ffd166" stroke="#25364a" stroke-width="6">
-    <circle cx="270" cy="515" r="15"/>
-    <circle cx="690" cy="515" r="15"/>
+  <!-- 一个隧道门：先画在车后，列车正向门内驶去。 -->
+  <path d="M912 614V282A213 213 0 0 1 1125 69H1200V614Z" fill="#ded6ca" stroke="#8f7e69" stroke-width="10"/>
+  <path d="M975 614V304A150 150 0 0 1 1125 154H1200V614Z" fill="#526879" stroke="#26394b" stroke-width="10"/>
+
+  <!-- 只有一个完整、连续的圆滑车鼻。 -->
+  <path d="M87 508V323Q87 292 122 292H592C748 292 858 339 963 438L1012 484Q1038 508 985 508Z" fill="#76aaa6" stroke="#26394b" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M155 335H586C718 335 812 366 897 428H155Z" fill="#dcebf0" stroke="#26394b" stroke-width="7"/>
+  <path d="M345 335V428M552 335V428M746 356 704 428" stroke="#526a79" stroke-width="6"/>
+  <path d="M88 489H1003" stroke="#26394b" stroke-width="24" stroke-linecap="round"/>
+  <g fill="#526879" stroke="#26394b" stroke-width="8">
+    <circle cx="271" cy="528" r="48"/>
+    <circle cx="703" cy="528" r="48"/>
   </g>
 
-  <g fill="none" stroke="#3b82c4" stroke-width="6" stroke-linecap="round" marker-end="url(#airArrow)">
-    <path d="M70 130C430 118 710 153 875 255C943 297 1005 311 1135 312"/>
-    <path d="M65 210C420 202 706 226 866 315C951 362 1018 369 1142 369"/>
-    <path d="M72 590C410 602 715 585 870 528C960 495 1043 491 1142 495"/>
+  <!-- 三条长而细的线，只讲空气怎样绕行。 -->
+  <g fill="none" stroke="#4f8298" stroke-width="6" stroke-linecap="round" marker-end="url(#airArrow)">
+    <path d="M55 145C390 116 705 128 878 226C978 282 1054 289 1150 289"/>
+    <path d="M55 225C380 201 684 214 846 286C956 335 1045 340 1150 340"/>
+    <path d="M55 617C397 632 718 619 883 562C977 530 1060 528 1150 532"/>
   </g>
-  <text x="367" y="104" font-family="system-ui, sans-serif" font-size="32" font-weight="700" text-anchor="middle" fill="#25364a">空气沿着车头和光滑车身绕开</text>
 
-  <g fill="none" stroke="#d95d4f" stroke-width="6" stroke-linecap="round" opacity=".72">
-    <path d="M1052 186Q1108 240 1052 294"/>
-    <path d="M1091 170Q1162 240 1091 310"/>
-    <path d="M1134 158Q1216 240 1134 322"/>
-  </g>
-  <path d="M1025 340h118" stroke="#d95d4f" stroke-width="6" stroke-linecap="round" marker-end="url(#pressureArrow)"/>
-  <text x="1088" y="114" font-family="system-ui, sans-serif" font-size="29" font-weight="700" text-anchor="middle" fill="#25364a">压力变化较平顺</text>
-
-  <g transform="translate(140 608)">
-    <rect width="920" height="48" rx="24" fill="#fffdf6" stroke="#d8c5a9" stroke-width="4"/>
-    <text x="460" y="33" font-family="system-ui, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#25364a">不只看鼻子：车速　·　隧道大小　·　车体密封也要一起设计</text>
-  </g>
+  <path d="M50 598H1160" stroke="#7c8991" stroke-width="16" stroke-linecap="round"/>
+  <path d="M50 594H1160" stroke="#dce2e4" stroke-width="5" stroke-linecap="round"/>
 </svg>
