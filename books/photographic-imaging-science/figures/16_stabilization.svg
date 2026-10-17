@@ -11,15 +11,15 @@
 <text x="735.00" y="122.00" fill="#17202a" font-size="17" font-weight="700" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">移动光学组 / 传感器补偿</text>
 <ellipse cx="205.00" cy="300.00" rx="22.00" ry="130.00" fill="#dcecf7" stroke="#2364aa" stroke-width="3" opacity="1.0"/>
 <line x1="405.00" y1="155.00" x2="405.00" y2="445.00" stroke="#17202a" stroke-width="4" opacity="1.0"/>
-<line x1="85.00" y1="225.00" x2="205.00" y2="275.00" stroke="#c44536" stroke-width="2.5" opacity="1.0"/>
-<line x1="205.00" y1="275.00" x2="405.00" y2="365.00" stroke="#c44536" stroke-width="3" opacity="1.0"/>
-<circle cx="405.00" cy="365.00" r="8.00" fill="#c44536" stroke="#c44536" stroke-width="2" opacity="1.0"/>
+<line x1="85.00" y1="263.00" x2="205.00" y2="275.00" stroke="#c44536" stroke-width="2.5" opacity="1.0"/>
+<line x1="205.00" y1="275.00" x2="405.00" y2="320.00" stroke="#c44536" stroke-width="3" opacity="1.0"/>
+<circle cx="405.00" cy="320.00" r="8.00" fill="#c44536" stroke="#c44536" stroke-width="2" opacity="1.0"/>
 <line x1="375.00" y1="300.00" x2="435.00" y2="300.00" stroke="#2a9d6f" stroke-width="3" opacity="1.0" stroke-dasharray="5 4"/>
 <text x="365.00" y="290.00" fill="#2a9d6f" font-size="14" font-weight="400" text-anchor="end" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">理想位置</text>
-<ellipse cx="675.00" cy="300.00" rx="22.00" ry="130.00" fill="#dcecf7" stroke="#2364aa" stroke-width="3" opacity="1.0"/>
+<ellipse cx="675.00" cy="280.00" rx="22.00" ry="130.00" fill="#dcecf7" stroke="#2364aa" stroke-width="3" opacity="1.0"/>
 <line x1="875.00" y1="155.00" x2="875.00" y2="445.00" stroke="#17202a" stroke-width="4" opacity="1.0"/>
-<line x1="555.00" y1="225.00" x2="675.00" y2="275.00" stroke="#c44536" stroke-width="2.5" opacity="1.0"/>
-<line x1="675.00" y1="250.00" x2="875.00" y2="300.00" stroke="#c44536" stroke-width="3" opacity="1.0"/>
+<line x1="555.00" y1="263.00" x2="675.00" y2="275.00" stroke="#c44536" stroke-width="2.5" opacity="1.0"/>
+<line x1="675.00" y1="275.00" x2="875.00" y2="300.00" stroke="#c44536" stroke-width="3" opacity="1.0"/>
 <circle cx="875.00" cy="300.00" r="8.00" fill="#c44536" stroke="#c44536" stroke-width="2" opacity="1.0"/>
 <line x1="675.00" y1="420.00" x2="675.00" y2="385.00" stroke="#2a9d6f" stroke-width="4" opacity="1.0" marker-end="url(#arrow)"/>
 <text x="700.00" y="420.00" fill="#2a9d6f" font-size="15" font-weight="400" text-anchor="start" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">补偿位移</text>

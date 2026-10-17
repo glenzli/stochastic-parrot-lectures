@@ -19,17 +19,17 @@
 <rect x="542.00" y="90.00" width="384.00" height="75.00" rx="0" fill="#2364aa" stroke="#ffffff" stroke-width="1" opacity="0.72"/>
 <text x="734.00" y="137.00" fill="#ffffff" font-size="14" font-weight="400" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">6</text>
 <text x="90.00" y="310.00" fill="#17202a" font-size="20" font-weight="700" text-anchor="start" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">Log 编码</text>
-<rect x="170.00" y="275.00" width="120.00" height="75.00" rx="0" fill="#c44536" stroke="#ffffff" stroke-width="1" opacity="0.72"/>
-<text x="230.00" y="322.00" fill="#ffffff" font-size="14" font-weight="400" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">第1档</text>
-<rect x="290.00" y="275.00" width="120.00" height="75.00" rx="0" fill="#c44536" stroke="#ffffff" stroke-width="1" opacity="0.72"/>
-<text x="350.00" y="322.00" fill="#ffffff" font-size="14" font-weight="400" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">第2档</text>
-<rect x="410.00" y="275.00" width="120.00" height="75.00" rx="0" fill="#c44536" stroke="#ffffff" stroke-width="1" opacity="0.72"/>
-<text x="470.00" y="322.00" fill="#ffffff" font-size="14" font-weight="400" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">第3档</text>
-<rect x="530.00" y="275.00" width="120.00" height="75.00" rx="0" fill="#c44536" stroke="#ffffff" stroke-width="1" opacity="0.72"/>
-<text x="590.00" y="322.00" fill="#ffffff" font-size="14" font-weight="400" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">第4档</text>
-<rect x="650.00" y="275.00" width="120.00" height="75.00" rx="0" fill="#c44536" stroke="#ffffff" stroke-width="1" opacity="0.72"/>
-<text x="710.00" y="322.00" fill="#ffffff" font-size="14" font-weight="400" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">第5档</text>
-<rect x="770.00" y="275.00" width="120.00" height="75.00" rx="0" fill="#c44536" stroke="#ffffff" stroke-width="1" opacity="0.72"/>
-<text x="830.00" y="322.00" fill="#ffffff" font-size="14" font-weight="400" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">第6档</text>
+<rect x="170.00" y="275.00" width="126.00" height="75.00" rx="0" fill="#c44536" stroke="#ffffff" stroke-width="1" opacity="0.72"/>
+<text x="233.00" y="322.00" fill="#ffffff" font-size="14" font-weight="400" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">第1档</text>
+<rect x="296.00" y="275.00" width="126.00" height="75.00" rx="0" fill="#c44536" stroke="#ffffff" stroke-width="1" opacity="0.72"/>
+<text x="359.00" y="322.00" fill="#ffffff" font-size="14" font-weight="400" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">第2档</text>
+<rect x="422.00" y="275.00" width="126.00" height="75.00" rx="0" fill="#c44536" stroke="#ffffff" stroke-width="1" opacity="0.72"/>
+<text x="485.00" y="322.00" fill="#ffffff" font-size="14" font-weight="400" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">第3档</text>
+<rect x="548.00" y="275.00" width="126.00" height="75.00" rx="0" fill="#c44536" stroke="#ffffff" stroke-width="1" opacity="0.72"/>
+<text x="611.00" y="322.00" fill="#ffffff" font-size="14" font-weight="400" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">第4档</text>
+<rect x="674.00" y="275.00" width="126.00" height="75.00" rx="0" fill="#c44536" stroke="#ffffff" stroke-width="1" opacity="0.72"/>
+<text x="737.00" y="322.00" fill="#ffffff" font-size="14" font-weight="400" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">第5档</text>
+<rect x="800.00" y="275.00" width="126.00" height="75.00" rx="0" fill="#c44536" stroke="#ffffff" stroke-width="1" opacity="0.72"/>
+<text x="863.00" y="322.00" fill="#ffffff" font-size="14" font-weight="400" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">第6档</text>
 <text x="500.00" y="475.00" fill="#17202a" font-size="22" font-weight="400" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">Log 近似让相邻曝光档获得相同码值宽度</text>
 </svg>

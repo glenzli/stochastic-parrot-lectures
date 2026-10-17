@@ -28,8 +28,8 @@ $$
 \qquad k\in\{R,G,B\}.
 $$
 
-**证明.** 在有界波长区间内取四个线性独立、有界且紧支的函数，其张成空间记为
-$V$，则 $\dim V=4$。线性映射
+**证明.** 在 $\Lambda$ 内取四个互不相交、长度为正的子区间，用它们的指示函数张成
+空间 $V$。按几乎处处相等识别函数时，它们仍线性独立，故 $\dim V=4$。线性映射
 
 $$
 T:V\longrightarrow\mathbb R^3,\qquad
@@ -37,7 +37,8 @@ T(q)=(\langle q,s_R\rangle,\langle q,s_G\rangle,\langle q,s_B\rangle)
 $$
 
 的秩至多为 $3$。秩--零化度定理给出 $\dim\ker T\ge1$，故存在有界紧支的
-$q\ne0$ 使三个积分均为零。设 $K$ 包含 $q$ 的支集，取
+$q\ne0$ 使三个积分均为零，而且 $q$ 在正测度的集合上不为零。取 $\varepsilon>0$，
+设 $K$ 包含 $q$ 的支集，取
 $H_0=M\mathbf1_K$，其中 $M>\varepsilon\lVert q\rVert_\infty$。则
 $H_0$ 与 $H_0+\varepsilon q$ 是两个不同的非负光谱，且它们的三个相机通道积分
 相同。$\square$

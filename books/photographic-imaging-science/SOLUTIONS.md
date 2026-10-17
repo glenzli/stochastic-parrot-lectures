@@ -430,7 +430,7 @@ f=-1/C=200\ \mathrm{mm},\qquad
 \ell_1=f(1-D)=0,\qquad \ell_2=f(1-A)=20\ \mathrm{mm}.
 $$
 
-平行入射光从输出参考面量起的后焦距为
+平行入射光从后表面顶点（本题的输出参考面）量起的后焦距为
 
 $$
 \mathrm{BFD}=-A/C=180\ \mathrm{mm}.

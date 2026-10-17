@@ -189,6 +189,13 @@ class SVG:
     ) -> None:
         x, y, w, h = box
         xmin, xmax, ymin, ymax = domain
+        # Reject a sampling-range mistake before it can become a misleading plot.
+        xtol, ytol = (xmax - xmin) * 1e-9, (ymax - ymin) * 1e-9
+        if any(not (math.isfinite(px) and math.isfinite(py)
+                    and xmin - xtol <= px <= xmax + xtol
+                    and ymin - ytol <= py <= ymax + ytol)
+               for px, py in points):
+            raise ValueError(f"plot samples outside domain {domain}")
         mapped = [
             (x + (px - xmin) / (xmax - xmin) * w, y + h - (py - ymin) / (ymax - ymin) * h)
             for px, py in points
@@ -231,8 +238,8 @@ def figure_01_fnumber_exposure() -> None:
         top, bottom = 280 - aperture / 2, 280 + aperture / 2
         s.line(lx, top, sx, 280, color=color, width=3)
         s.line(lx, bottom, sx, 280, color=color, width=3)
-        s.line(x0 + 30, 280, lx, top, color=color, width=2)
-        s.line(x0 + 30, 280, lx, bottom, color=color, width=2)
+        s.line(x0 + 30, top, lx, top, color=color, width=2)
+        s.line(x0 + 30, bottom, lx, bottom, color=color, width=2)
         s.line(lx, top - 15, lx, bottom + 15, color=color, width=8)
         s.text(lx, 430, "入瞳 D", size=16, anchor="middle")
         s.text(sx, 435, "像面", size=16, anchor="middle")
@@ -353,17 +360,17 @@ def figure_04_noise_budget() -> None:
     s = SVG("图 4.1  信号电平变化时的噪声预算")
     box = (130, 100, 700, 370)
     s.axes(*box, "信号电子 μe（对数刻度示意）", "噪声 rms（对数刻度示意）")
-    ts = [i / 100 * 5 for i in range(501)]
+    ts = [i / 500 * 5 for i in range(501)]
     read = [(t, math.log10(3)) for t in ts]
     shot = [(t, math.log10(math.sqrt(10**t))) for t in ts]
     prnu = [(t, math.log10(0.01 * 10**t)) for t in ts]
-    domain = (0, 5, -0.2, 3.2)
+    domain = (0, 5, -2.2, 3.2)
     s.plot(read, box, domain, color=RED)
     s.plot(shot, box, domain, color=BLUE)
     s.plot(prnu, box, domain, color=GREEN)
-    s.text(650, 410, "读噪", size=17, color=RED)
-    s.text(610, 220, "散粒噪声 √μ", size=17, color=BLUE)
-    s.text(690, 125, "PRNU · μ", size=17, color=GREEN)
+    s.text(150, 125, "读噪", size=17, color=RED)
+    s.text(150, 155, "散粒噪声 √μ", size=17, color=BLUE)
+    s.text(150, 185, "PRNU · μ", size=17, color=GREEN)
     s.text(500, 545, "阴影、中间调和高光可由不同噪声项主导", size=20, anchor="middle")
     s.save("04_noise_budget.svg")
 
@@ -379,8 +386,8 @@ def figure_04_photon_transfer_curve() -> None:
             y -= 0.0022 * (x - 820) ** 2
         pts.append((x, max(0, y)))
     s.plot(pts, box, (0, 1000, 0, 500), color=BLUE, width=3)
-    s.line(225, 430, 225, 440, color=RED)
-    s.text(190, 455, "暗场截距 σr²", size=16, color=RED)
+    s.arrow(250, 430, 130, 470 - 20 / 500 * 370, color=RED)
+    s.text(190, 415, "暗场方差 c [DN²]", size=16, color=RED)
     s.text(430, 280, "线性斜率 = g [DN/e⁻]", size=18, color=BLUE)
     s.text(700, 175, "饱和 / 非线性", size=17, color=RED)
     s.save("04_photon_transfer_curve.svg")
@@ -434,7 +441,7 @@ def figure_05_dual_conversion_gain() -> None:
 
 def figure_05_ei_headroom() -> None:
     s = SVG("图 5.3  EI 对中灰上下余量的重新分配")
-    for y, mid, label in [(190, 430, "较低 EI：更多传感器曝光"), (380, 590, "较高 EI：更少传感器曝光")]:
+    for y, mid, label in [(190, 590, "较低 EI：更多传感器曝光"), (380, 430, "较高 EI：更少传感器曝光")]:
         s.line(110, y, 890, y, color=INK, width=14)
         s.line(mid, y - 40, mid, y + 40, color=AMBER, width=5)
         s.text(mid, y - 58, "18% 中灰", size=17, color=AMBER, anchor="middle")
@@ -536,7 +543,7 @@ def figure_07_aliasing() -> None:
     s = SVG("图 7.3  两个连续频率产生同一组离散样本")
     box = (110, 100, 780, 370)
     s.axes(*box, "位置 x / p", "归一化强度")
-    xs = [i / 300 * 8 for i in range(2401)]
+    xs = [i / 2400 * 8 for i in range(2401)]
     low = [(x, 0.5 + 0.4 * math.cos(2 * math.pi * 0.25 * x)) for x in xs]
     high = [(x, 0.5 + 0.4 * math.cos(2 * math.pi * 1.25 * x)) for x in xs]
     s.plot(low, box, (0, 8, 0, 1), color=BLUE, width=3)
@@ -584,7 +591,8 @@ def figure_08_stack_snr() -> None:
         px = box[0] + (x - 1) / 63 * box[2]
         py = box[1] + box[3] - y / 8.5 * box[3]
         s.circle(px, py, 6, fill=RED, stroke=RED)
-        s.text(px, py - 14, f"{x}帧 → {y:g}×", size=15, anchor="middle", color=RED)
+        s.text(px + (8 if x in (1, 4) else 0), py + (25 if x == 1 else -14),
+               f"{x}帧 → {y:g}×", size=15, anchor="start" if x in (1, 4) else "middle", color=RED)
     s.text(500, 545, "固定总曝光时，每帧还会重复支付读出噪声", size=20, anchor="middle")
     s.save("08_stack_snr.svg")
 
@@ -592,19 +600,18 @@ def figure_08_stack_snr() -> None:
 def figure_08_hdr_exposure_windows() -> None:
     s = SVG("图 8.2  长短曝光覆盖不同的有效辐亮度区间")
     s.arrow(100, 500, 910, 500, color=INK)
-    s.text(505, 545, "场景曝光（档，对数坐标）", size=18, anchor="middle")
+    s.text(505, 545, "场景信号率（档，对数坐标）", size=18, anchor="middle")
     bars = [
         (160, 320, 170, "长曝光：暗部有效，高光饱和", BLUE),
         (300, 320, 300, "短曝光：暗部读噪，高光有效", RED),
-        (220, 320, 430, "融合后的覆盖", GREEN),
+        (160, 460, 430, "融合后的覆盖", GREEN),
     ]
     for x, width, y, label, color in bars:
         s.rect(x, y, width, 48, fill=color, stroke=color, opacity=0.72)
         s.text(x + width / 2, y - 15, label, size=17, color=color, anchor="middle")
-    s.line(160, 140, 160, 485, color=GRAY, width=1.5, dash="5 5")
-    s.line(620, 140, 620, 485, color=GRAY, width=1.5, dash="5 5")
-    s.text(160, 120, "噪声端", size=16, anchor="middle")
-    s.text(620, 120, "长曝光饱和", size=16, anchor="middle")
+    for x, label in [(160, "长曝光低端"), (480, "长曝光饱和"), (620, "短曝光饱和")]:
+        s.line(x, 140, x, 485, color=GRAY, width=1.5, dash="5 5")
+        s.text(x, 120, label, size=16, anchor="middle")
     s.save("08_hdr_exposure_windows.svg")
 
 
@@ -657,16 +664,16 @@ def figure_09_codes_per_stop() -> None:
     s.text(90, 310, "Log 编码", size=20, weight="700")
     x = 170
     for i in range(6):
-        s.rect(x, 275, 120, 75, fill=RED, stroke="#ffffff", sw=1, radius=0, opacity=0.72)
-        s.text(x + 60, 322, f"第{i+1}档", size=14, color="#ffffff", anchor="middle")
-        x += 120
+        s.rect(x, 275, 126, 75, fill=RED, stroke="#ffffff", sw=1, radius=0, opacity=0.72)
+        s.text(x + 63, 322, f"第{i+1}档", size=14, color="#ffffff", anchor="middle")
+        x += 126
     s.text(500, 475, "Log 近似让相邻曝光档获得相同码值宽度", size=22, anchor="middle")
     s.save("09_codes_per_stop.svg")
 
 
 def figure_09_ei_allocation() -> None:
     s = SVG("图 9.3  EI、中灰与固定传感器范围")
-    for y, mid, label in [(180, 420, "EI 低：中灰信号高"), (355, 600, "EI 高：中灰信号低")]:
+    for y, mid, label in [(180, 600, "EI 低：中灰信号高"), (355, 420, "EI 高：中灰信号低")]:
         s.rect(100, y, 800, 58, fill=LIGHT, stroke=GRAY, sw=1.5)
         s.rect(100, y, mid - 100, 58, fill=PALE_GREEN, stroke="none")
         s.rect(mid, y, 900 - mid, 58, fill=PALE_BLUE, stroke="none")
@@ -727,16 +734,21 @@ def figure_11_thin_lens_rays() -> None:
     axis_y, lens_x = 310, 500
     s.line(60, axis_y, 940, axis_y, color=GRAY, width=1.5, dash="8 6")
     draw_lens(s, lens_x, axis_y, 310)
-    s.arrow(160, axis_y, 160, 145, color=INK, width=5)
-    s.text(145, 130, "物点", size=17, anchor="middle")
-    image_x, image_y = 820, 410
+    object_x, object_y = 160, 170
+    image_x, image_y = 840, 450
+    focal_length = 170
+    s.arrow(object_x, axis_y, object_x, object_y, color=INK, width=5)
+    s.text(object_x, object_y - 20, "物点", size=17, anchor="middle")
     s.arrow(image_x, axis_y, image_x, image_y, color=INK, width=5)
-    s.line(160, 145, lens_x, 145, color=BLUE, width=2.5)
-    s.line(lens_x, 145, image_x, image_y, color=BLUE, width=2.5)
-    s.line(160, 145, lens_x, axis_y, color=RED, width=2.5)
+    for x, label in [(lens_x - focal_length, "F"), (lens_x + focal_length, "F′")]:
+        s.circle(x, axis_y, 4, fill=GRAY, stroke=GRAY)
+        s.text(x, axis_y + 25, label, size=16, anchor="middle")
+    s.line(object_x, object_y, lens_x, object_y, color=BLUE, width=2.5)
+    s.line(lens_x, object_y, image_x, image_y, color=BLUE, width=2.5)
+    s.line(object_x, object_y, lens_x, axis_y, color=RED, width=2.5)
     s.line(lens_x, axis_y, image_x, image_y, color=RED, width=2.5)
-    s.line(160, 145, lens_x, 420, color=GREEN, width=2.5)
-    s.line(lens_x, 420, image_x, image_y, color=GREEN, width=2.5)
+    s.line(object_x, object_y, lens_x, image_y, color=GREEN, width=2.5)
+    s.line(lens_x, image_y, image_x, image_y, color=GREEN, width=2.5)
     s.text(500, 520, "1/s + 1/s′ = 1/f；m = −s′/s", size=23, anchor="middle", weight="700")
     s.save("11_thin_lens_rays.svg")
 
@@ -749,11 +761,19 @@ def figure_11_principal_planes() -> None:
     for x, label, color in [(465, "H", RED), (540, "H′", PURPLE)]:
         s.line(x, 110, x, 490, color=color, width=3, dash="7 5")
         s.text(x, 95, label, size=22, color=color, anchor="middle", weight="700")
-    s.line(540, 420, 820, 420, color=PURPLE, width=3)
-    s.line(820, 385, 820, 455, color=PURPLE, width=3)
-    s.text(680, 455, "后焦距从 H′ 量起", size=18, color=PURPLE, anchor="middle")
-    s.line(540, 205, 890, 300, color=BLUE, width=2.5)
+    s.line(620, 120, 620, 505, color=GRAY, width=1.2, dash="5 5")
+    s.text(620, 105, "后表面", size=14, color=GRAY, anchor="middle")
+    for left, yy, color, label in [(540, 420, PURPLE, "有效焦距 f：从 H′ 量起"),
+                                   (620, 480, RED, "后焦距 BFD：从后表面量起")]:
+        s.line(left, yy, 820, yy, color=color, width=2.5)
+        for x in (left, 820):
+            s.line(x, yy - 10, x, yy + 10, color=color, width=2)
+        s.text((left + 820) / 2, yy + 26, label, size=15, color=color, anchor="middle")
+    s.line(540, 205, 820, 300, color=BLUE, width=2.5)
     s.line(80, 205, 465, 205, color=BLUE, width=2.5)
+    s.line(465, 205, 540, 205, color=BLUE, width=1.5, dash="5 4")
+    s.circle(820, 300, 4, fill=BLUE, stroke=BLUE)
+    s.text(835, 290, "F′", size=18, color=BLUE)
     s.text(500, 535, "镜筒长度、后焦距和有效焦距不是同一个量", size=20, anchor="middle")
     s.save("11_principal_planes.svg")
 
@@ -765,13 +785,19 @@ def figure_11_pupils() -> None:
     draw_lens(s, 720, 305, 250, GREEN)
     s.line(500, 220, 500, 390, color=INK, width=10)
     s.text(500, 420, "孔径光阑", size=18, anchor="middle")
-    s.line(170, 245, 170, 365, color=RED, width=5, dash="6 4")
+    entrance_y = 305 + 85 * 110 / 220
+    exit_y = 305 + 85 * 115 / 220
+    s.line(170, 610 - entrance_y, 170, entrance_y, color=RED, width=5, dash="6 4")
     s.text(170, 225, "入瞳（前组所成像）", size=16, color=RED, anchor="middle")
-    s.line(835, 250, 835, 360, color=PURPLE, width=5, dash="6 4")
+    s.line(835, 610 - exit_y, 835, exit_y, color=PURPLE, width=5, dash="6 4")
     s.text(835, 225, "出瞳（后组所成像）", size=16, color=PURPLE, anchor="middle")
-    for y in [250, 360]:
-        s.line(60, 305, 170, y, color=AMBER, width=2)
-        s.line(170, y, 500, 220 if y < 305 else 390, color=AMBER, width=2)
+    # Trace the upper rim of the stop through each thin lens.  The entrance
+    # construction travels toward object space; bending occurs at the lens.
+    for lens_x, pupil_x, pupil_y, color in [(280, 170, entrance_y, AMBER),
+                                          (720, 835, exit_y, CYAN)]:
+        for lens_y in (220, 305):
+            s.line(500, 220, lens_x, lens_y, color=color, width=2)
+            s.line(lens_x, lens_y, pupil_x, pupil_y, color=color, width=2)
     s.text(500, 535, "f 数使用入瞳直径，不是前玉直径", size=21, anchor="middle")
     s.save("11_pupils.svg")
 
@@ -804,9 +830,9 @@ def figure_12_airy_psf() -> None:
     first_zero_radius = 125 * 3.8317 / 18
     s.circle(cx, cy, first_zero_radius, stroke=RED, sw=1.5, opacity=0.8)
     s.circle(cx, cy, 2.5, fill=BLUE, stroke=BLUE, sw=1)
-    s.text(cx, 470, "二维强度分布", size=18, anchor="middle")
+    s.text(cx, 470, "环纹示意（亮度增强）", size=18, anchor="middle")
     box = (500, 110, 390, 330)
-    s.axes(*box, "像面半径 r", "归一化强度")
+    s.axes(*box, "归一化半径 u = πr/(λN)", "归一化强度")
     xs = [i / 500 * 18 for i in range(501)]
     pts = [(x, airy_intensity(x)) for x in xs]
     s.plot(pts, box, (0, 18, 0, 1.05), color=BLUE, width=3)
@@ -874,7 +900,7 @@ def spot_cluster(cx: float, cy: float, kind: str) -> list[tuple[float, float]]:
 
 
 def figure_13_aberration_spots() -> None:
-    s = SVG("图 13.1  典型像差的几何点列图")
+    s = SVG("图 13.1  典型像差的点列形态示意")
     panels = [(35, "球差", "spherical"), (280, "彗差", "coma"), (525, "弧矢像散", "astig_s"), (770, "切向像散", "astig_t")]
     for x, title, kind in panels:
         s.panel(x, 105, 195, 365, title)
@@ -951,13 +977,15 @@ def figure_14_achromat() -> None:
     axis = 310
     s.line(70, axis, 930, axis, color=GRAY, width=1.5, dash="8 6")
     s.ellipse(430, axis, 35, 165, fill=PALE_BLUE, stroke=BLUE, sw=3)
-    s.ellipse(500, axis, 27, 145, fill=PALE_RED, stroke=RED, sw=3)
+    s.add(f'<path d="M470,165 Q512,310 470,455 L530,455 Q488,310 530,165 Z" '
+          f'fill="{PALE_RED}" stroke="{RED}" stroke-width="3"/>')
     s.text(430, 500, "+Φ₁ / 高 V₁", size=17, color=BLUE, anchor="middle")
     s.text(500, 535, "−Φ₂ / 低 V₂", size=17, color=RED, anchor="middle")
     for y, color, focus_y in [(210, BLUE, 310), (255, RED, 310)]:
+        after_positive = axis + (y - axis) * (1 - 70 / 200)
         s.line(80, y, 430, y, color=color, width=2.5)
-        s.line(430, y, 500, y + (y - axis) * 0.15, color=color, width=2.5)
-        s.line(500, y + (y - axis) * 0.15, 820, focus_y, color=color, width=2.5)
+        s.line(430, y, 500, after_positive, color=color, width=2.5)
+        s.line(500, after_positive, 820, focus_y, color=color, width=2.5)
     s.circle(820, axis, 7, fill=GREEN, stroke=GREEN)
     s.text(820, 350, "F、C 两线共焦", size=18, color=GREEN, anchor="middle")
     s.text(670, 125, "Φ₁/V₁ + Φ₂/V₂ = 0", size=22, anchor="middle", weight="700")
@@ -967,10 +995,11 @@ def figure_14_achromat() -> None:
 def figure_15_asphere_profile() -> None:
     s = SVG("图 15.1  球面与非球面的矢高差")
     box = (130, 100, 700, 370)
-    s.axes(*box, "径向坐标 r", "矢高 z")
+    s.axes(*box, "归一化径向坐标 r", "归一化矢高 z")
     xs = [i / 300 for i in range(301)]
-    sphere = [(x, 0.35 * x * x + 0.055 * x**4) for x in xs]
-    asphere = [(x, 0.35 * x * x - 0.055 * x**4) for x in xs]
+    curvature = 0.7
+    sphere = [(x, curvature * x * x / (1 + math.sqrt(1 - curvature**2 * x**2))) for x in xs]
+    asphere = [(x, z - 0.11 * x**4) for x, z in sphere]
     s.plot(sphere, box, (0, 1, 0, 0.45), color=BLUE, width=4)
     s.plot(asphere, box, (0, 1, 0, 0.45), color=RED, width=4)
     s.text(695, 145, "球面", size=17, color=BLUE)
@@ -996,8 +1025,13 @@ def figure_15_pf_dispersion() -> None:
             blue_focus = red_focus = base_x + 225
         for y, color, focus in [(230, BLUE, blue_focus), (370, RED, red_focus)]:
             s.line(base_x + 25, y, lx, y, color=color, width=2.5)
-            start_x = lx + (35 if combined else 0)
-            s.line(start_x, y, focus, 300, color=color, width=2.5)
+            if combined:
+                refractive_f = 180 if color == BLUE else 225
+                second_y = 300 + (y - 300) * (1 - 35 / refractive_f)
+                s.line(lx, y, lx + 35, second_y, color=color, width=2.5)
+                s.line(lx + 35, second_y, focus, 300, color=color, width=2.5)
+            else:
+                s.line(lx, y, focus, 300, color=color, width=2.5)
         s.circle(blue_focus, 300, 5, fill=BLUE, stroke=BLUE)
         s.circle(red_focus, 300, 5, fill=RED, stroke=RED)
     s.text(500, 555, "PF：f(λ) ∝ 1/λ；与普通折射色差配对后可减轻长焦校色负担", size=19, anchor="middle")
@@ -1011,13 +1045,14 @@ def figure_15_ar_coating() -> None:
     s.rect(150, 230, 700, 70, fill=PALE_GREEN, stroke=GREEN, sw=2)
     s.text(500, 275, "膜层 nc，光学厚度 λ/4", size=20, color=GREEN, anchor="middle")
     s.text(500, 120, "空气 n₀", size=20, anchor="middle")
-    s.arrow(340, 90, 430, 225, color=AMBER, width=4)
-    s.arrow(430, 230, 320, 145, color=RED, width=3)
-    s.line(430, 230, 500, 300, color=AMBER, width=3)
-    s.arrow(500, 300, 620, 145, color=BLUE, width=3)
-    s.text(270, 155, "表面反射", size=16, color=RED)
-    s.text(640, 155, "下表面反射，多半波相位", size=16, color=BLUE)
-    s.text(500, 550, "设计波长正入射时，nc = √(n₀ns) 可使两束反射振幅相等并相消", size=19, anchor="middle")
+    s.arrow(340, 90, 340, 230, color=AMBER, width=4)
+    s.arrow(340, 230, 340, 145, color=RED, width=3)
+    s.arrow(620, 90, 620, 300, color=AMBER, width=4)
+    s.arrow(620, 300, 620, 145, color=BLUE, width=3)
+    s.text(185, 170, "上界面反射", size=16, color=RED)
+    s.text(650, 170, "膜内往返后反射", size=16, color=BLUE)
+    s.text(500, 510, "两条正入射光程并列示意；出射反射波叠加", size=17, anchor="middle")
+    s.text(500, 550, "设计波长正入射时，nc² = n₀ns 使总反射振幅为零", size=19, anchor="middle")
     s.save("15_ar_coating.svg")
 
 
@@ -1050,13 +1085,18 @@ def figure_16_depth_of_field() -> None:
     draw_lens(s, lens_x, axis, 260)
     s.line(sensor_x, 120, sensor_x, 480, color=INK, width=5)
     s.text(sensor_x, 510, "传感器", size=17, anchor="middle")
-    cases = [(575, RED, "近物：焦点在前"), (760, GREEN, "对焦物：焦点在面上"), (900, BLUE, "远物：焦点在后")]
+    cases = [(575, RED, "远物：焦点在前"), (760, GREEN, "对焦物：焦点在面上"), (900, BLUE, "近物：焦点在后")]
     for focus_x, color, label in cases:
-        s.line(lens_x, 205, focus_x, axis, color=color, width=2.2)
-        s.line(lens_x, 395, focus_x, axis, color=color, width=2.2)
+        end_x = max(sensor_x + 35, focus_x)
+        for aperture_y in (205, 395):
+            end_y = axis + (aperture_y - axis) * (1 - (end_x - lens_x) / (focus_x - lens_x))
+            s.line(lens_x, aperture_y, end_x, end_y, color=color, width=2.2)
+        s.circle(focus_x, axis, 3, fill=color, stroke=color)
         if focus_x != sensor_x:
-            top = 205 + (395 - 205) * (sensor_x - lens_x) / (focus_x - lens_x) if focus_x > lens_x else axis
-            s.line(sensor_x - 8, top, sensor_x + 8, top, color=color, width=5)
+            radius = 95 * abs(1 - (sensor_x - lens_x) / (focus_x - lens_x))
+            s.line(sensor_x, axis - radius, sensor_x, axis + radius, color=color, width=5)
+            for yy in (axis - radius, axis + radius):
+                s.line(sensor_x - 8, yy, sensor_x + 8, yy, color=color, width=3)
         s.text(focus_x if focus_x < 850 else 890, 90 + 30 * cases.index((focus_x, color, label)), label, size=15, color=color, anchor="middle")
     s.text(500, 555, "景深是弥散圈低于所选阈值 c₀ 的物距范围", size=20, anchor="middle")
     s.save("16_depth_of_field.svg")
@@ -1068,11 +1108,12 @@ def figure_16_stabilization() -> None:
     s.panel(525, 95, 420, 390, "移动光学组 / 传感器补偿")
     for base_x, compensated in [(55, False), (525, True)]:
         lx, sx, axis = base_x + 150, base_x + 350, 300
-        s.ellipse(lx, axis, 22, 130, fill=PALE_BLUE, stroke=BLUE, sw=3)
+        lens_center = axis - (20 if compensated else 0)
+        s.ellipse(lx, lens_center, 22, 130, fill=PALE_BLUE, stroke=BLUE, sw=3)
         s.line(sx, 155, sx, 445, color=INK, width=4)
-        s.line(base_x + 30, 225, lx, 275, color=RED, width=2.5)
-        target_y = 300 if compensated else 365
-        s.line(lx, 275 if not compensated else 250, sx, target_y, color=RED, width=3)
+        s.line(base_x + 30, 263, lx, 275, color=RED, width=2.5)
+        target_y = 300 if compensated else 320
+        s.line(lx, 275, sx, target_y, color=RED, width=3)
         s.circle(sx, target_y, 8, fill=RED, stroke=RED)
         if compensated:
             s.arrow(lx, 420, lx, 385, color=GREEN, width=4)
@@ -1091,9 +1132,9 @@ def figure_17_mtf_chart() -> None:
     xs = [i / 300 * 21.6 for i in range(301)]
     curves = [
         ([(x, 0.95 - 0.12 * (x / 21.6) ** 2) for x in xs], BLUE, "10 lp/mm S"),
-        ([(x, 0.93 - 0.20 * (x / 21.6) ** 2) for x in xs], CYAN, "10 lp/mm T"),
+        ([(x, 0.95 - 0.20 * (x / 21.6) ** 2) for x in xs], CYAN, "10 lp/mm T"),
         ([(x, 0.78 - 0.32 * (x / 21.6) ** 1.6) for x in xs], RED, "40 lp/mm S"),
-        ([(x, 0.76 - 0.48 * (x / 21.6) ** 1.5) for x in xs], AMBER, "40 lp/mm T"),
+        ([(x, 0.78 - 0.48 * (x / 21.6) ** 1.5) for x in xs], AMBER, "40 lp/mm T"),
     ]
     for idx, (pts, color, label) in enumerate(curves):
         s.plot(pts, box, (0, 21.6, 0, 1), color=color, width=3, dash=None if idx % 2 == 0 else "7 5")
@@ -1108,14 +1149,14 @@ def figure_17_slanted_edge_pipeline() -> None:
     for x, title in panels:
         s.panel(x, 105, 195, 340, title)
     s.polygon([(65, 390), (65, 155), (200, 155), (160, 390)], fill=INK, stroke=INK)
-    s.line(65, 390, 200, 155, color=RED, width=3)
+    s.line(160, 390, 200, 155, color=RED, width=3)
     box1 = (300, 175, 155, 200)
     box2 = (545, 175, 155, 200)
     box3 = (790, 175, 155, 200)
     xs = [i / 200 * 8 - 4 for i in range(201)]
-    esf = [(x, 1 / (1 + math.exp(-2 * x))) for x in xs]
-    lsf = [(x, 2 * math.exp(-2 * x) / (1 + math.exp(-2 * x)) ** 2) for x in xs]
-    mtf = [(i / 200, math.exp(-2.2 * (i / 200) ** 1.5)) for i in range(201)]
+    esf = [(x, 0.5 * (1 + math.erf(x / math.sqrt(2)))) for x in xs]
+    lsf = [(x, math.exp(-0.5 * x*x) / math.sqrt(2 * math.pi)) for x in xs]
+    mtf = [(i / 200, math.exp(-2 * math.pi**2 * (i / 200)**2)) for i in range(201)]
     s.plot(esf, box1, (-4, 4, 0, 1), color=BLUE, width=3)
     s.plot(lsf, box2, (-4, 4, 0, 0.55), color=RED, width=3)
     s.plot(mtf, box3, (0, 1, 0, 1), color=GREEN, width=3)

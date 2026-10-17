@@ -82,7 +82,14 @@
 - Warren J. Smith, *Modern Optical Engineering*, 4th ed., McGraw-Hill, 2008.
 - Rudolf Kingslake and R. Barry Johnson, *Lens Design Fundamentals*, 2nd ed.,
   Academic Press, 2010.
+- Ansys, [OpticStudio User Guide: Back Focal Length](https://ansyshelp.ansys.com/public/Views/Secured/Zemax/v251/en/OpticStudio_User_Guide/OpticStudio_Help/topics/Back_Focal_Length.html),
+  for the last optical surface reference used for back focal length in Chapter 11.
+- Edmund Optics, [Telecentric Design Topics](https://www.edmundoptics.co.uk/knowledge-center/application-notes/imaging/telecentric-design-topics/),
+  for entrance and exit pupils as images of the aperture stop in Chapter 11.
 - Virendra N. Mahajan, *Optical Imaging and Aberrations*, SPIE Press.
+- Ansys, [OpticStudio 2025 R2 User Guide: Seidel Coefficients](https://ansyshelp.ansys.com/public/Views/Secured/Zemax/v252/en/OpticStudio_User_Guide/OpticStudio_Help/topics/Seidel_Coefficients.html),
+  for the distinction and conversion between third-order ray and fourth-order
+  wavefront aberration coefficients used in Chapter 13.
 - H. Angus Macleod, *Thin-Film Optical Filters*, 4th ed., CRC Press, 2010.
 - Carl Zeiss Camera Lens Division, [How to Read MTF Curves](https://lenspire.zeiss.com/photo/app/uploads/2018/04/Article-MTF-2008-EN.pdf).
 - ISO, [ISO 12233:2024, Digital cameras -- Resolution and spatial frequency

@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600" role="img" aria-label="图 13.1  典型像差的几何点列图">
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600" role="img" aria-label="图 13.1  典型像差的点列形态示意">
 <defs>
 <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L8,3 z" fill="context-stroke"/></marker>
 <marker id="arrow-open" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,3 L0,6" fill="none" stroke="context-stroke"/></marker>
 </defs>
 <rect x="0" y="0" width="1000" height="600" fill="#ffffff"/>
-<text x="500.00" y="35.00" fill="#17202a" font-size="24" font-weight="700" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">图 13.1  典型像差的几何点列图</text>
+<text x="500.00" y="35.00" fill="#17202a" font-size="24" font-weight="700" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">图 13.1  典型像差的点列形态示意</text>
 <rect x="35.00" y="105.00" width="195.00" height="365.00" rx="5" fill="#fbfcfe" stroke="#bcc6d0" stroke-width="1.5" opacity="1.0"/>
 <text x="132.50" y="132.00" fill="#17202a" font-size="17" font-weight="700" text-anchor="middle" font-family="Arial, PingFang SC, Hiragino Sans GB, sans-serif">球差</text>
 <circle cx="138.13" cy="300.00" r="2.20" fill="#2364aa" stroke="#2364aa" stroke-width="0.4" opacity="0.65"/>
