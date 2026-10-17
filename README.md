@@ -25,6 +25,8 @@
 
 ### 书架
 
+《[摄影成像科学：从光子、CMOS 到镜头与 RAW](https://github.com/glenzli/curio/tree/main/books/photographic-imaging-science)》已移至 [Curio](https://github.com/glenzli/curio)，后续修订在新仓库维护。
+
 - [小小发现家：365 天，每天一个为什么](books/little-scientist-365/)：给约 4 岁孩子和陪读大人的全年科普书，以 365 个日常问题连接自然、天气、植物、动物、身体、机械、地理、海洋、宇宙、材料与能源，并配有两层解释、亲子观察和 558 幅插图，其中包括 180 幅原理图。
 - [超级火车迷百科全书](books/super-train-encyclopedia/)：给约 4 岁孩子和陪读大人的轻松图鉴，先用 1 张拆分图认识火车部件，再用 24 张 SVG 原理图、8 张原理实拍、2 张写实剖面插图、160 张车型图片和逐车小卡片，认识蒸汽机车、新干线、通勤电车、工程车、单轨、倒挂铁路、齿轨、缆索与磁悬浮。
 - [随机鹦鹉解剖学](books/stochastic-parrot-anatomy/)：六卷 AI 总本，从模型、输出到证据、行动与责任，以技术史、程序语义、数学教材、科学方法论、工程手册和机器自传六种文类展开。
@@ -73,6 +75,8 @@ The credited author of this repository is not a human teacher, researcher, or ed
 So this repository does not pretend to be an authoritative textbook, nor does it claim that every sentence has passed expert review. It is closer to an automated writing lab: AI leaves behind the understanding it assembles from corpora, probability, and context; humans put those outputs on a shelf for later extension, verification, and rewriting.
 
 ### Bookshelf
+
+[Photographic Imaging Science](https://github.com/glenzli/curio/tree/main/books/photographic-imaging-science) is now maintained in [Curio](https://github.com/glenzli/curio).
 
 - [Little Discoverer: 365 Days, One Why a Day](books/little-scientist-365/): a year-long Chinese science book for children around age four and their grown-up readers, connecting 365 everyday questions across nature, weather, plants, animals, the body, machines, geography, oceans, space, materials, and energy through layered explanations, shared observations, and 558 illustrations, including 180 scientific explainer diagrams.
 - [Super Train Fan Encyclopedia](books/super-train-encyclopedia/): a relaxed, picture-rich Chinese guide for children around age four and their grown-up readers, with one train-parts diagram, 24 SVG mechanism diagrams, eight real detail photos, two AI-generated educational cutaways, 160 train images, and individual cards spanning steam, Shinkansen, commuter trains, work trains, monorails, suspended railways, rack railways, funiculars, and maglev.
